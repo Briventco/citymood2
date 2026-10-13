@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { CategoryLabel } from "../components/CategoryLabel";
+import { LatestRail } from "../components/LatestRail";
+import { MostRead } from "../components/MostRead";
+import { PeopleBand } from "../components/PeopleBand";
+import { SectionHeader } from "../components/SectionHeader";
+import { StoryCard } from "../components/StoryCard";
+import { AdSlot } from "../components/shell/AdSlot";
+import { categoryBySlug, getArticles, getCategories } from "@/lib/content";
 
 // Temporary dev-only reference page for the Phase 1 foundations.
 // The folder is named %5F%5Fdesign so the URL is /__design (a plain _folder is private in the App Router).
@@ -58,8 +66,15 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function DesignFoundationsPage() {
+export default async function DesignFoundationsPage() {
   if (process.env.NODE_ENV === "production") notFound();
+  const now = new Date();
+  const [articles, categories] = await Promise.all([getArticles(now), getCategories()]);
+  const cat = (a: (typeof articles)[number]) => categoryBySlug(categories, a.category);
+  const withImage = articles.filter((a) => a.image);
+  const noImage = articles.filter((a) => !a.image);
+  const people = articles.filter((a) => a.role);
+  const culture = articles.find((a) => a.slug.startsWith("ogu-"));
 
   return (
     <div className="mx-auto max-w-cm px-(--cm-gutter) py-10">
@@ -151,6 +166,54 @@ export default function DesignFoundationsPage() {
             <span aria-hidden="true" className="inline-block size-3 bg-cm-lime outline outline-1 outline-cm-black" />
             Kicker marker
           </span>
+        </div>
+      </section>
+
+      <section aria-labelledby="components" className="mt-14">
+        <SectionTitle>
+          <span id="components">Components (seed data)</span>
+        </SectionTitle>
+        <div className="space-y-12">
+          <div className="flex flex-wrap gap-6">
+            <CategoryLabel category={categories[0]} />
+            <span className="cm-on-dark bg-cm-black p-2">
+              <CategoryLabel category={categories[1]} onDark />
+            </span>
+          </div>
+          <SectionHeader id="demo-section" title="Business & Development" shortTitle="Business" href="#" />
+          <StoryCard article={withImage[0]} variant="lead" category={cat(withImage[0])} headingLevel={3} />
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+            {withImage.slice(1, 4).map((a) => (
+              <StoryCard key={a.id} article={a} variant="standard" category={cat(a)} />
+            ))}
+            <StoryCard article={noImage[0]} variant="standard" category={cat(noImage[0])} />
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <StoryCard article={withImage[4]} variant="section-lead" />
+            <div>
+              <StoryCard article={withImage[5]} variant="compact" category={cat(withImage[5])} className="border-b border-cm-rule pb-4" />
+              <StoryCard article={withImage[6]} variant="compact" category={cat(withImage[6])} showSummary={false} className="border-b border-cm-rule py-4" />
+              <StoryCard article={noImage[1]} variant="list" />
+              <StoryCard article={noImage[2]} variant="list" />
+            </div>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
+            {culture && <StoryCard article={culture} variant="feature" category={cat(culture)} related={noImage.slice(3, 5)} />}
+            <LatestRail articles={articles.slice(0, 5)} categories={categories} now={now} />
+          </div>
+          <div className="-mx-(--cm-gutter)">
+            <PeopleBand articles={people} category={categories[1]} />
+          </div>
+          <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
+            <div className="space-y-6">
+              <AdSlot slot="leaderboard" now={now} />
+              <AdSlot slot="billboard" now={now} />
+            </div>
+            <div className="space-y-6">
+              <MostRead articles={articles.slice(0, 4)} />
+              <AdSlot slot="mpu" now={now} />
+            </div>
+          </div>
         </div>
       </section>
     </div>
