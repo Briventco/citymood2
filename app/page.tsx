@@ -1,11 +1,9 @@
 "use client";
 
-import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import TourismSection from "./components/TourismSection";
 import DirectorySection from "./components/DirectorySection";
 import AdSidebar from "./components/AdSidebar";
-import Footer from "./components/Footer";
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -268,9 +266,6 @@ function StatsBanner() {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Global Navigation */}
-      <Navbar />
-
       {/* Breaking Hero + Ad Banner */}
       <HeroSection />
 
@@ -301,8 +296,6 @@ export default function HomePage() {
       {/* Business Directory */}
       <DirectorySection />
 
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
