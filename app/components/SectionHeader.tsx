@@ -31,7 +31,7 @@ export function SectionHeader({
         )}
       </h2>
       {href && (
-        <Link href={href} className="inline-flex min-h-11 flex-none items-center text-[15px] font-bold hover:underline">
+        <Link prefetch={false} href={href} className="inline-flex min-h-11 flex-none items-center text-[15px] font-bold hover:underline">
           See all<span className="sr-only"> {title}</span>
         </Link>
       )}

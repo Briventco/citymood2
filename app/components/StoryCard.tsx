@@ -55,7 +55,7 @@ function Headline({
   const H = `h${level}` as const;
   return (
     <H className={className}>
-      <Link href={articleHref(article)} className={`${headlineLink} ${linkClassName}`}>
+      <Link prefetch={false} href={articleHref(article)} className={`${headlineLink} ${linkClassName}`}>
         {article.title}
       </Link>
     </H>
@@ -85,6 +85,7 @@ export function StoryCard({
               ratio="aspect-[3/2] lg:aspect-video"
               sizes="(min-width: 1240px) 790px, (min-width: 1024px) 64vw, 100vw"
               eager
+              preload
               className="-mx-(--cm-gutter) mb-[18px] sm:mx-0"
             />
           )}
@@ -222,7 +223,7 @@ export function StoryCard({
               <ul className="border-t border-cm-rule">
                 {related.slice(0, 2).map((r) => (
                   <li key={r.id} className="border-b border-cm-rule py-3">
-                    <Link href={articleHref(r)} className={`text-[17px] font-semibold ${headlineLink}`}>
+                    <Link prefetch={false} href={articleHref(r)} className={`text-[17px] font-semibold ${headlineLink}`}>
                       {r.title}
                     </Link>
                   </li>

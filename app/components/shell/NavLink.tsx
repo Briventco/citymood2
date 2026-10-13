@@ -17,7 +17,7 @@ export function NavLink({
   const pathname = usePathname();
   const active = href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
   return (
-    <Link href={href} aria-current={active ? "page" : undefined} className={className}>
+    <Link prefetch={false} href={href} aria-current={active ? "page" : undefined} className={className}>
       {children}
     </Link>
   );

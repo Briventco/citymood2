@@ -8,7 +8,8 @@ import { Logo } from "./Logo";
 //   leaderboard 320×50 / 728×90 (≥640) / 970×90 (≥1024)
 //   mpu         300×250 everywhere
 //   billboard   300×250 / 728×90 (≥640) / 970×250 (≥1024)
-// Boxes shrink with the viewport below their width (e.g. 320px screens); creatives letterbox.
+// Boxes shrink with the viewport below their width (e.g. 640px for a 728 box); creatives letterbox.
+// The band uses 16px padding (not the 24px gutter) so 728×90 fits at 768px.
 const BOX: Record<AdSlotName, string> = {
   leaderboard: "max-w-[320px] h-[50px] sm:max-w-[728px] sm:h-[90px] lg:max-w-[970px]",
   mpu: "max-w-[300px] h-[250px]",
@@ -46,7 +47,7 @@ export function AdSlot({ slot, now, band = slot !== "mpu", className = "" }: Pro
   return (
     <aside
       aria-label="Advertisement"
-      className={`${band ? "bg-cm-paper px-(--cm-gutter) pt-3.5 pb-[18px]" : ""} ${className}`}
+      className={`${band ? "bg-cm-paper px-4 pt-3.5 pb-[18px]" : ""} ${className}`}
     >
       <p className="mb-1.5 text-center text-cm-label font-bold uppercase tracking-[0.14em] text-cm-meta">
         Advertisement
@@ -64,7 +65,7 @@ export function AdSlot({ slot, now, band = slot !== "mpu", className = "" }: Pro
             />
           </a>
         ) : (
-          <Link
+          <Link prefetch={false}
             href={site.pages.advertise.href}
             className={`cm-on-dark flex size-full items-center justify-center bg-cm-black px-4 text-center text-cm-white ${house.layout}`}
           >

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { preload } from "react-dom";
 import { BreakingTicker } from "./components/shell/BreakingTicker";
 import { SectionNav } from "./components/shell/SectionNav";
 import { SiteFooter } from "./components/shell/SiteFooter";
@@ -35,23 +36,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // React emits one deduplicated <link rel="preload"> per call (a literal <link> in <head> gets doubled).
+  for (const href of preloadedFonts) preload(href, { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   const now = new Date();
   const categories = await getCategories();
 
   return (
     <html lang="en">
-      <head>
-        {preloadedFonts.map((href) => (
-          <link
-            key={href}
-            rel="preload"
-            href={href}
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-        ))}
-      </head>
       <body>
         <a href="#main" className="cm-skip-link">
           Skip to main content

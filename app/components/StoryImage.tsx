@@ -9,6 +9,7 @@ export function StoryImage({
   ratio,
   sizes,
   eager = false,
+  preload = false,
   className = "",
 }: {
   image: ArticleImage;
@@ -16,6 +17,8 @@ export function StoryImage({
   ratio: string;
   sizes: string;
   eager?: boolean;
+  /** Adds a <link rel="preload"> so the browser finds the image before parsing the body. Lead image only. */
+  preload?: boolean;
   className?: string;
 }) {
   const focal = image.focalPoint;
@@ -27,6 +30,7 @@ export function StoryImage({
         fill
         sizes={sizes}
         loading={eager ? "eager" : "lazy"}
+        preload={preload}
         fetchPriority={eager ? "high" : undefined}
         className="object-cover"
         style={focal ? { objectPosition: `${focal.x * 100}% ${focal.y * 100}%` } : undefined}

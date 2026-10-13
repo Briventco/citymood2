@@ -32,7 +32,7 @@ export function LatestRail({
           </li>
         ))}
       </ol>
-      <Link
+      <Link prefetch={false}
         href={site.latestPath}
         className="mt-4 flex h-12 items-center justify-center border-2 border-cm-black text-[15px] font-bold hover:underline"
       >

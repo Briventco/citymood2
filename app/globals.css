@@ -27,9 +27,9 @@
   --cm-focus-on-light: #000000;
   --cm-focus-on-dark: #9AFF01;
 
-  /* Typography */
-  --cm-font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;   /* headlines */
-  --cm-font-sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;   /* UI, body, meta */
+  /* Typography. Differs from tokens.css only by the metric-matched fallback faces (see fonts.css). */
+  --cm-font-serif: "Source Serif 4", "Source Serif 4 Fallback", Georgia, "Times New Roman", serif;   /* headlines */
+  --cm-font-sans: "Source Sans 3", "Source Sans 3 Fallback", "Helvetica Neue", Arial, sans-serif;   /* UI, body, meta */
 
   /* Type scale: mobile first, desktop overrides below */
   --cm-fs-lead: 30px;       --cm-lh-lead: 1.08;   /* lead story headline, serif 700 */
