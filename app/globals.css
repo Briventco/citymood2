@@ -218,18 +218,3 @@
     outline-color: var(--cm-black);
   }
 }
-
-/* Legacy: used by app/components/Navbar.tsx. Remove with it in Phase 2. */
-@keyframes ticker-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.ticker-content {
-  animation: ticker-scroll 30s linear infinite;
-  white-space: nowrap;
-}
-
-.ticker-content:hover {
-  animation-play-state: paused;
-}
