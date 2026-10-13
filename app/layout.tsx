@@ -2,18 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CityMood Badagry — Grassroots Media, Culture & Tourism",
+  // Wording to be confirmed with CityMood (DESIGN_SPEC.md §8).
+  title: "CityMood: News from Badagry and surrounding communities",
   description:
-    "Leading grassroots media, cultural journalism, and tourist guide company tracking the historic Badagry Division in Lagos State, Nigeria.",
-  keywords:
-    "Badagry, Lagos, Nigeria, cultural journalism, tourism, heritage, Point of No Return, slave route",
+    "Independent news for Badagry and surrounding communities. Published by CityMood Communications.",
   openGraph: {
-    title: "CityMood Badagry",
-    description:
-      "Premium editorial destination covering Badagry Division — culture, heritage, tourism & local business.",
+    title: "CityMood",
+    description: "Independent news for Badagry and surrounding communities.",
     type: "website",
   },
 };
+
+// The only two font files preloaded (DESIGN_SPEC.md §3). Everything else loads on demand.
+const preloadedFonts = [
+  "/fonts/source-serif-4-latin-700-normal.woff2",
+  "/fonts/source-sans-3-latin-400-normal.woff2",
+];
 
 export default function RootLayout({
   children,
@@ -23,15 +27,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap"
-        />
+        {preloadedFonts.map((href) => (
+          <link
+            key={href}
+            rel="preload"
+            href={href}
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+        ))}
       </head>
-      <body className="antialiased">
-        {children}
+      <body>
+        <a href="#main" className="cm-skip-link">
+          Skip to main content
+        </a>
+        <main id="main">
+          {children}
+        </main>
       </body>
     </html>
   );

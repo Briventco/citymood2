@@ -267,7 +267,7 @@ function StatsBanner() {
 // ─────────────────────────────────────────────
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Global Navigation */}
       <Navbar />
 
@@ -303,6 +303,6 @@ export default function HomePage() {
 
       {/* Footer */}
       <Footer />
-    </main>
+    </div>
   );
 }
