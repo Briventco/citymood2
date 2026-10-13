@@ -14,7 +14,7 @@ export function CategoryLabel({
   className?: string;
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={categoryHref(category.slug)}
       className={`inline-flex items-center gap-2 py-0.5 text-cm-kicker font-extrabold uppercase tracking-cm-caps hover:underline ${
         onDark ? "text-cm-lime" : "text-cm-black"

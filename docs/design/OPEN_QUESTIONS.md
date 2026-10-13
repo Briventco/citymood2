@@ -22,3 +22,6 @@ Claude Code adds to this file during the build. CityMood or Brivent answer each 
 | 16 | LIVE badge on the Latest rail | LatestRail | Left out: the rail refreshes with the page (every 90s), not live | |
 | 17 | Revalidate on publish | Homepage caching | No publish event exists, so pages regenerate every 90 seconds (`revalidate` in the root layout) | |
 | 18 | Top stories selection | Homepage | One per category, newest first, preferring a story with an image in each category | |
+| 19 | Link prefetching | All links to unbuilt routes | `prefetch={false}`: prefetch would 404 today, and on mobile data it would download every visible story in the background. Revisit when the routes exist. | |
+| 20 | Experimental `inlineCss` (Next 16) | Performance | On: the ~7KB Tailwind stylesheet is inlined, removing the only render-blocking request. Turn it off if it causes problems, or if most readers return often and would benefit from a cached stylesheet. | |
+| 21 | Fallback fonts | Fonts | Metric-matched local fallbacks (Arial, Times New Roman) added to the font stacks, so swapping in the non-preloaded weights doesn't shift layout (CLS 0.022 → 0.001) | |

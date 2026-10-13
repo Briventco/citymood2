@@ -33,7 +33,7 @@ export function MostRead({
             <span aria-hidden="true" className="min-w-6 font-serif text-[30px] leading-[0.9] font-bold text-cm-lime lg:text-[34px]">
               {i + 1}
             </span>
-            <Link
+            <Link prefetch={false}
               href={articleHref(a)}
               className="font-serif text-[17px] leading-[1.3] font-semibold text-cm-white hover:underline lg:text-lg"
             >

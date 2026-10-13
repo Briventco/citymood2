@@ -22,7 +22,7 @@ export function TickerRotator({ items }: { items: Item[] }) {
         </span>
         <p className="flex min-w-0 flex-1 items-baseline gap-2.5 py-1 text-[15px] leading-snug font-bold lg:text-base">
           <span aria-hidden="true" className="inline-block size-2 flex-none -translate-y-0.5 bg-cm-lime" />
-          <Link href={item.href} className="text-cm-white">
+          <Link prefetch={false} href={item.href} className="text-cm-white">
             {item.title}
           </Link>
         </p>

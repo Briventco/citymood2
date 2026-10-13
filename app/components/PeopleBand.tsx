@@ -26,7 +26,7 @@ export function PeopleBand({
               People of Badagry
             </h2>
           </div>
-          <Link
+          <Link prefetch={false}
             href={categoryHref(category.slug)}
             className="inline-flex min-h-11 items-center text-[15px] font-bold text-cm-white hover:underline"
           >
