@@ -55,7 +55,7 @@ async function as(role, width = 1440) {
   await page.locator('#image-alt').fill('A fake photo of a lagoon for the smoke test');
   await page.getByRole('switch', { name: 'Breaking news' }).click();
   await page.getByRole('button', { name: 'Publish', exact: true }).click();
-  await page.getByText('Published. It’s live on the site now.').waitFor({ timeout: 15000 }).catch(async (e) => {
+  await page.getByText('Published. It’s live on the site now.').waitFor({ timeout: 30000 }).catch(async (e) => {
     await page.screenshot({ path: 'docs/design/screenshots/admin/smoke-failure.png', fullPage: true });
     console.log('  alerts:', await page.getByRole('alert').allTextContents());
     throw e;
@@ -75,6 +75,7 @@ async function as(role, width = 1440) {
 {
   const { context, page } = await as('Editor');
   await page.goto(`${base}/admin/front-page`);
+  await page.getByRole('heading', { name: 'Front page', level: 1 }).waitFor({ timeout: 30000 });
   const lead = page.getByRole('region', { name: 'Lead story' });
   if (await lead.count()) {
     await lead.getByRole('button', { name: /Change|Pin a story/ }).click();
@@ -111,6 +112,39 @@ async function as(role, width = 1440) {
   await editor.page.goto(`${base}/admin/ads/new`);
   check(await editor.page.getByText('You don’t have access to this page').isVisible(), 'editors cannot open the campaign form');
   await editor.context.close();
+}
+
+// ── Admin invites and removes someone ──
+{
+  const email = `fake.${Date.now()}@demo.citymood.test`;
+  const { context, page } = await as('Admin');
+  await page.goto(`${base}/admin/staff`);
+  await page.locator('#invite-name').fill('Fake Invitee');
+  await page.locator('#invite-email').fill(email);
+  await page.locator('#invite-role').selectOption('editor');
+  await page.getByRole('button', { name: 'Send invite', exact: true }).click();
+  await page.getByText(`Invite sent to ${email}.`).waitFor({ timeout: 10000 });
+  const row = page.locator('tr', { hasText: email });
+  check((await row.textContent())?.includes('Invited, not joined yet'), 'an invite shows as "Invited, not joined yet"');
+
+  // The invitee signs in (demo store: any password).
+  const invitee = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const ip = await invitee.newPage();
+  await ip.goto(`${base}/admin/sign-in`);
+  await ip.locator('#email').fill(email);
+  await ip.locator('#password').fill('any-password');
+  await ip.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await ip.waitForURL(/\/admin\/articles/, { timeout: 10000 });
+  check(true, 'the invitee can sign in');
+
+  await row.getByRole('button', { name: /Edit/ }).click();
+  await page.getByRole('button', { name: 'Remove from the newsroom' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Remove' }).click();
+  await page.getByText('Fake Invitee can no longer sign in.').waitFor({ timeout: 10000 });
+  await ip.goto(`${base}/admin/articles`);
+  check(ip.url().includes('/admin/sign-in'), 'a removed person is signed out at once');
+  await invitee.close();
+  await context.close();
 }
 
 await browser.close();

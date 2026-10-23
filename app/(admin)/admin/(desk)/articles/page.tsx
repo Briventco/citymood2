@@ -175,7 +175,7 @@ export default async function ArticlesPage({ searchParams }: { searchParams: Pro
       ) : (
         <>
           {/* From 768px: the table in the reference. */}
-          <div className="hidden overflow-x-auto border border-cm-rule bg-cm-white md:block">
+          <div className="hidden relative overflow-x-auto border border-cm-rule bg-cm-white md:block">
             <table className="w-full min-w-[760px] border-collapse text-[15px]">
               <caption className="sr-only">Stories, most recently changed first</caption>
               <thead>
