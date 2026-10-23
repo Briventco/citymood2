@@ -90,6 +90,29 @@ async function as(role, width = 1440) {
   await context.close();
 }
 
+// ── Admin books a campaign; editors can't ──
+{
+  const { context, page } = await as('Admin');
+  await page.goto(`${base}/admin/ads/new?slot=mpu_1`);
+  await page.locator('#advertiser').fill('Fake Advertiser (smoke test)');
+  await page.locator('#link').fill('https://example.com/');
+  await page.locator('#ad-alt').fill('Fake advert for the smoke test');
+  await page.locator('input[type=file]').first().setInputFiles('public/seed/landscape-4.jpg');
+  await page.getByText(/different shape from 300×250/).waitFor({ timeout: 20000 });
+  check(true, 'the campaign form warns when a creative is the wrong shape');
+  await page.getByRole('button', { name: 'Create campaign' }).click();
+  await page.waitForURL(/\/admin\/ads$/, { timeout: 15000 });
+  const home = await context.newPage();
+  await home.goto(base + '/');
+  check((await home.locator('a[rel~="sponsored"] img[alt="Fake advert for the smoke test"]').count()) > 0, 'the homepage shows the running campaign');
+  await context.close();
+
+  const editor = await as('Editor');
+  await editor.page.goto(`${base}/admin/ads/new`);
+  check(await editor.page.getByText('You don’t have access to this page').isVisible(), 'editors cannot open the campaign form');
+  await editor.context.close();
+}
+
 await browser.close();
 console.log(failed ? `\n${failed} check(s) failed` : '\nAll checks passed');
 process.exit(failed ? 1 : 0);
