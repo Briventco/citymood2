@@ -31,3 +31,12 @@ describe("selectBreaking", () => {
     expect(selectBreaking([makeArticle()], now)).toEqual([]);
   });
 });
+
+describe("selectBreaking with newsroom windows", () => {
+  it("uses breakingUntil when the newsroom sets it", () => {
+    const live = makeArticle({ breakingUntil: hoursAgo(-1), publishedAt: hoursAgo(10) });
+    const ended = makeArticle({ breakingUntil: hoursAgo(0.5), publishedAt: hoursAgo(1) });
+    const off = makeArticle({ breakingUntil: null, tags: ["breaking"], publishedAt: hoursAgo(1) });
+    expect(selectBreaking([live, ended, off], now)).toEqual([live]);
+  });
+});
