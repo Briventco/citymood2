@@ -365,7 +365,7 @@ export function Checklist({ s, compact = false }: P & { compact?: boolean }) {
                   e.preventDefault();
                   document.getElementById(c.fix!)?.focus();
                 }}
-                className="ml-auto inline-flex min-h-11 items-center text-sm font-bold underline sm:min-h-0"
+                className="-my-3 ml-auto inline-flex min-h-11 items-center px-1 text-sm font-bold underline"
               >
                 Fix<span className="sr-only"> {label}</span>
               </a>
