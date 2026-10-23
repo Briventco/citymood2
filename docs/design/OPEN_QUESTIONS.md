@@ -25,3 +25,36 @@ Claude Code adds to this file during the build. CityMood or Brivent answer each 
 | 19 | Link prefetching | All links to unbuilt routes | `prefetch={false}`: prefetch would 404 today, and on mobile data it would download every visible story in the background. Revisit when the routes exist. | |
 | 20 | Experimental `inlineCss` (Next 16) | Performance | On: the ~7KB Tailwind stylesheet is inlined, removing the only render-blocking request. Turn it off if it causes problems, or if most readers return often and would benefit from a cached stylesheet. | |
 | 21 | Fallback fonts | Fonts | Metric-matched local fallbacks (Arial, Times New Roman) added to the font stacks, so swapping in the non-preloaded weights doesn't shift layout (CLS 0.022 → 0.001) | |
+
+### Admin portal (feature/admin-ui, front end on a dev store; Supabase comes later)
+
+| # | Question | Context / page | Default used meanwhile | Answer |
+|---|---|---|---|---|
+| 22 | Where the admin handoff lives | Docs | The handoff folder was moved to the paths ADMIN_SPEC uses: `docs/design/ADMIN_SPEC.md`, `docs/design/admin/`, `docs/design/reference/admin/` | |
+| 23 | No backend yet | Whole admin | `lib/admin/` has a typed repository whose row types match `admin/schema.sql`. It runs on `data/admin-dev.json` (gitignored, fake seed) through a small engine that applies schema.sql's policies, triggers and constraints. Development builds only, or `ADMIN_DEV_STORE=1`. Production builds show “not connected” on sign-in. Supersedes #11 for development. | |
+| 24 | Can reporters unpublish their own live story? | Roles, schema.sql | ADMIN_SPEC §2 gives unpublishing to editors, but schema.sql doesn’t stop a reporter. The dev store refuses it (in its `guard_article` copy). Suggest adding the same check to the trigger in schema.sql. Reporters can still take their own *scheduled* story back to draft. | |
+| 25 | Public bylines need author names, but anon can’t read `profiles` | Supabase adapter | The dev reader looks names up with elevated rights. Supabase needs a `public_authors` view (id, full_name) or a narrow policy before the public adapter can show bylines. | |
+| 26 | Story body font | Editor, Preview | The reference editor sets the story in Source Serif, but the brand rule is Serif for headlines only. Story text uses Source Sans 3 at 19px. | |
+| 27 | Which homepage MPU is “first” and which is “second” | Ads | `mpu_1`: after Latest below 1024px, and beside Business from 1024px (so it shows at every width). `mpu_2`: after Business below 1024px. | |
+| 28 | Leaderboard mobile creative (320×50) | Ads | The campaign form takes one, and AdSlot shows it below 640px, but the homepage hides the leaderboard below 640px (#15), so today it never shows there | |
+| 29 | Overlapping campaigns in one slot | Ads | The most recently started one shows. The form warns about overlaps but doesn’t block. Changing campaigns no longer needs a redeploy (supersedes #9). | |
+| 30 | Automatic top stories | Front page, homepage | ADMIN_SPEC §5 says empty slots take “the newest live articles not already used”. The existing rule (#18, one per category) is kept for empty slots, because it is approved homepage behaviour; pinned slots keep their position and are reserved before Latest fills. Decide which rule you want. | |
+| 31 | Most read length | Front page | Editors can pick up to 5 (ADMIN_SPEC). The homepage component shows 4 from 1024px and 3 below (DESIGN_SPEC §4.11), so the 5th is a reserve. | |
+| 32 | Autosave on live stories | Editor | Drafts and unpublished stories autosave every 10 seconds and on blur. Live and scheduled stories save only on Update, so half-finished edits never reach readers. | |
+| 33 | Preview of unsaved edits to a live story | Preview | Preview shows the last saved version. Previewing edits without publishing them would need a draft copy, which the schema doesn’t have. | |
+| 34 | Slug lock after unpublishing | Editor | The editor keeps the web address locked once a story has been published, including when it is unpublished. schema.sql only locks it while the status is published or scheduled. | |
+| 35 | Photo details belong to the photo | Editor, Media | Alt text, caption, credit and focal point live on `media`, so they follow a photo into every story. RLS only lets the uploader or an editor change them, so a reporter using someone else’s photo can’t fix its alt text; the editor says so and an editor must do it. | |
+| 36 | Invite form needs a name | Staff | The reference has email and role only. A Name field was added because bylines need it (Supabase passes it as `full_name` metadata). | |
+| 37 | “Last active” | Staff | Shows the last sign-in (`auth.users.last_sign_in_at`); the schema has no activity tracking | |
+| 38 | Sidebar items per role | All admin screens | The reference shows all six items for an Editor. Items a role can’t use are hidden (reporters: Articles and Media library; editors: no Staff or Settings). The pages still show “You don’t have access” if opened directly. | |
+| 39 | Ad campaign list | Ads | `/admin/ads` (not in the spec table) lists campaigns per slot. It is reached from the Front page’s Ad slots panel, so the sidebar matches the reference. | |
+| 40 | Sign-in attempt limit | Sign-in | The dev store enforces the sentence on screen (5 wrong attempts, 15-minute pause). With Supabase, set the same limit in Auth settings, or remove the sentence. | |
+| 41 | Breaking window when a draft is marked breaking | Editor, schema.sql | The trigger starts the 6 hours when the flag is set if there is no publish time yet. Publishing resets `breaking_until`, so the window starts at go-live, as the switch text promises. | |
+| 42 | People band role and place line (“Canoe builder · Topo”) | Homepage | The schema has no fields for them, so that line disappears for newsroom stories. Add two optional fields if you want it back. | |
+| 43 | Button heights | Admin | The spec says every button is at least 44px, so a few reference buttons drawn at 36–40px (Replace/Remove, reorder arrows, toolbar) are 44px | |
+| 44 | Focal point picker | Editor, Media | The whole photo is shown letterboxed on black (the reference crops it) so a click maps to the right spot | |
+| 45 | Sans 600 isn’t loaded | Admin | The reference uses Sans 600 for nav items and secondary labels; only 400/700/800 are self-hosted (#8), so it renders as 700 | |
+| 46 | Mobile story formatting | Quick publish | No formatting toolbar below 768px, as in the reference. Formatting is available on wider screens. | |
+| 47 | Deleting categories | Categories | Not offered: stories reference their category, so hide it instead (its stories stay live) | |
+| 48 | Publish revalidation | Homepage caching | Publishing, front page, ads, settings and taxonomy changes call `revalidatePath`, so they show at once. The 90-second timer remains for scheduled stories (supersedes #17). | |
+| 49 | Dev image optimizer stall | Development only | Once, Next’s image optimizer in `next dev` stopped answering one image size after browsers were closed mid-request, which stalled every request from that browser. Restarting the dev server cleared it. Not seen in a clean run; watch for it in production. | |

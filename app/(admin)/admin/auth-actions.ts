@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { authenticate, demoMode, demoUserFor } from "@/lib/admin/backend";
+import { authenticate, demoMode, demoUserFor, devStoreEnabled } from "@/lib/admin/backend";
 import { endSession, startSession } from "@/lib/admin/session";
 import type { StaffRole } from "@/lib/admin/types";
 
@@ -29,6 +29,7 @@ export async function signIn(_prev: SignInState, form: FormData): Promise<SignIn
   const now = Date.now();
   const recent = (failures.get(key) ?? []).filter((t) => now - t < PAUSE_MS);
 
+  if (!devStoreEnabled) return { error: "The newsroom isn’t connected to its database yet, so sign-in is unavailable.", email };
   if (!email || !password) return { error: "Enter your email and password.", email };
   if (recent.length >= MAX_ATTEMPTS) {
     return { error: "Too many wrong attempts. Sign-in is paused for 15 minutes for this email.", email };
