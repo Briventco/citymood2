@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { preload } from "react-dom";
-import { BreakingTicker } from "./components/shell/BreakingTicker";
-import { SectionNav } from "./components/shell/SectionNav";
-import { SiteFooter } from "./components/shell/SiteFooter";
-import { SiteHeader } from "./components/shell/SiteHeader";
+import { BreakingTicker } from "../components/shell/BreakingTicker";
+import { SectionNav } from "../components/shell/SectionNav";
+import { SiteFooter } from "../components/shell/SiteFooter";
+import { SiteHeader } from "../components/shell/SiteHeader";
 import { site } from "@/config/site";
 import { getCategories, isSeedContent } from "@/lib/content";
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

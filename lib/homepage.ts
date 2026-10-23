@@ -1,8 +1,11 @@
-import type { Article, Category } from "@/lib/content";
+import type { Article, Category, FrontPagePicks } from "@/lib/content/types";
 
-// Homepage data rules (DESIGN_SPEC.md §5):
-// - Lead: newest `featured` article with an image, else the newest with an image,
-//   else the newest article.
+// Homepage data rules (DESIGN_SPEC.md §5, ADMIN_SPEC.md §5):
+// - Lead: the editor's lead pin if it is live; otherwise the newest `featured`
+//   article with an image, else the newest with an image, else the newest article.
+// - Top stories: pinned slots top_1 to top_4 keep their position; empty slots fill
+//   automatically (one per category where possible, newest first). Pins are
+//   reserved before Latest fills, so a pinned story is never taken by Latest.
 // - Each article appears at most once. Slots fill in this order: lead, latest,
 //   top stories, category blocks (Local, Politics, Business), People, Culture,
 //   Tourism. Most read is the exception and may repeat.
@@ -25,6 +28,8 @@ export type Homepage = {
   lead: Article | null;
   latest: Article[];
   topStories: Article[];
+  /** The four top-story slots in order, null where nothing could fill one. */
+  topSlots: (Article | null)[];
   local: CategoryBlock | null;
   politics: CategoryBlock | null;
   business: CategoryBlock | null;
@@ -36,11 +41,11 @@ export type Homepage = {
 
 const isPortrait = (a: Article) => !!a.image && a.image.height > a.image.width;
 
-/** `articles` must be published and sorted newest first. */
+/** `articles` must be published and sorted newest first. Picks that aren't in `articles` (not live) are ignored. */
 export function buildHomepage(
   articles: Article[],
   categories: Category[],
-  mostReadSlugs: string[],
+  picks: Partial<FrontPagePicks> = {},
 ): Homepage {
   const used = new Set<string>();
   const take = <T extends Article | null | undefined>(a: T): T => {
@@ -52,25 +57,45 @@ export function buildHomepage(
   const preferImage = (list: Article[]) => list.find((a) => a.image) ?? list[0];
   const categoryFor = (slug: string) => categories.find((c) => c.slug === slug);
 
+  const byId = new Map(articles.map((a) => [a.id, a]));
+  const pinnedLead = picks.leadId ? byId.get(picks.leadId) : undefined;
+  const pinnedTop = [0, 1, 2, 3].map((i): Article | undefined => {
+    const id = picks.topIds?.[i];
+    const a = id ? byId.get(id) : undefined;
+    // A story fills one slot only: the lead pin wins, then the earlier top slot.
+    const duplicate = !!a && (a === pinnedLead || picks.topIds?.indexOf(a.id) !== i);
+    return duplicate ? undefined : a;
+  });
+  const reserved = new Set(pinnedTop.filter((a): a is Article => !!a).map((a) => a.id));
+  const open = (a: Article) => !reserved.has(a.id);
+
   const lead = take(
-    articles.find((a) => a.featured && a.image) ?? articles.find((a) => a.image) ?? articles[0] ?? null,
+    pinnedLead ??
+      articles.find((a) => open(a) && a.featured && a.image) ??
+      articles.find((a) => open(a) && a.image) ??
+      articles.find(open) ??
+      null,
   );
+  pinnedTop.forEach(take);
 
   const latest = unused().slice(0, 5).map(take);
 
-  // Top stories: one per category where possible (newest first), then fill.
+  // Automatic top stories: one per category where possible (newest first), then fill.
+  const emptySlots = pinnedTop.filter((a) => !a).length;
   const known = new Set(categories.map((c) => c.slug));
   const perCategory = categories
     .map((c) => preferImage(inCategory(c.slug)))
     .filter((a): a is Article => !!a)
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
-    .slice(0, 4);
+    .slice(0, emptySlots);
   perCategory.forEach(take);
   const fill = unused()
     .filter((a) => a.category && known.has(a.category))
-    .slice(0, 4 - perCategory.length);
+    .slice(0, emptySlots - perCategory.length);
   fill.forEach(take);
-  const topStories = [...perCategory, ...fill];
+  const automatic = [...perCategory, ...fill];
+  const topSlots = pinnedTop.map((a) => a ?? automatic.shift() ?? null);
+  const topStories = topSlots.filter((a): a is Article => !!a);
 
   const block = (slug: string, listSize: number): CategoryBlock | null => {
     const category = categoryFor(slug);
@@ -107,8 +132,10 @@ export function buildHomepage(
   const tourism =
     tourismCategory && tourismArticles.length > 0 ? { category: tourismCategory, articles: tourismArticles } : null;
 
-  const bySlug = new Map(articles.map((a) => [a.slug, a]));
-  const mostRead = mostReadSlugs.map((s) => bySlug.get(s)).filter((a): a is Article => !!a).slice(0, 4);
+  const mostRead = (picks.mostReadIds ?? [])
+    .map((id) => byId.get(id))
+    .filter((a): a is Article => !!a)
+    .slice(0, 4);
 
-  return { lead, latest, topStories, local, politics, business, people, culture, tourism, mostRead };
+  return { lead, latest, topStories, topSlots, local, politics, business, people, culture, tourism, mostRead };
 }

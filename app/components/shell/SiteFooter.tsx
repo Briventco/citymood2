@@ -1,4 +1,5 @@
 import { site } from "@/config/site";
+import { getSiteSettings } from "@/lib/content";
 import { lagosYear } from "@/lib/format";
 import { Logo } from "./Logo";
 
@@ -6,9 +7,11 @@ const headingClass = "mb-2.5 text-[13px] font-extrabold uppercase tracking-[0.14
 // 44px tap height on mobile; tighter rows from 1024px.
 const linkClass = "flex min-h-11 items-center text-[15px] text-cm-white lg:min-h-0 lg:py-[7px]";
 
-// DESIGN_SPEC.md §4.12. Contact details and social URLs live in config/site.ts.
-export function SiteFooter({ now }: { now: Date }) {
-  const { contact, pages, social } = site;
+// DESIGN_SPEC.md §4.12. Contact details and social URLs come from the newsroom's
+// site settings (/admin/settings); labels and page links live in config/site.ts.
+export async function SiteFooter({ now }: { now: Date }) {
+  const { contact, social } = await getSiteSettings();
+  const { pages } = site;
   const companyLinks = [pages.about, pages.contact, pages.advertise, pages.corrections, pages.privacy, pages.terms];
 
   return (

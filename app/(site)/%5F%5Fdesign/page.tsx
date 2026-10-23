@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { CategoryLabel } from "../components/CategoryLabel";
-import { LatestRail } from "../components/LatestRail";
-import { MostRead } from "../components/MostRead";
-import { PeopleBand } from "../components/PeopleBand";
-import { SectionHeader } from "../components/SectionHeader";
-import { StoryCard } from "../components/StoryCard";
-import { AdSlot } from "../components/shell/AdSlot";
+import { CategoryLabel } from "../../components/CategoryLabel";
+import { LatestRail } from "../../components/LatestRail";
+import { MostRead } from "../../components/MostRead";
+import { PeopleBand } from "../../components/PeopleBand";
+import { SectionHeader } from "../../components/SectionHeader";
+import { StoryCard } from "../../components/StoryCard";
+import { AdSlot } from "../../components/shell/AdSlot";
 import { categoryBySlug, getArticles, getCategories } from "@/lib/content";
 
 // Temporary dev-only reference page for the Phase 1 foundations.
@@ -211,7 +211,7 @@ export default async function DesignFoundationsPage() {
             </div>
             <div className="space-y-6">
               <MostRead articles={articles.slice(0, 4)} />
-              <AdSlot slot="mpu" now={now} />
+              <AdSlot slot="mpu_1" now={now} />
             </div>
           </div>
         </div>

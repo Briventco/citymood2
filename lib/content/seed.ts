@@ -1,4 +1,6 @@
+import { mostReadSlugs } from "@/config/mostRead";
 import { defaultCategories } from "./categories";
+import { staticAdCampaigns, staticSiteSettings } from "./static";
 import type { Article, ArticleImage, ContentSource } from "./types";
 
 // DEVELOPMENT SEED CONTENT. Every story, name and photo here is a fictional
@@ -374,4 +376,14 @@ export function seedArticles(now: Date): Article[] {
 export const seedSource: ContentSource = {
   categories: async () => defaultCategories,
   articles: async (now) => seedArticles(now),
+  frontPage: async (now) => {
+    const ids = new Map(seedArticles(now).map((a) => [a.slug, a.id]));
+    return {
+      leadId: null,
+      topIds: [],
+      mostReadIds: mostReadSlugs.map((s) => ids.get(s)).filter((id): id is string => !!id),
+    };
+  },
+  adCampaigns: async (now) => staticAdCampaigns(now),
+  siteSettings: async () => staticSiteSettings(),
 };
