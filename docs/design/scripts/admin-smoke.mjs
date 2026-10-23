@@ -141,9 +141,34 @@ async function as(role, width = 1440) {
   await page.getByRole('button', { name: 'Remove from the newsroom' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Remove' }).click();
   await page.getByText('Fake Invitee can no longer sign in.').waitFor({ timeout: 10000 });
-  await ip.goto(`${base}/admin/articles`);
-  check(ip.url().includes('/admin/sign-in'), 'a removed person is signed out at once');
+  // A fresh tab with the same session cookie.
+  const again = await invitee.newPage();
+  await again.goto(`${base}/admin/articles`);
+  check(again.url().includes('/admin/sign-in'), 'a removed person is signed out at once');
   await invitee.close();
+  await context.close();
+}
+
+// ── Admin: settings feed the footer; hiding a category removes it from the nav ──
+{
+  const { context, page } = await as('Admin');
+  await page.goto(`${base}/admin/settings`);
+  const phone = `+234 000 ${Math.floor(Math.random() * 9000 + 1000)} (fake)`;
+  await page.locator('#newsroom_phone').fill(phone);
+  await page.getByRole('button', { name: 'Save settings' }).click();
+  await page.getByText(/^Saved\./).waitFor({ timeout: 10000 });
+  const home = await context.newPage();
+  await home.goto(base + '/');
+  check((await home.locator('footer').textContent())?.includes(phone), 'site settings show in the public footer');
+
+  await page.goto(`${base}/admin/taxonomy`);
+  await page.getByRole('switch', { name: 'Show Culture & Events on the site' }).click();
+  await page.getByText('Culture & Events is hidden.', { exact: false }).waitFor({ timeout: 10000 });
+  await home.goto(base + '/');
+  const nav = await home.locator('nav').first().textContent();
+  check(!nav?.includes('Culture'), 'a hidden category leaves the public section nav');
+  await page.getByRole('switch', { name: 'Show Culture & Events on the site' }).click();
+  await page.getByText('Culture & Events is shown on the site.').waitFor({ timeout: 10000 });
   await context.close();
 }
 

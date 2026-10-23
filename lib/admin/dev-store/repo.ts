@@ -705,10 +705,13 @@ export function createDevRepo(store: DevStore, actor: Actor, clock: () => Date =
 
     async updateSettings(input) {
       return write((db) => {
+        const current = db.select("site_settings")[0] as unknown as Record<string, string>;
         const patch: Record<string, string> = {};
         for (const [key, value] of Object.entries(input)) {
           if (key === "id" || typeof value !== "string") continue;
           const v = value.trim();
+          // Only check what changed, so placeholder values elsewhere don't block a save.
+          if (current && current[key] === v) continue;
           if (key.endsWith("_url") && v && !/^https:\/\//i.test(v)) throw invalid("Social links must start with https://.");
           if (key.endsWith("_email") && v && !EMAIL.test(v)) throw invalid("Check the email addresses.");
           patch[key] = v;
