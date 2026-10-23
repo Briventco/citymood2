@@ -83,3 +83,15 @@ describe("story body HTML", () => {
     expect(plainText(doc)).toBe("One two\n\nThree");
   });
 });
+
+describe("imageInfo", () => {
+  it("reads PNG and JPEG sizes and rejects other files", async () => {
+    const { imageInfo } = await import("./image-size");
+    const fs = await import("node:fs");
+    const jpeg = new Uint8Array(fs.readFileSync("public/seed/landscape-1.jpg"));
+    expect(imageInfo(jpeg)).toMatchObject({ type: "image/jpeg", width: 1800, height: 1200 });
+    const png = new Uint8Array(fs.readFileSync("public/citymood-logo.png"));
+    expect(imageInfo(png)).toMatchObject({ type: "image/png", width: 1280, height: 1259 });
+    expect(imageInfo(new TextEncoder().encode("<svg onload=alert(1)>"))).toBeNull();
+  });
+});
