@@ -33,6 +33,20 @@ export type CheckItem = { key: string; label: string; done: boolean; required: b
 
 const AUTOSAVE_MS = 10_000;
 
+// A story created on /new gets its id in the URL without a navigation. The next
+// revalidation (publishing) re-renders that URL as a different route segment,
+// which remounts the editor, so the confirmation is carried across in
+// sessionStorage.
+const flashKey = (id: string) => `cm-editor-notice:${id}`;
+function readFlash(id: string | undefined): string | null {
+  if (!id || typeof window === "undefined") return null;
+  try {
+    return window.sessionStorage.getItem(flashKey(id));
+  } catch {
+    return null;
+  }
+}
+
 function nextHourInLagos(): { date: string; time: string } {
   const d = new Date(Date.now() + 60 * 60_000);
   d.setUTCMinutes(0, 0, 0);
@@ -73,7 +87,16 @@ export function useArticleDraft(data: EditorData) {
   const [dirty, setDirty] = useState(false);
   const [savedAt, setSavedAt] = useState<string | null>(data.detail?.article.updated_at ?? null);
   const [error, setError] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(() => readFlash(data.detail?.article.id));
+  const createdHere = useRef(false);
+  useEffect(() => {
+    const id = data.detail?.article.id;
+    try {
+      if (id) window.sessionStorage.removeItem(flashKey(id));
+    } catch {
+      // Storage blocked: the message just won't survive the remount.
+    }
+  }, [data.detail?.article.id]);
   const [showErrors, setShowErrors] = useState(false);
   const [words, setWords] = useState(() => wordCount(data.detail?.article.body as RichTextNode));
   const [slugTouched, setSlugTouched] = useState(!!data.detail && data.detail.article.slug !== slugify(data.detail.article.headline));
@@ -155,7 +178,10 @@ export function useArticleDraft(data: EditorData) {
     const { detail, imageError } = result.data;
     setError(imageError ?? null);
     if (img && !imageError) latest.current.imageDirty = false;
-    if (!l.id) window.history.replaceState(null, "", `/admin/articles/${detail.article.id}`);
+    if (!l.id) {
+      window.history.replaceState(null, "", `/admin/articles/${detail.article.id}`);
+      createdHere.current = true;
+    }
     // Set now, not after the re-render, so a publish that follows this save sees the new id.
     latest.current.id = detail.article.id;
     setServer({
@@ -263,7 +289,7 @@ export function useArticleDraft(data: EditorData) {
     if (!result.ok) return setError(result.error);
     applyDetail(result.data);
     setError(null);
-    setNotice(
+    flash(
       result.data.live
         ? "Published. It’s live on the site now."
         : `Scheduled for ${when.mode === "schedule" ? `${when.date.split("-").reverse().join("/")} at ${when.time}` : ""} Lagos time. It goes live on its own.`,
@@ -279,7 +305,7 @@ export function useArticleDraft(data: EditorData) {
     if (!result.ok) return setError(result.error);
     applyDetail(result.data);
     setWhen({ mode: "now" });
-    setNotice(result.data.article.status === "draft" ? "Schedule cancelled. The story is a draft again." : "Unpublished. It’s no longer on the site.");
+    flash(result.data.article.status === "draft" ? "Schedule cancelled. The story is a draft again." : "Unpublished. It’s no longer on the site.");
   }
 
   async function remove(): Promise<string | null> {
@@ -294,6 +320,17 @@ export function useArticleDraft(data: EditorData) {
     const result = await deleteArticle(id);
     setBusy(null);
     return result && !result.ok ? result.error : null;
+  }
+
+  function flash(text: string) {
+    setNotice(text);
+    const id = latest.current.id;
+    if (!createdHere.current || !id) return;
+    try {
+      window.sessionStorage.setItem(flashKey(id), text);
+    } catch {
+      // Storage blocked: the message just won't survive the remount.
+    }
   }
 
   function applyDetail(detail: ArticleDetail) {
