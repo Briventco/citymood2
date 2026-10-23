@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect, unstable_rethrow } from "next/navigation";
 import { cache } from "react";
-import { devStore, repoFor } from "./backend";
+import { devStore, devStoreEnabled, repoFor } from "./backend";
 import { isNewsroomError } from "./errors";
 import { permissionsFor, type NewsroomRepo, type Permissions, type StaffMember } from "./repo";
 import type { Uuid } from "./types";
@@ -49,6 +49,8 @@ export type StaffContext = { repo: NewsroomRepo; me: StaffMember; can: Permissio
 
 /** The signed-in, active staff member for this request, or null. Cached per request. */
 export const getStaff = cache(async (): Promise<StaffContext | null> => {
+  // No backend in this build (production without Supabase yet): nobody is signed in.
+  if (!devStoreEnabled) return null;
   const uid = await sessionUid();
   if (!uid) return null;
   const repo = repoFor(uid);
