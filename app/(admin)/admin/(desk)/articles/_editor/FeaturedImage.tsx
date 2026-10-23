@@ -1,10 +1,9 @@
 "use client";
 
 import { Camera } from "lucide-react";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { mediaSrc } from "@/lib/admin/media-url";
+import { useRef, useState } from "react";
 import type { Media } from "@/lib/admin/types";
+import { FocalPicker, type ImageMetaPatch } from "../../../_components/FocalPicker";
 import { MediaPicker } from "../../../_components/MediaPicker";
 import { FieldError, Notice, button, inputClass, labelClass, sectionLabelClass } from "../../../_components/ui";
 import { usePhotoUpload } from "../../../_components/usePhotoUpload";
@@ -14,8 +13,6 @@ import { usePhotoUpload } from "../../../_components/usePhotoUpload";
 // keys when it has focus. Alt, caption, credit and focal point belong to the
 // photo (the media table), so they follow it into every story that uses it.
 
-export type ImageMetaPatch = Partial<Pick<Media, "alt" | "caption" | "credit" | "focal_x" | "focal_y">>;
-
 type Props = {
   image: Media | null;
   onSelect: (media: Media | null) => void;
@@ -24,63 +21,6 @@ type Props = {
   showErrors: boolean;
   variant: "desktop" | "mobile";
 };
-
-/** The photo's box inside a 16:9 (or 16:10) frame, drawn with object-contain so clicks map to the whole photo. */
-function containRect(frameW: number, frameH: number, w: number, h: number) {
-  const scale = Math.min(frameW / w, frameH / h);
-  const width = w * scale;
-  const height = h * scale;
-  return { left: (frameW - width) / 2, top: (frameH - height) / 2, width, height };
-}
-
-function FocalPicker({ image, onMeta, ratio }: { image: Media; onMeta: Props["onMeta"]; ratio: string }) {
-  const frame = useRef<HTMLButtonElement>(null);
-  const [size, setSize] = useState<{ w: number; h: number } | null>(null);
-  useEffect(() => {
-    const el = frame.current;
-    if (!el) return;
-    const observer = new ResizeObserver(() => setSize({ w: el.clientWidth, h: el.clientHeight }));
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-  const w = image.width ?? 3;
-  const h = image.height ?? 2;
-  const rect = size ? containRect(size.w, size.h, w, h) : null;
-  const set = (x: number, y: number) =>
-    onMeta({ focal_x: Math.round(Math.min(1, Math.max(0, x)) * 100) / 100, focal_y: Math.round(Math.min(1, Math.max(0, y)) * 100) / 100 });
-
-  return (
-    <button
-      ref={frame}
-      type="button"
-      aria-label={`Focal point: ${Math.round(image.focal_x * 100)}% across, ${Math.round(image.focal_y * 100)}% down. Click the photo or use the arrow keys to move it.`}
-      onClick={(e) => {
-        const el = frame.current!;
-        const box = el.getBoundingClientRect();
-        const r = containRect(box.width, box.height, w, h);
-        set((e.clientX - box.left - r.left) / r.width, (e.clientY - box.top - r.top) / r.height);
-      }}
-      onKeyDown={(e) => {
-        const step = e.shiftKey ? 0.1 : 0.05;
-        const moves: Record<string, [number, number]> = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
-        const m = moves[e.key];
-        if (!m) return;
-        e.preventDefault();
-        set(image.focal_x + m[0], image.focal_y + m[1]);
-      }}
-      className={`relative block w-full cursor-crosshair overflow-hidden bg-cm-black ${ratio}`}
-    >
-      <Image src={mediaSrc(image)} alt="" fill sizes="(min-width: 1024px) 440px, 100vw" className="object-contain" />
-      {rect && (
-        <span
-          aria-hidden="true"
-          className="absolute size-7 -translate-x-1/2 -translate-y-1/2 border-2 border-cm-lime outline outline-1 outline-cm-black"
-          style={{ left: rect.left + image.focal_x * rect.width, top: rect.top + image.focal_y * rect.height }}
-        />
-      )}
-    </button>
-  );
-}
 
 export function FeaturedImage({ image, onSelect, onMeta, showErrors, variant }: Props) {
   const camera = useRef<HTMLInputElement>(null);

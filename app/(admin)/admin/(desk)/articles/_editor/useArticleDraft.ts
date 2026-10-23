@@ -9,7 +9,7 @@ import { slugify } from "@/lib/admin/text";
 import { isoToLagos } from "@/lib/admin/time";
 import type { ArticleStatus, Media, RichTextNode } from "@/lib/admin/types";
 import { deleteArticle, publishArticle, saveArticle, unpublishArticle, type DraftInput, type When } from "../actions";
-import type { ImageMetaPatch } from "./FeaturedImage";
+import type { ImageMetaPatch } from "../../../_components/FocalPicker";
 
 // Editor state and the save rules:
 // - Drafts (and unpublished stories) autosave every 10 seconds and when a field
