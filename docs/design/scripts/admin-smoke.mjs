@@ -78,7 +78,7 @@ async function as(role, width = 1440) {
   const lead = page.getByRole('region', { name: 'Lead story' });
   if (await lead.count()) {
     await lead.getByRole('button', { name: /Change|Pin a story/ }).click();
-    await page.getByRole('dialog').getByRole('button', { name: new RegExp(headline.slice(0, 20)) }).click();
+    await page.getByRole('dialog').getByRole('button').filter({ hasText: headline }).first().click();
     await page.waitForTimeout(1000);
     const home = await context.newPage();
     await home.goto(base + '/');
