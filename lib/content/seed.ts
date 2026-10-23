@@ -359,16 +359,19 @@ const seed: SeedArticle[] = [
 
 const authors = ["Placeholder Desk", "Seed Reporter", "Sample Correspondent"];
 
+export function seedArticles(now: Date): Article[] {
+  return seed.map(({ ageMinutes, tags = [], featured = false, author, ...rest }, i) => ({
+    ...rest,
+    id: `seed-${i + 1}`,
+    body: BODY,
+    author: author ?? authors[i % authors.length],
+    tags,
+    featured,
+    publishedAt: new Date(now.getTime() - ageMinutes * 60_000).toISOString(),
+  }));
+}
+
 export const seedSource: ContentSource = {
   categories: async () => defaultCategories,
-  articles: async (now) =>
-    seed.map(({ ageMinutes, tags = [], featured = false, author, ...rest }, i) => ({
-      ...rest,
-      id: `seed-${i + 1}`,
-      body: BODY,
-      author: author ?? authors[i % authors.length],
-      tags,
-      featured,
-      publishedAt: new Date(now.getTime() - ageMinutes * 60_000).toISOString(),
-    })),
+  articles: async (now) => seedArticles(now),
 };
