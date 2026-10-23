@@ -36,8 +36,9 @@ export async function endSession(): Promise<void> {
 }
 
 async function sessionUid(): Promise<Uuid | null> {
+  // Reading the cookie first also keeps every admin page dynamic, whichever backend is configured.
   const raw = (await cookies()).get(SESSION_COOKIE)?.value;
-  if (!raw) return null;
+  if (!raw || !devStoreEnabled) return null;
   const dot = raw.lastIndexOf(".");
   const uid = raw.slice(0, dot);
   const given = Buffer.from(raw.slice(dot + 1));
@@ -49,8 +50,7 @@ export type StaffContext = { repo: NewsroomRepo; me: StaffMember; can: Permissio
 
 /** The signed-in, active staff member for this request, or null. Cached per request. */
 export const getStaff = cache(async (): Promise<StaffContext | null> => {
-  // No backend in this build (production without Supabase yet): nobody is signed in.
-  if (!devStoreEnabled) return null;
+  // No backend in this build (production without Supabase yet) means nobody is signed in.
   const uid = await sessionUid();
   if (!uid) return null;
   const repo = repoFor(uid);
