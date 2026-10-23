@@ -21,7 +21,10 @@
   --cm-meta: #5C5C58;          /* dates, captions, labels. 6.7:1 on white */
   --cm-meta-on-dark: #B8B8B2;  /* secondary text on black. 10.5:1 */
   --cm-ink-soft: #222222;      /* standfirsts and summaries */
-  --cm-ad-border: #8A8A84;     /* dashed outline on empty ad slots */
+  --cm-ad-border: #8A8A84;     /* dashed outline on empty ad slots; admin field borders */
+
+  /* Admin portal (ADMIN_SPEC.md §4) */
+  --cm-admin-nav-active: #1A1A18; /* active sidebar item, on black */
 
   /* Focus */
   --cm-focus-on-light: #000000;
@@ -115,6 +118,7 @@
   --color-cm-meta-dark: var(--cm-meta-on-dark);
   --color-cm-ink: var(--cm-ink-soft);
   --color-cm-ad-border: var(--cm-ad-border);
+  --color-cm-nav-active: var(--cm-admin-nav-active);
 
   --font-serif: var(--cm-font-serif);
   --font-sans: var(--cm-font-sans);
