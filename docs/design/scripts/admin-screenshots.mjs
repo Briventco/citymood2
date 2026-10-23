@@ -66,7 +66,8 @@ for (const width of widths) {
     const context = opts.signedOut ? signedOut : signedIn;
     const page = await context.newPage();
     const url = base + route.replace(':article', articleId ?? 'missing');
-    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.goto(url, { waitUntil: 'load' });
+    await page.waitForTimeout(400);
     await page.evaluate(() => document.fonts.ready);
     const file = path.join(outDir, `${name}-${role}-${width}.png`);
     await page.screenshot({ path: file, fullPage: true });

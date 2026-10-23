@@ -28,6 +28,9 @@ export const button = {
 
 // ───────────── Page structure ─────────────
 
+/** Padding for a screen inside the work area. */
+export const pageClass = "px-4 py-6 sm:px-6 lg:px-8 lg:pt-7 lg:pb-12";
+
 export function PageHeader({
   title,
   note,
