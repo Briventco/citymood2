@@ -5,9 +5,10 @@
 */
 
 @layer components {
-  /* Story body, as editors write it and as the preview renders it. */
+  /* Story body, as editors write it and as the preview renders it. Sans, not
+     serif: the brand keeps Source Serif for headlines (OPEN_QUESTIONS.md). */
   .cm-prose {
-    font-family: var(--cm-font-serif);
+    font-family: var(--cm-font-sans);
     font-size: 19px;
     line-height: 1.6;
     color: var(--cm-black);

@@ -16,6 +16,8 @@ const base =
 export const button = {
   primary: `${base} border-2 border-cm-black bg-cm-lime px-[18px] font-extrabold text-cm-black hover:bg-cm-black hover:text-cm-lime`,
   secondary: `${base} border-2 border-cm-black bg-cm-white px-[18px] font-bold text-cm-black hover:bg-cm-paper`,
+  /** Black fill, for the strongest action inside a light area ("Take photo"). */
+  dark: `${base} border-2 border-cm-black bg-cm-black px-4 font-bold text-cm-white hover:underline`,
   /** One-pixel border, for compact rows (pins, creatives). */
   outline: `${base} border border-cm-black bg-cm-white px-3 text-sm font-bold text-cm-black hover:bg-cm-paper`,
   destructive: `${base} px-1 font-bold text-cm-black underline decoration-1 underline-offset-2 hover:decoration-2`,
