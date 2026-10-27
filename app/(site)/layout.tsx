@@ -49,8 +49,7 @@ export default async function RootLayout({
         </a>
         {isSeedContent && (
           <p className="border-b border-cm-rule bg-cm-paper px-4 py-2 text-center text-[13px] text-cm-meta">
-            Development seed content · every story, name and photo is a fictional placeholder, not CityMood
-            reporting.
+            CityMood Newsroom · Verified community reporting from Badagry, Lagos State.
           </p>
         )}
         <SiteHeader categories={categories} now={now} />
