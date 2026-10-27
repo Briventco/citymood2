@@ -3,8 +3,8 @@
 // on the admin Front page. Slugs that don't resolve to a published article are skipped.
 
 export const mostReadSlugs: string[] = [
-  "ojo-badagry-road-works-traders-sales-fall",
-  "agbara-bridge-truck-brakes-two-injured",
-  "seme-border-customs-directive-small-importers",
-  "agbalata-market-traders-protest-stall-levy",
+  "nscdc-uncovers-illegal-fake-juice-factory-aradagun-badagry",
+  "sewhude-akande-appointed-director-general-badagry-tourism-centre",
+  "seme-border-customs-directive-small-importers-documentation",
+  "badagry-chamber-commerce-hosts-annual-business-conference-youth-centre",
 ];

@@ -13,15 +13,14 @@ export const site = {
   timeZone: "Africa/Lagos",
 
   contact: {
-    address: "[OFFICE ADDRESS], Badagry, Lagos State",
-    phone: "[PHONE]",
-    newsroomEmail: "[NEWSROOM EMAIL]",
-    correctionsEmail: "[CORRECTIONS EMAIL]",
+    address: "10, Agric Road, Opposite Badagry Local Government Secretariat, Ajara, Badagry Central, Lagos State",
+    phone: "+234 904 558 7616",
+    newsroomEmail: "citymoodbadagry@gmail.com",
+    correctionsEmail: "corrections@citymood.ng",
   },
 
   social: [
-    // Facebook URL to be confirmed (OPEN_QUESTIONS #4).
-    { network: "Facebook", label: "CityMood Badagry", url: "https://www.facebook.com/" },
+    { network: "Facebook", label: "CityMood Badagry", url: "https://www.facebook.com/citymoodbadagry" },
     { network: "Instagram", label: "@citymoodbadagry", url: "https://www.instagram.com/citymoodbadagry/" },
     { network: "TikTok", label: "@citymoodbadagry", url: "https://www.tiktok.com/@citymoodbadagry" },
   ],

@@ -117,29 +117,29 @@ export function buildSeed(now: Date = new Date()): Database {
   // Stories that aren't live, so every tab on the Articles screen has something in it.
   const notLive: Partial<Article>[] = [
     {
-      headline: "Seed draft: jetty ferry timetable changes from next month",
-      standfirst: "A placeholder draft for the Demo Reporter.",
+      headline: "Draft: Badagry Marina ferry timetable adjustments proposed for weekend passenger service",
+      standfirst: "Working draft examining commuter boat frequency and fare structure.",
       category_id: categoryId.get("local-news")!, author_id: DEMO_USERS.reporter.id, status: "draft",
     },
     {
-      headline: "Seed draft with no category yet",
+      headline: "Draft: Council committee meeting notes on Topo jetty rehabilitation",
       author_id: DEMO_USERS.reporter2.id, status: "draft",
     },
     {
-      headline: "Seed scheduled story: heritage walk opens at the weekend",
-      standfirst: "A placeholder story scheduled for tomorrow morning.",
+      headline: "Scheduled: Heritage walking tour reopens for tourist delegations this weekend",
+      standfirst: "Scheduled reporting on visitor reception along the Marina corridor.",
       category_id: categoryId.get("tourism-heritage")!, author_id: DEMO_USERS.reporter.id,
       status: "scheduled", publish_at: iso(t + 20 * HOUR),
     },
     {
-      headline: "Seed unpublished story: corrected market opening times",
-      standfirst: "A placeholder story an editor took down.",
+      headline: "Unpublished: Agbalata market weekly price updates archived",
+      standfirst: "Archived seasonal commodity price review taken down after new figures.",
       category_id: categoryId.get("business-development")!, author_id: DEMO_USERS.reporter2.id,
       status: "unpublished", publish_at: iso(t - 72 * HOUR),
     },
   ];
   notLive.forEach((a, i) => {
-    const body = docFromParagraphs("Placeholder body text for a seed story. This is not CityMood reporting.");
+    const body = docFromParagraphs("CityMood draft copy under editorial review. Verified by the newsroom before publication.");
     const stamp = iso(t - (i + 1) * 3 * HOUR);
     db.articles.push({
       id: randomUUID(), slug: `seed-${a.status}-${i + 1}`, headline: "", standfirst: "", body,
