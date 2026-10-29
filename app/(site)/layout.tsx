@@ -47,7 +47,7 @@ export default async function RootLayout({
         <a href="#main" className="cm-skip-link">
           Skip to main content
         </a>
-        {isSeedContent && (
+        {isSeedContent && process.env.NODE_ENV !== "production" && (
           <p className="border-b border-cm-rule bg-cm-paper px-4 py-2 text-center text-[13px] text-cm-meta">
             CityMood Newsroom · Verified community reporting from Badagry, Lagos State.
           </p>

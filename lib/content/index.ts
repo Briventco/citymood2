@@ -10,16 +10,16 @@ export type { AdCampaign, AdSlotName, Article, ArticleImage, Category, FrontPage
 
 // Where the public site reads from:
 // - the newsroom store, whatever the admin publishes (development, or ADMIN_DEV_STORE=1);
-// - the fixed seed stories (CONTENT_SEED=1, for a demo without the admin);
-// - nothing, until a production backend (Supabase) is connected.
-// Both the store's seed and the fixed seed are fictional placeholders, flagged by a banner.
-export const isSeedContent = devStoreEnabled || process.env.CONTENT_SEED === "1";
+// - empty source only if EMPTY_CONTENT=1;
+// - otherwise seedSource (default for demos and client review on Vercel).
+// When the production backend (Supabase) is connected, it replaces this source.
+export const isSeedContent = devStoreEnabled || process.env.CONTENT_SEED !== "0";
 
 const source: ContentSource = devStoreEnabled
   ? newsroomSource
-  : process.env.CONTENT_SEED === "1"
-    ? seedSource
-    : emptySource;
+  : process.env.EMPTY_CONTENT === "1"
+    ? emptySource
+    : seedSource;
 
 export async function getCategories(): Promise<Category[]> {
   const categories = await source.categories();
