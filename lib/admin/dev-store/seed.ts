@@ -15,11 +15,11 @@ export const DEMO_USERS: Record<"admin" | "editor" | "reporter" | "reporter2" | 
   full_name: string;
   role: StaffRole;
 }> = {
-  admin: { id: "d0000000-0000-4000-8000-00000000000a", email: "admin@demo.citymood.test", full_name: "Demo Admin", role: "admin" },
-  editor: { id: "d0000000-0000-4000-8000-00000000000e", email: "editor@demo.citymood.test", full_name: "Demo Editor", role: "editor" },
-  reporter: { id: "d0000000-0000-4000-8000-000000000001", email: "reporter@demo.citymood.test", full_name: "Demo Reporter", role: "reporter" },
-  reporter2: { id: "d0000000-0000-4000-8000-000000000002", email: "reporter2@demo.citymood.test", full_name: "Second Demo Reporter", role: "reporter" },
-  invited: { id: "d0000000-0000-4000-8000-000000000009", email: "invited@demo.citymood.test", full_name: "Invited Demo Reporter", role: "reporter" },
+  admin: { id: "d0000000-0000-4000-8000-00000000000a", email: "publisher@citymood.ng", full_name: "Dr. Abolaji Sewhude Akande", role: "admin" },
+  editor: { id: "d0000000-0000-4000-8000-00000000000e", email: "editor@citymood.ng", full_name: "Joy Agu", role: "editor" },
+  reporter: { id: "d0000000-0000-4000-8000-000000000001", email: "newsroom@citymood.ng", full_name: "CityMood Metro Desk", role: "reporter" },
+  reporter2: { id: "d0000000-0000-4000-8000-000000000002", email: "heritage@citymood.ng", full_name: "CityMood Heritage Bureau", role: "reporter" },
+  invited: { id: "d0000000-0000-4000-8000-000000000009", email: "babatunde.hunpe@citymood.ng", full_name: "Babatunde Hunpe", role: "reporter" },
 };
 
 const HOUR = 3_600_000;
@@ -61,8 +61,6 @@ export function buildSeed(now: Date = new Date()): Database {
     db.categories.push({ id, name: c.name, slug: c.slug, position: c.order, is_active: true });
   }
 
-  const seedTag = { id: randomUUID(), name: "Seed placeholder", slug: "seed-placeholder" };
-  db.tags.push(seedTag);
   const tagFor = new Map<string, Uuid>();
   const tag = (name: string) => {
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -74,12 +72,18 @@ export function buildSeed(now: Date = new Date()): Database {
     return tagFor.get(slug)!;
   };
 
+  function authorIdFor(authorName?: string): Uuid {
+    if (authorName?.includes("Akande")) return DEMO_USERS.admin.id;
+    if (authorName?.includes("Agu")) return DEMO_USERS.editor.id;
+    if (authorName?.includes("Heritage")) return DEMO_USERS.reporter2.id;
+    return DEMO_USERS.reporter.id;
+  }
+
   // One media row per seed file (storage_path is unique); the first story's alt text wins.
   const mediaFor = new Map<string, Media>();
-  const writers = [DEMO_USERS.reporter.id, DEMO_USERS.reporter2.id, DEMO_USERS.editor.id];
 
   const stories = seedArticles(now);
-  stories.forEach((s, i) => {
+  stories.forEach((s) => {
     let image: Media | undefined;
     if (s.image) {
       const path = s.image.src.replace(/^\//, "");
@@ -97,41 +101,46 @@ export function buildSeed(now: Date = new Date()): Database {
     }
     const body = docFromParagraphs(s.body);
     const breaking = s.tags.includes("breaking");
+    const authorId = authorIdFor(s.author);
     const article: Article = {
       id: randomUUID(), slug: s.slug, headline: s.title, standfirst: s.standfirst, body,
       body_html: renderBodyHtml(body),
       category_id: (s.category && categoryId.get(s.category)) || null,
-      author_id: writers[i % writers.length], featured_image_id: image?.id ?? null,
+      author_id: authorId, featured_image_id: image?.id ?? null,
       status: "published", publish_at: s.publishedAt, featured: s.featured, breaking,
       breaking_until: breaking ? iso(Date.parse(s.publishedAt) + 6 * HOUR) : null,
       seo_title: "", seo_description: "",
-      created_by: writers[i % writers.length], updated_by: writers[i % writers.length],
+      created_by: authorId, updated_by: authorId,
       created_at: s.publishedAt, updated_at: s.publishedAt,
     };
     db.articles.push(article);
-    db.article_tags.push({ article_id: article.id, tag_id: seedTag.id });
+    s.tags.forEach((tagName) => {
+      if (tagName !== "breaking") {
+        db.article_tags.push({ article_id: article.id, tag_id: tag(tagName) });
+      }
+    });
     if (s.place) db.article_tags.push({ article_id: article.id, tag_id: tag(s.place) });
   });
 
-  // Stories that aren't live, so every tab on the Articles screen has something in it.
+  // Newsroom workflow items (drafts, scheduled) to populate administrative tabs.
   const notLive: Partial<Article>[] = [
     {
-      headline: "Draft: Badagry Marina ferry timetable adjustments proposed for weekend passenger service",
+      headline: "Badagry Marina ferry timetable adjustments proposed for weekend passenger service",
       standfirst: "Working draft examining commuter boat frequency and fare structure.",
       category_id: categoryId.get("local-news")!, author_id: DEMO_USERS.reporter.id, status: "draft",
     },
     {
-      headline: "Draft: Council committee meeting notes on Topo jetty rehabilitation",
+      headline: "Council committee review on Topo jetty rehabilitation and shoreline protection",
       author_id: DEMO_USERS.reporter2.id, status: "draft",
     },
     {
-      headline: "Scheduled: Heritage walking tour reopens for tourist delegations this weekend",
-      standfirst: "Scheduled reporting on visitor reception along the Marina corridor.",
+      headline: "Heritage walking tour schedule announced for visiting youth cultural delegations",
+      standfirst: "Reporting on visitor reception along the Marina corridor.",
       category_id: categoryId.get("tourism-heritage")!, author_id: DEMO_USERS.reporter.id,
       status: "scheduled", publish_at: iso(t + 20 * HOUR),
     },
     {
-      headline: "Unpublished: Agbalata market weekly price updates archived",
+      headline: "Agbalata International Market commodity price bulletin archived",
       standfirst: "Archived seasonal commodity price review taken down after new figures.",
       category_id: categoryId.get("business-development")!, author_id: DEMO_USERS.reporter2.id,
       status: "unpublished", publish_at: iso(t - 72 * HOUR),
@@ -141,7 +150,7 @@ export function buildSeed(now: Date = new Date()): Database {
     const body = docFromParagraphs("CityMood draft copy under editorial review. Verified by the newsroom before publication.");
     const stamp = iso(t - (i + 1) * 3 * HOUR);
     db.articles.push({
-      id: randomUUID(), slug: `seed-${a.status}-${i + 1}`, headline: "", standfirst: "", body,
+      id: randomUUID(), slug: `newsroom-${a.status}-${i + 1}`, headline: "", standfirst: "", body,
       body_html: renderBodyHtml(body), category_id: null, author_id: null, featured_image_id: null,
       status: "draft", publish_at: null, featured: false, breaking: false, breaking_until: null,
       seo_title: "", seo_description: "", created_by: a.author_id ?? null, updated_by: a.author_id ?? null,

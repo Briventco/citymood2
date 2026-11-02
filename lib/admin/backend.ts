@@ -43,7 +43,7 @@ export const demoMode = process.env.NODE_ENV !== "production";
 /**
  * Checks an email and password and returns the user id of an active staff member.
  * The dev store has no passwords: in development any password signs you in, and
- * an email that isn't on the staff list signs you in as Demo Admin. In a
+ * an email that isn't on the staff list signs you in as Publisher. In a
  * production build with ADMIN_DEV_STORE=1, the email must belong to active staff.
  */
 export async function authenticate(email: string, password: string): Promise<Uuid | null> {

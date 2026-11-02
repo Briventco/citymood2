@@ -1,26 +1,30 @@
 import { demoSignIn } from "../auth-actions";
 import { button } from "../_components/ui";
 
-// Development builds only (the page renders it when demoMode is true, and the
-// action refuses in production). Lets you test each role against the seeded users.
+// Development shortcuts: one-click sign in as CityMood staff roles.
 export function DemoSwitcher() {
+  const staff = [
+    { role: "admin", label: "Publisher (Dr. Akande)" },
+    { role: "editor", label: "Senior Editor (Joy Agu)" },
+    { role: "reporter", label: "Reporter (Metro Desk)" },
+  ] as const;
+
   return (
     <section aria-labelledby="demo-mode" className="mt-8 border-2 border-dashed border-cm-ad-border bg-cm-paper p-4">
       <h2 id="demo-mode" className="text-[13px] font-extrabold uppercase tracking-[0.1em]">
-        Demo mode: sign in as
+        Quick sign-in (development):
       </h2>
       <div className="mt-2.5 flex flex-wrap gap-2">
-        {(["reporter", "editor", "admin"] as const).map((role) => (
+        {staff.map(({ role, label }) => (
           <form key={role} action={demoSignIn.bind(null, role)}>
             <button type="submit" className={button.outline}>
-              {role[0].toUpperCase() + role.slice(1)}
+              {label}
             </button>
           </form>
         ))}
       </div>
       <p className="mt-2.5 text-[13px] text-cm-meta">
-        Development builds only, with fake seed users. In demo mode any password works, and an email that isn’t on
-        the staff list signs in as Demo Admin.
+        Development shortcuts for testing editorial permissions. Any password signs in during development.
       </p>
     </section>
   );
