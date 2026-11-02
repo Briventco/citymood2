@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { preload } from "react-dom";
 import { BreakingTicker } from "../components/shell/BreakingTicker";
 import { SectionNav } from "../components/shell/SectionNav";
 import { SiteFooter } from "../components/shell/SiteFooter";
 import { SiteHeader } from "../components/shell/SiteHeader";
 import { site } from "@/config/site";
-import { getCategories, isSeedContent } from "@/lib/content";
+import { getCategories } from "@/lib/content";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -41,8 +40,6 @@ export default async function RootLayout({
   for (const href of preloadedFonts) preload(href, { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   const now = new Date();
   const categories = await getCategories();
-  const pathname = (await headers()).get("x-pathname") ?? "";
-  const isAdminRoute = pathname.startsWith("/admin");
 
   return (
     <html lang="en">
@@ -50,17 +47,11 @@ export default async function RootLayout({
         <a href="#main" className="cm-skip-link">
           Skip to main content
         </a>
-        {isSeedContent && (
-          <p className="border-b border-cm-rule bg-cm-paper px-4 py-2 text-center text-[13px] text-cm-meta">
-            Development seed content · every story, name and photo is a fictional placeholder, not CityMood
-            reporting.
-          </p>
-        )}
         <SiteHeader categories={categories} now={now} />
         <SectionNav categories={categories} />
         <BreakingTicker now={now} />
         <main id="main">{children}</main>
-        {!isAdminRoute && <SiteFooter now={now} />}
+        <SiteFooter now={now} />
       </body>
     </html>
   );
