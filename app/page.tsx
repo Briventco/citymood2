@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { mostReadSlugs } from "@/config/mostRead";
 import { site } from "@/config/site";
-import { categoryBySlug, getArticles, getCategories, type Article, type Category } from "@/lib/content";
+import { categoryBySlug, getArticles, getCategories, getMostRead, type Article, type Category } from "@/lib/content";
 import { buildHomepage, type CategoryBlock } from "@/lib/homepage";
 import { categoryHref } from "@/lib/urls";
 import { LatestRail } from "./components/LatestRail";
@@ -20,8 +19,8 @@ const container = "mx-auto w-full max-w-cm px-(--cm-gutter)";
 
 async function loadHomepage() {
   const now = new Date();
-  const [articles, categories] = await Promise.all([getArticles(now), getCategories()]);
-  return { now, categories, home: buildHomepage(articles, categories, mostReadSlugs) };
+  const [articles, categories, mostRead] = await Promise.all([getArticles(now), getCategories(), getMostRead(now)]);
+  return { now, categories, home: buildHomepage(articles, categories, mostRead.map((article) => article.slug)) };
 }
 
 export async function generateMetadata(): Promise<Metadata> {
