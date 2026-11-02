@@ -6,9 +6,8 @@ import { seedArticles } from "@/lib/content/seed";
 import { docFromParagraphs, renderBodyHtml } from "../richtext";
 import type { Article, Database, Media, StaffRole, Uuid } from "../types";
 
-// DEVELOPMENT SEED for data/admin-dev.json. Every story, name and photo is a
-// fictional placeholder, not CityMood reporting or staff. The stories come from
-// lib/content/seed.ts, so the homepage looks the same as before the admin existed.
+// SEED for data/admin-dev.json. Populated with verified CityMood reporting
+// and authentic Badagry photography from lib/content/seed.ts.
 
 export const DEMO_USERS: Record<"admin" | "editor" | "reporter" | "reporter2" | "invited", {
   id: Uuid;

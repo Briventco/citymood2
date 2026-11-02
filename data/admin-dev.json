@@ -1,0 +1,2664 @@
+{
+  "version": 1,
+  "session_secret": "3a07d0499b6916f97cf48056ae59a09499851a5d5a492c2bdb23021e9352a6cb",
+  "seeded_at": "2026-10-27T14:47:28.835Z",
+  "tables": {
+    "auth_users": [
+      {
+        "id": "d0000000-0000-4000-8000-00000000000a",
+        "email": "admin@demo.citymood.test",
+        "raw_user_meta_data": {
+          "full_name": "Demo Admin"
+        },
+        "invited_at": "2026-09-27T14:47:28.836Z",
+        "last_sign_in_at": "2026-10-27T12:47:28.836Z",
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-00000000000e",
+        "email": "editor@demo.citymood.test",
+        "raw_user_meta_data": {
+          "full_name": "Demo Editor"
+        },
+        "invited_at": "2026-09-27T14:47:28.836Z",
+        "last_sign_in_at": "2026-10-29T03:15:00.874Z",
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-000000000001",
+        "email": "reporter@demo.citymood.test",
+        "raw_user_meta_data": {
+          "full_name": "Demo Reporter"
+        },
+        "invited_at": "2026-09-27T14:47:28.836Z",
+        "last_sign_in_at": "2026-10-27T12:47:28.836Z",
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-000000000002",
+        "email": "reporter2@demo.citymood.test",
+        "raw_user_meta_data": {
+          "full_name": "Second Demo Reporter"
+        },
+        "invited_at": "2026-09-27T14:47:28.836Z",
+        "last_sign_in_at": "2026-10-27T12:47:28.836Z",
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-000000000009",
+        "email": "invited@demo.citymood.test",
+        "raw_user_meta_data": {
+          "full_name": "Invited Demo Reporter"
+        },
+        "invited_at": "2026-09-27T14:47:28.836Z",
+        "last_sign_in_at": null,
+        "created_at": "2026-09-27T14:47:28.836Z"
+      }
+    ],
+    "profiles": [
+      {
+        "id": "d0000000-0000-4000-8000-00000000000a",
+        "full_name": "Demo Admin",
+        "role": "admin",
+        "is_active": true,
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-00000000000e",
+        "full_name": "Demo Editor",
+        "role": "editor",
+        "is_active": true,
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-000000000001",
+        "full_name": "Demo Reporter",
+        "role": "reporter",
+        "is_active": true,
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-000000000002",
+        "full_name": "Second Demo Reporter",
+        "role": "reporter",
+        "is_active": true,
+        "created_at": "2026-09-27T14:47:28.836Z"
+      },
+      {
+        "id": "d0000000-0000-4000-8000-000000000009",
+        "full_name": "Invited Demo Reporter",
+        "role": "reporter",
+        "is_active": true,
+        "created_at": "2026-09-27T14:47:28.836Z"
+      }
+    ],
+    "categories": [
+      {
+        "id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "name": "Local News",
+        "slug": "local-news",
+        "position": 1,
+        "is_active": true
+      },
+      {
+        "id": "76854165-9102-4954-a032-cb3c4a203b1c",
+        "name": "Community & People",
+        "slug": "community-people",
+        "position": 2,
+        "is_active": true
+      },
+      {
+        "id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "name": "Business & Development",
+        "slug": "business-development",
+        "position": 3,
+        "is_active": true
+      },
+      {
+        "id": "865ade52-ace1-4789-9fa4-eda7e93e3a92",
+        "name": "Politics & Public Affairs",
+        "slug": "politics-public-affairs",
+        "position": 4,
+        "is_active": true
+      },
+      {
+        "id": "45c553ad-0411-46b3-b65f-2e64992b048a",
+        "name": "Culture & Events",
+        "slug": "culture-events",
+        "position": 5,
+        "is_active": true
+      },
+      {
+        "id": "8353e191-33b7-48ea-b764-f9c87405a564",
+        "name": "Tourism & Heritage",
+        "slug": "tourism-heritage",
+        "position": 6,
+        "is_active": true
+      }
+    ],
+    "tags": [
+      {
+        "id": "a7059f71-7484-4a05-b54b-e4f6a34fa768",
+        "name": "Seed placeholder",
+        "slug": "seed-placeholder"
+      },
+      {
+        "id": "93d43fb7-769a-41c6-90d4-ae2ff1db0b2f",
+        "name": "Gberefu",
+        "slug": "gberefu"
+      },
+      {
+        "id": "ec91161c-fc9e-4610-8a3d-7d80fac2a780",
+        "name": "Topo",
+        "slug": "topo"
+      },
+      {
+        "id": "562ac516-b9b5-4459-8fea-c48e05e3e6ac",
+        "name": "Agbalata",
+        "slug": "agbalata"
+      },
+      {
+        "id": "52218042-16d2-448b-aa8e-61d0f701b0f2",
+        "name": "Ajara",
+        "slug": "ajara"
+      }
+    ],
+    "media": [
+      {
+        "id": "69552b15-b6c8-4240-9616-af569f3ad958",
+        "storage_path": "seed/badagry-juice-raid.jpg",
+        "width": 1264,
+        "height": 848,
+        "alt": "Operatives inspect seized boxes and bottles during an enforcement raid on an illegal factory in Badagry",
+        "caption": "Seized counterfeit beverage batches impounded during the joint enforcement operation in Aradagun, Badagry.",
+        "credit": "Photo: CityMood / Enforcement Desk",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "868a5d20-e37b-40a9-80c5-eda7312e1e67",
+        "storage_path": "seed/landscape-2.jpg",
+        "width": 902,
+        "height": 497,
+        "alt": "community leaders meeting at town hall in Badagry West",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "9d492d74-183a-4776-bc83-3e83a1cab9b8",
+        "storage_path": "seed/landscape-4.jpg",
+        "width": 6016,
+        "height": 4000,
+        "alt": "cargo and transport vehicles waiting at Seme border post",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "73515c41-e013-49df-85f8-cb3e314c3cf4",
+        "storage_path": "seed/landscape-1.jpg",
+        "width": 2976,
+        "height": 1984,
+        "alt": "road reconstruction and paving along expressway corridor",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "612c5fff-83b1-4286-b1e7-72625af7e2c2",
+        "storage_path": "seed/landscape-6.jpg",
+        "width": 5040,
+        "height": 3360,
+        "alt": "modernized healthcare facility entrance at Badagry General Hospital",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "1d5f657c-40db-4773-9820-d919cbd497cd",
+        "storage_path": "seed/portrait-3.jpg",
+        "width": 2736,
+        "height": 3648,
+        "alt": "Babatunde Sewanu at the Badagry waterfront",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "60c52269-ff7d-484c-a691-9981b604cb13",
+        "storage_path": "seed/portrait-1.jpg",
+        "width": 896,
+        "height": 1200,
+        "alt": "Gabriel Hunsu in his woodworking boat yard",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "d5d6a38f-0848-4bd6-8f6a-e7de44b8b78e",
+        "storage_path": "seed/portrait-2.jpg",
+        "width": 2214,
+        "height": 3198,
+        "alt": "Alhaja Risikat Hundeyin at her market stall in Agbalata",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "6420101f-6f28-4ac7-baf4-7c73143cb158",
+        "storage_path": "seed/portrait-4.jpg",
+        "width": 360,
+        "height": 540,
+        "alt": "Folashade Akran in a classroom in Ajara",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "21a0712a-00df-449c-ae0f-e0ed6776495a",
+        "storage_path": "seed/landscape-7.jpg",
+        "width": 4128,
+        "height": 2322,
+        "alt": "volunteers removing plastic debris on Badagry beach",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "5a38db29-f3da-42e7-81a3-0e7299f754e2",
+        "storage_path": "seed/landscape-8.jpg",
+        "width": 6000,
+        "height": 4000,
+        "alt": "traders and shoppers at waterfront market stalls",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "7d50dc52-a577-4e63-98a6-2ea514e19ff0",
+        "storage_path": "seed/landscape-3.jpg",
+        "width": 6016,
+        "height": 4000,
+        "alt": "coconut plantation and harvesting along Gberefu peninsula",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "3adfbebb-1187-46ec-a8e6-68fd03b6d0e8",
+        "storage_path": "seed/landscape-5.jpg",
+        "width": 3000,
+        "height": 2000,
+        "alt": "beachfront resort and guesthouse along Badagry coast",
+        "caption": "",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      },
+      {
+        "id": "ce19c020-4087-4774-b5aa-0c8c38d23d18",
+        "storage_path": "seed/badagry-performers.jpg",
+        "width": 2048,
+        "height": 941,
+        "alt": "Cultural performers in cowrie headdresses dancing with sticks around a large carved Sato drum in Badagry",
+        "caption": "Sato drummers and Ogu cultural troupes performing during the heritage festival in Badagry.",
+        "credit": "Photo: CityMood",
+        "focal_x": 0.5,
+        "focal_y": 0.4,
+        "uploaded_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-09-17T14:47:28.836Z"
+      }
+    ],
+    "articles": [
+      {
+        "id": "52a4ece0-fad9-4fed-94c3-368ea1d5c1cc",
+        "slug": "nscdc-uncovers-illegal-fake-juice-factory-aradagun-badagry",
+        "headline": "NSCDC uncovers illegal fake fruit juice factory in Aradagun, Badagry; two suspects arrested",
+        "standfirst": "Operatives of the Nigeria Security and Civil Defence Corps raided an unhygienic facility producing counterfeit “Barkas Juice” using untreated well water and chemical dyes under a fake NAFDAC number.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Operatives of the Nigeria Security and Civil Defence Corps (NSCDC), Lagos State Command, have uncovered an illegal and clandestine fruit juice manufacturing factory operating within the Aradagun area of Badagry, Lagos State."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "During the enforcement operation, which followed extensive surveillance and intelligence reports from alert local residents, security officers arrested two female suspects aged 48 and 50 who were actively supervising production at the premises."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The illegal facility was found mass-producing an adulterated beverage branded as “Barkas Juice” under hazardous and unsanitary conditions. Operatives discovered that the concoction was formulated by mixing raw, untreated well water with granulated sugar, artificial flavoring, industrial citric acid, and chemical food dyes—without any actual fruit content."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Investigators also uncovered counterfeit National Agency for Food and Drug Administration and Control (NAFDAC) registration numbers printed across thousands of labels ready for distribution. Finished batches had already been packaged into cartons for supply to retail markets across Badagry, parts of mainland Lagos, and neighboring southwest states."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Lagos State Commandant of the NSCDC commended community whistleblowers and confirmed that the premises had been sealed. The seized products and production equipment have been impounded as exhibits, and the suspects will face prosecution following joint verification with NAFDAC regulatory officials."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Operatives of the Nigeria Security and Civil Defence Corps (NSCDC), Lagos State Command, have uncovered an illegal and clandestine fruit juice manufacturing factory operating within the Aradagun area of Badagry, Lagos State.</p><p>During the enforcement operation, which followed extensive surveillance and intelligence reports from alert local residents, security officers arrested two female suspects aged 48 and 50 who were actively supervising production at the premises.</p><p>The illegal facility was found mass-producing an adulterated beverage branded as “Barkas Juice” under hazardous and unsanitary conditions. Operatives discovered that the concoction was formulated by mixing raw, untreated well water with granulated sugar, artificial flavoring, industrial citric acid, and chemical food dyes—without any actual fruit content.</p><p>Investigators also uncovered counterfeit National Agency for Food and Drug Administration and Control (NAFDAC) registration numbers printed across thousands of labels ready for distribution. Finished batches had already been packaged into cartons for supply to retail markets across Badagry, parts of mainland Lagos, and neighboring southwest states.</p><p>The Lagos State Commandant of the NSCDC commended community whistleblowers and confirmed that the premises had been sealed. The seized products and production equipment have been impounded as exhibits, and the suspects will face prosecution following joint verification with NAFDAC regulatory officials.</p>",
+        "category_id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "69552b15-b6c8-4240-9616-af569f3ad958",
+        "status": "published",
+        "publish_at": "2026-10-27T14:12:28.836Z",
+        "featured": true,
+        "breaking": true,
+        "breaking_until": "2026-10-27T20:12:28.836Z",
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T14:12:28.836Z",
+        "updated_at": "2026-10-27T14:12:28.836Z"
+      },
+      {
+        "id": "5dca974e-7e90-40af-9bbf-00731ed04cfc",
+        "slug": "igbogbele-community-calls-for-dialogue-border-patrol-checkpoint",
+        "headline": "Igbogbele community calls for calm and dialogue after border patrol checkpoint incident in Badagry West",
+        "standfirst": "Community elders and youth leaders in Igbogbele meet with border security commanders, urging structured transit corridors to safeguard residents.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Leaders and residents of the Igbogbele community in Badagry West Local Council Development Area (LCDA) have appealed for calm, constructive engagement, and enhanced safety protocols following a security incident near an immigration border checkpoint along the coastal corridor."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Community representatives convened an emergency stakeholders meeting at the palace of the local Baale, expressing concern over the proximity of operational checkpoints to residential houses and rural market stalls. The session gathered traditional chiefs, youth leaders, commercial motorcycle operators, and representatives of cross-border transport associations."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Speaking after the consultation, community spokespersons urged security agencies along the Seme-Badagry axis to establish clearly demarcated inspection buffer zones away from densely populated residential quarters. They also appealed to youths in the area to maintain order while formal representations are submitted to the Badagry West LCDA leadership and federal border taskforces."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Security officials confirmed that an internal review into the circumstance of the border encounter is underway, reassuring the community of ongoing collaboration to preserve peace and ensure public safety along all transit routes."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Leaders and residents of the Igbogbele community in Badagry West Local Council Development Area (LCDA) have appealed for calm, constructive engagement, and enhanced safety protocols following a security incident near an immigration border checkpoint along the coastal corridor.</p><p>Community representatives convened an emergency stakeholders meeting at the palace of the local Baale, expressing concern over the proximity of operational checkpoints to residential houses and rural market stalls. The session gathered traditional chiefs, youth leaders, commercial motorcycle operators, and representatives of cross-border transport associations.</p><p>Speaking after the consultation, community spokespersons urged security agencies along the Seme-Badagry axis to establish clearly demarcated inspection buffer zones away from densely populated residential quarters. They also appealed to youths in the area to maintain order while formal representations are submitted to the Badagry West LCDA leadership and federal border taskforces.</p><p>Security officials confirmed that an internal review into the circumstance of the border encounter is underway, reassuring the community of ongoing collaboration to preserve peace and ensure public safety along all transit routes.</p>",
+        "category_id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "868a5d20-e37b-40a9-80c5-eda7312e1e67",
+        "status": "published",
+        "publish_at": "2026-10-27T13:22:28.836Z",
+        "featured": false,
+        "breaking": true,
+        "breaking_until": "2026-10-27T19:22:28.836Z",
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T13:22:28.836Z",
+        "updated_at": "2026-10-27T13:22:28.836Z"
+      },
+      {
+        "id": "8239714a-fa22-4eab-aac8-96147ac422f3",
+        "slug": "seme-border-customs-directive-small-importers-documentation",
+        "headline": "Seme border: what the new customs directive means for small-scale cross-border food traders",
+        "standfirst": "Clearing agents and border command officials clarify streamlined paperwork procedures designed to facilitate legitimate agricultural imports.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Small-scale importers and cross-border traders operating along the Seme border corridor have received updated operational guidance following the release of new trade facilitation directives by the Nigeria Customs Service Seme Area Command."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The revised guidelines seek to simplify clearance documentation for non-commercial and small-scale agricultural commodities, reducing processing bottlenecks for registered traders while strengthening border compliance against prohibited cargo."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Under the new protocols, verified local cooperatives transporting perishable farm produce and staple foodstuffs across the corridor will access dedicated single-window clearance desks at the border terminal. Clearing agents welcomed the measure, noting that previous paperwork delays had resulted in cargo spoilage and unpredictable demurrage charges."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Customs officials emphasized that the relaxation applies strictly to accredited small-volume food merchants, warning that any attempt to smuggle contraband goods or conceal unmanifested freight will be met with immediate seizure and legal sanctions."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Small-scale importers and cross-border traders operating along the Seme border corridor have received updated operational guidance following the release of new trade facilitation directives by the Nigeria Customs Service Seme Area Command.</p><p>The revised guidelines seek to simplify clearance documentation for non-commercial and small-scale agricultural commodities, reducing processing bottlenecks for registered traders while strengthening border compliance against prohibited cargo.</p><p>Under the new protocols, verified local cooperatives transporting perishable farm produce and staple foodstuffs across the corridor will access dedicated single-window clearance desks at the border terminal. Clearing agents welcomed the measure, noting that previous paperwork delays had resulted in cargo spoilage and unpredictable demurrage charges.</p><p>Customs officials emphasized that the relaxation applies strictly to accredited small-volume food merchants, warning that any attempt to smuggle contraband goods or conceal unmanifested freight will be met with immediate seizure and legal sanctions.</p>",
+        "category_id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": "9d492d74-183a-4776-bc83-3e83a1cab9b8",
+        "status": "published",
+        "publish_at": "2026-10-27T11:37:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-27T11:37:28.836Z",
+        "updated_at": "2026-10-27T11:37:28.836Z"
+      },
+      {
+        "id": "9fa67828-a5fb-4526-bf72-079ec7ced449",
+        "slug": "ojo-badagry-expressway-reconstruction-agbara-corridor",
+        "headline": "Ojo–Badagry expressway reconstruction reaches final asphalt laying phase near Agbara corridor",
+        "standfirst": "Engineers on the international corridor project report significant progress as transit times between Lagos mainland and Badagry begin to ease.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Commuters and transport operators along the Lagos–Badagry Expressway have experienced noticeable relief as contractors handling the federal corridor expansion reached the final asphalt laying phase on the dual carriageway stretch approaching Agbara."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The project, which forms a vital leg of the multinational Lagos–Abidjan corridor, has faced periodic delays caused by heavy seasonal rainfall and complex utility relocations. However, the completion of major drainage culverts and median barriers over recent weeks has enabled round-the-clock paving operations."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Commercial bus operators at the Badagry Roundabout confirmed that travel times to Mile 2 and Alaba International have dropped substantially during off-peak hours. Business owners along the corridor have also reported a steady resurgence in footfall and interstate logistics delivery."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Federal Ministry of Works supervisors affirmed that finishing works on street lighting, road markings, and designated pedestrian bridges will proceed concurrently to ensure maximum commuter safety before the official commissioning."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Commuters and transport operators along the Lagos–Badagry Expressway have experienced noticeable relief as contractors handling the federal corridor expansion reached the final asphalt laying phase on the dual carriageway stretch approaching Agbara.</p><p>The project, which forms a vital leg of the multinational Lagos–Abidjan corridor, has faced periodic delays caused by heavy seasonal rainfall and complex utility relocations. However, the completion of major drainage culverts and median barriers over recent weeks has enabled round-the-clock paving operations.</p><p>Commercial bus operators at the Badagry Roundabout confirmed that travel times to Mile 2 and Alaba International have dropped substantially during off-peak hours. Business owners along the corridor have also reported a steady resurgence in footfall and interstate logistics delivery.</p><p>Federal Ministry of Works supervisors affirmed that finishing works on street lighting, road markings, and designated pedestrian bridges will proceed concurrently to ensure maximum commuter safety before the official commissioning.</p>",
+        "category_id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "73515c41-e013-49df-85f8-cb3e314c3cf4",
+        "status": "published",
+        "publish_at": "2026-10-27T09:27:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T09:27:28.836Z",
+        "updated_at": "2026-10-27T09:27:28.836Z"
+      },
+      {
+        "id": "269dd30d-365f-41d5-899b-48401279a104",
+        "slug": "badagry-general-hospital-maternal-health-unit-expansion",
+        "headline": "Badagry General Hospital expands maternal and child healthcare facilities in Ajara",
+        "standfirst": "The newly upgraded 40-bed maternal wing provides advanced neonatal care, solar backup power, and modernized delivery suites for the division.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Healthcare delivery in Badagry received a substantial boost following the commissioning of an expanded maternal and child health complex at Badagry General Hospital in Ajara."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The modernized facility features 40 dedicated maternity beds, two fully equipped surgical delivery suites, a specialized neonatal intensive care unit (NICU) with modern incubators, and a standalone solar inverter array to guarantee uninterrupted power supply."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Medical Director Dr. Olatunde Gbenga noted that the facility was designed to eliminate referral delays for high-risk pregnancies from outlying riverine and coastal communities, including Topo, Ajido, and Gberefu."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Community women leaders who toured the complex commended the Lagos State Ministry of Health for the investment, urging residents across Badagry Central, Olorunda, and Badagry West LCDAs to utilize the center for antenatal checkups and safe hospital deliveries."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Healthcare delivery in Badagry received a substantial boost following the commissioning of an expanded maternal and child health complex at Badagry General Hospital in Ajara.</p><p>The modernized facility features 40 dedicated maternity beds, two fully equipped surgical delivery suites, a specialized neonatal intensive care unit (NICU) with modern incubators, and a standalone solar inverter array to guarantee uninterrupted power supply.</p><p>Medical Director Dr. Olatunde Gbenga noted that the facility was designed to eliminate referral delays for high-risk pregnancies from outlying riverine and coastal communities, including Topo, Ajido, and Gberefu.</p><p>Community women leaders who toured the complex commended the Lagos State Ministry of Health for the investment, urging residents across Badagry Central, Olorunda, and Badagry West LCDAs to utilize the center for antenatal checkups and safe hospital deliveries.</p>",
+        "category_id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "612c5fff-83b1-4286-b1e7-72625af7e2c2",
+        "status": "published",
+        "publish_at": "2026-10-26T15:27:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-26T15:27:28.836Z",
+        "updated_at": "2026-10-26T15:27:28.836Z"
+      },
+      {
+        "id": "1b7cc21e-3d13-4f9f-8817-f70632efd6c9",
+        "slug": "marine-police-waterways-safety-patrols-badagry-creek",
+        "headline": "Marine police step up waterway patrols and safety compliance along Badagry Creek",
+        "standfirst": "Boat operators and passenger guilds welcome increased life jacket enforcement and evening patrols on the lagoon routes.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Marine Division of the Nigeria Police Force in Badagry has launched enhanced waterway monitoring operations along the Badagry Creek and lagoon transit lines linking Badagry Marina, Ajido, and coastal settlements."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The exercise involves surprise checks at passenger jetties to enforce 100% life-jacket compliance, inspect hull integrity on commercial wooden and fiberglass boats, and restrict night voyages after designated curfew hours."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Leaders of the Maritime Workers Union and the Badagry Boat Operators Guild endorsed the safety push, remarking that professional standards are essential to bolster passenger confidence as water transport becomes an increasingly popular alternative to highway transit."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Officers will also maintain coordinated patrol posts along waterway junctions to deter illegal sand dredging and ensure unhindered passage for legitimate artisanal fishing fleets."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>The Marine Division of the Nigeria Police Force in Badagry has launched enhanced waterway monitoring operations along the Badagry Creek and lagoon transit lines linking Badagry Marina, Ajido, and coastal settlements.</p><p>The exercise involves surprise checks at passenger jetties to enforce 100% life-jacket compliance, inspect hull integrity on commercial wooden and fiberglass boats, and restrict night voyages after designated curfew hours.</p><p>Leaders of the Maritime Workers Union and the Badagry Boat Operators Guild endorsed the safety push, remarking that professional standards are essential to bolster passenger confidence as water transport becomes an increasingly popular alternative to highway transit.</p><p>Officers will also maintain coordinated patrol posts along waterway junctions to deter illegal sand dredging and ensure unhindered passage for legitimate artisanal fishing fleets.</p>",
+        "category_id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": null,
+        "status": "published",
+        "publish_at": "2026-10-26T03:47:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-26T03:47:28.836Z",
+        "updated_at": "2026-10-26T03:47:28.836Z"
+      },
+      {
+        "id": "4d1169fb-932f-4193-818b-44ef3be1bc78",
+        "slug": "marina-heritage-guide-slave-route-difficult-history",
+        "headline": "“We carry this history with care so future generations will remember”",
+        "standfirst": "Senior heritage guide Babatunde Sewanu on the questions visitors ask along the slave trail, and the silence at the ocean shore.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "For over twenty years, Babatunde Sewanu has walked the historic trail across Gberefu Island to the Point of No Return several times each week, escorting historians, schoolchildren, and diaspora pilgrims from across the globe."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "“Every group brings a different energy,” he reflects, looking out over the tranquil lagoon waters at Marina jetty. “Some visitors arrive with tears, others with deep quiet questions. Our duty is never to sensationalize or rush the journey, but to speak the truth with dignity and honor the memory of those who walked before us.”"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Sewanu learned the history from his grandfather, who was among the early custodians of Badagry’s oral traditions. Today, he trains younger guides in archival accuracy, respectful decorum, and the significance of monuments like the Attenuation Well and the oceanfront memorial arch."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "“When visitors reach the Atlantic shore and look out at the open water, words usually fall away,” he says. “That silence is where understanding begins.”"
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>For over twenty years, Babatunde Sewanu has walked the historic trail across Gberefu Island to the Point of No Return several times each week, escorting historians, schoolchildren, and diaspora pilgrims from across the globe.</p><p>“Every group brings a different energy,” he reflects, looking out over the tranquil lagoon waters at Marina jetty. “Some visitors arrive with tears, others with deep quiet questions. Our duty is never to sensationalize or rush the journey, but to speak the truth with dignity and honor the memory of those who walked before us.”</p><p>Sewanu learned the history from his grandfather, who was among the early custodians of Badagry’s oral traditions. Today, he trains younger guides in archival accuracy, respectful decorum, and the significance of monuments like the Attenuation Well and the oceanfront memorial arch.</p><p>“When visitors reach the Atlantic shore and look out at the open water, words usually fall away,” he says. “That silence is where understanding begins.”</p>",
+        "category_id": "76854165-9102-4954-a032-cb3c4a203b1c",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "1d5f657c-40db-4773-9820-d919cbd497cd",
+        "status": "published",
+        "publish_at": "2026-10-27T08:27:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T08:27:28.836Z",
+        "updated_at": "2026-10-27T08:27:28.836Z"
+      },
+      {
+        "id": "57006731-6bf8-496b-903e-bd7fab9bb48c",
+        "slug": "topo-canoe-builder-preserving-coastal-woodworking-craft",
+        "headline": "“My grandfather’s adze still shapes the finest hulls on the lagoon”",
+        "standfirst": "Master woodworker Gabriel Hunsu in Topo on timber selection, river currents, and boats built to outlast decades of tides.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "In his open-air workshop nestled among towering palm trees at Topo water’s edge, 62-year-old Gabriel Hunsu selects a curved adze with a well-worn mahogany handle—a tool handed down through three generations of canoe builders."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "“Modern fiberglass boats have their place, but a hand-hewn hardwood canoe has life in it,” Hunsu smiles as wood shavings curl beneath his blade. “It sits in the water differently, rides the lagoon chop with stability, and lets a fisherman feel the current through his feet.”"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Hunsu crafts bespoke fishing vessels and passenger canoes from sustainably harvested Apa and Obeche timber, using natural waterproofing tree resins passed down by Ogu master artisans."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "With two apprentices currently learning the trade under his watchful eye, Hunsu is determined to ensure that indigenous woodworking remains a proud, thriving trade for Badagry’s coastal youth."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>In his open-air workshop nestled among towering palm trees at Topo water’s edge, 62-year-old Gabriel Hunsu selects a curved adze with a well-worn mahogany handle—a tool handed down through three generations of canoe builders.</p><p>“Modern fiberglass boats have their place, but a hand-hewn hardwood canoe has life in it,” Hunsu smiles as wood shavings curl beneath his blade. “It sits in the water differently, rides the lagoon chop with stability, and lets a fisherman feel the current through his feet.”</p><p>Hunsu crafts bespoke fishing vessels and passenger canoes from sustainably harvested Apa and Obeche timber, using natural waterproofing tree resins passed down by Ogu master artisans.</p><p>With two apprentices currently learning the trade under his watchful eye, Hunsu is determined to ensure that indigenous woodworking remains a proud, thriving trade for Badagry’s coastal youth.</p>",
+        "category_id": "76854165-9102-4954-a032-cb3c4a203b1c",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "60c52269-ff7d-484c-a691-9981b604cb13",
+        "status": "published",
+        "publish_at": "2026-10-27T00:37:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T00:37:28.836Z",
+        "updated_at": "2026-10-27T00:37:28.836Z"
+      },
+      {
+        "id": "f0f968de-477f-4068-b13e-794d7d165a1f",
+        "slug": "agbalata-fish-trader-thirty-years-coastal-commerce",
+        "headline": "Thirty years at the same stall, and still the first to open at dawn",
+        "standfirst": "Market elder Alhaja Risikat Hundeyin on thirty years of coastal fish trade and the market community that raised her family.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Long before the first morning rays crest the horizon over Agbalata Market, Alhaja Risikat Hundeyin is already at her waterfront stall, inspecting the overnight catch brought in by artisanal fishermen from Ajido and Topo."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "For three decades, Hundeyin has occupied the same central stall in the fresh seafood section, earning a reputation among wholesale buyers from Lagos and Abeokuta for uncompromising honesty and the freshest lagoon sole, barracuda, and silver catfish."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "“This stall paid for four university degrees,” she beams proudly. “It wasn’t easy during the fuel shortages or when the rains flooded the access road, but we market women know how to pull together as one family.”"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "As vice president of the fish traders cooperative, she mentors young women entering the trade, teaching them financial literacy, price negotiation, and the vital importance of cooperative savings."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Long before the first morning rays crest the horizon over Agbalata Market, Alhaja Risikat Hundeyin is already at her waterfront stall, inspecting the overnight catch brought in by artisanal fishermen from Ajido and Topo.</p><p>For three decades, Hundeyin has occupied the same central stall in the fresh seafood section, earning a reputation among wholesale buyers from Lagos and Abeokuta for uncompromising honesty and the freshest lagoon sole, barracuda, and silver catfish.</p><p>“This stall paid for four university degrees,” she beams proudly. “It wasn’t easy during the fuel shortages or when the rains flooded the access road, but we market women know how to pull together as one family.”</p><p>As vice president of the fish traders cooperative, she mentors young women entering the trade, teaching them financial literacy, price negotiation, and the vital importance of cooperative savings.</p>",
+        "category_id": "76854165-9102-4954-a032-cb3c4a203b1c",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": "d5d6a38f-0848-4bd6-8f6a-e7de44b8b78e",
+        "status": "published",
+        "publish_at": "2026-10-26T12:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-26T12:07:28.836Z",
+        "updated_at": "2026-10-26T12:07:28.836Z"
+      },
+      {
+        "id": "b71c54dc-0531-4a64-ad55-eaee1c801c2a",
+        "slug": "ajara-youth-educator-cultural-preservation-initiatives",
+        "headline": "The educator who made Badagry heritage a classroom adventure",
+        "standfirst": "Teacher and cultural advocate Folashade Akran on teaching local history, oral folklore, and digital skills to young pupils.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "When Folashade Akran began teaching social studies at a primary school in Ajara seven years ago, she noticed that pupils knew more about foreign superhero movies than the extraordinary history of their own ancient hometown."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "“Badagry is an open-air museum of world history, yet our children walked past historic monuments every day without understanding what they represented,” she explains."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Akran launched an extracurricular heritage club that pairs history lessons with walking excursions, traditional drumming workshops, and digital photo journaling. Her students interview grandparents, record local proverbs, and publish mini cultural zines."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Her innovative curriculum has since been adopted by five neighboring schools, proving that when children connect with their roots, their confidence and academic enthusiasm soar."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>When Folashade Akran began teaching social studies at a primary school in Ajara seven years ago, she noticed that pupils knew more about foreign superhero movies than the extraordinary history of their own ancient hometown.</p><p>“Badagry is an open-air museum of world history, yet our children walked past historic monuments every day without understanding what they represented,” she explains.</p><p>Akran launched an extracurricular heritage club that pairs history lessons with walking excursions, traditional drumming workshops, and digital photo journaling. Her students interview grandparents, record local proverbs, and publish mini cultural zines.</p><p>Her innovative curriculum has since been adopted by five neighboring schools, proving that when children connect with their roots, their confidence and academic enthusiasm soar.</p>",
+        "category_id": "76854165-9102-4954-a032-cb3c4a203b1c",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "6420101f-6f28-4ac7-baf4-7c73143cb158",
+        "status": "published",
+        "publish_at": "2026-10-25T21:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-25T21:07:28.836Z",
+        "updated_at": "2026-10-25T21:07:28.836Z"
+      },
+      {
+        "id": "52bca4ac-f496-400b-ad9b-7c8b3b71fef0",
+        "slug": "lagos-beach-cleaners-remove-two-tons-plastic-badagry-coastline",
+        "headline": "Lagos Beach Cleaners and local volunteers remove two tons of marine plastic along Badagry coastline",
+        "standfirst": "Environmental youth volunteers and coastal fishermen team up for a weekend beach recovery drive across Gberefu and Topo beaches.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "More than two hundred young volunteers, environmental enthusiasts, and local fishing families gathered across Badagry’s outer barrier beaches for a large-scale coastal cleanup initiative organized by Lagos Beach Cleaners in partnership with CityMood community champions."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Armed with reusable collection sacks and sorting gloves, participants combed through three kilometres of shoreline stretching from Gberefu Point to Topo beach, recovering discarded plastic bottles, fishing nets, and styrofoam debris washed ashore by Atlantic ocean currents."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Organizers revealed that over two metric tons of recyclable waste were gathered during the four-hour exercise. The plastics were sorted on-site and transported via boat to a certified recycling facility in Lagos."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Community leader and volunteer mentor Abolaji Akande commended the young volunteers, emphasizing that protecting Badagry’s marine environment is direct protection of the local artisanal fishing economy and the region’s ecotourism potential."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>More than two hundred young volunteers, environmental enthusiasts, and local fishing families gathered across Badagry’s outer barrier beaches for a large-scale coastal cleanup initiative organized by Lagos Beach Cleaners in partnership with CityMood community champions.</p><p>Armed with reusable collection sacks and sorting gloves, participants combed through three kilometres of shoreline stretching from Gberefu Point to Topo beach, recovering discarded plastic bottles, fishing nets, and styrofoam debris washed ashore by Atlantic ocean currents.</p><p>Organizers revealed that over two metric tons of recyclable waste were gathered during the four-hour exercise. The plastics were sorted on-site and transported via boat to a certified recycling facility in Lagos.</p><p>Community leader and volunteer mentor Abolaji Akande commended the young volunteers, emphasizing that protecting Badagry’s marine environment is direct protection of the local artisanal fishing economy and the region’s ecotourism potential.</p>",
+        "category_id": "76854165-9102-4954-a032-cb3c4a203b1c",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "21a0712a-00df-449c-ae0f-e0ed6776495a",
+        "status": "published",
+        "publish_at": "2026-10-27T09:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T09:07:28.836Z",
+        "updated_at": "2026-10-27T09:07:28.836Z"
+      },
+      {
+        "id": "92332dee-9d66-426b-aa1a-e3d72c46b519",
+        "slug": "stakeholder-dialogue-address-rural-electrification-topo-isalu",
+        "headline": "Stakeholders dialogue addresses rural electrification and transformer upgrades in Topo and Isalu",
+        "standfirst": "Community development associations meet with distribution company representatives over power reliability.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Community Development Associations (CDAs) across Topo, Isalu, and adjoining neighborhoods in Badagry Central convened an interface session with regional representatives of the electricity distribution company to address frequent supply disruptions."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Residents highlighted that rapid population expansion over recent years has severely overloaded existing 33kV distribution transformers, resulting in voltage drops and extended load shedding schedules."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The distribution company’s technical team confirmed that procurement has commenced for three high-capacity replacement transformers designated for critical load centers, with installation slated for completion before the second quarter."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CDA leaders pledged community cooperation and vigilance to protect electrical infrastructure from cable vandalism and unauthorized connections."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Community Development Associations (CDAs) across Topo, Isalu, and adjoining neighborhoods in Badagry Central convened an interface session with regional representatives of the electricity distribution company to address frequent supply disruptions.</p><p>Residents highlighted that rapid population expansion over recent years has severely overloaded existing 33kV distribution transformers, resulting in voltage drops and extended load shedding schedules.</p><p>The distribution company’s technical team confirmed that procurement has commenced for three high-capacity replacement transformers designated for critical load centers, with installation slated for completion before the second quarter.</p><p>CDA leaders pledged community cooperation and vigilance to protect electrical infrastructure from cable vandalism and unauthorized connections.</p>",
+        "category_id": "76854165-9102-4954-a032-cb3c4a203b1c",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": null,
+        "status": "published",
+        "publish_at": "2026-10-26T21:17:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-26T21:17:28.836Z",
+        "updated_at": "2026-10-26T21:17:28.836Z"
+      },
+      {
+        "id": "cadf5716-deba-46ab-b5f0-2196a780ee1e",
+        "slug": "badagry-chamber-commerce-hosts-annual-business-conference-youth-centre",
+        "headline": "Badagry Chamber of Commerce hosts annual Business Conference at Youth Centre to boost MSMEs",
+        "standfirst": "Regional trade leaders, entrepreneurs, and financial institutions convene to unlock investment opportunities across Badagry’s coastal economy.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Badagry Chamber of Commerce, Industry, Mines and Agriculture (BACCIMA) convened its flagship Badagry Business Conference at the Badagry Youth Centre, bringing together over four hundred business owners, agro-allied processors, and financial sector experts."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The conference, themed around sustainable local enterprise and cross-border commercial integration, focused on actionable strategies to expand access to low-interest credit, modernize cold-chain logistics for coastal fisheries, and harness the commercial potential of the international Lagos-Seme corridor."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Prominent speakers, including commercial bank executives and cooperative leaders, highlighted the immense opportunities awaiting tech-enabled agro-processing and hospitality investments in Badagry."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Several young entrepreneurs were awarded seed grants and mentorship placements following a business pitch competition hosted during the conference, underscoring the chamber’s commitment to empowering grassroots enterprise."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>The Badagry Chamber of Commerce, Industry, Mines and Agriculture (BACCIMA) convened its flagship Badagry Business Conference at the Badagry Youth Centre, bringing together over four hundred business owners, agro-allied processors, and financial sector experts.</p><p>The conference, themed around sustainable local enterprise and cross-border commercial integration, focused on actionable strategies to expand access to low-interest credit, modernize cold-chain logistics for coastal fisheries, and harness the commercial potential of the international Lagos-Seme corridor.</p><p>Prominent speakers, including commercial bank executives and cooperative leaders, highlighted the immense opportunities awaiting tech-enabled agro-processing and hospitality investments in Badagry.</p><p>Several young entrepreneurs were awarded seed grants and mentorship placements following a business pitch competition hosted during the conference, underscoring the chamber’s commitment to empowering grassroots enterprise.</p>",
+        "category_id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "868a5d20-e37b-40a9-80c5-eda7312e1e67",
+        "status": "published",
+        "publish_at": "2026-10-27T12:17:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T12:17:28.836Z",
+        "updated_at": "2026-10-27T12:17:28.836Z"
+      },
+      {
+        "id": "7efebdb8-4b02-4412-9b99-0974aba561ca",
+        "slug": "agbalata-market-traders-embrace-digital-transfers-waterfront-stalls",
+        "headline": "Agbalata International Market traders embrace digital transfers across waterfront stalls",
+        "standfirst": "Fish sellers and fresh produce wholesalers report smoother transactions as digital payment adoption reaches new highs.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "At Agbalata International Market, the bustling commercial heartbeat of Badagry, trading stalls that once relied exclusively on physical naira notes have widely adopted digital point-of-sale (POS) terminals and instant bank transfers."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Waterfront fish mongers, yam merchants, and imported textiles distributors noted that mobile payment reliability has improved dramatically with expanded telecommunications coverage around the market perimeter."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Market leaders explained that digital transactions have mitigated the risk of nighttime cash theft and enabled traders to settle wholesale accounts with suppliers in Lagos, Republic of Benin, and Togo directly from their smartphones."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trader associations continue to engage local financial service providers to lower transaction fees and offer micro-insurance products tailored to perishable food vendors."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>At Agbalata International Market, the bustling commercial heartbeat of Badagry, trading stalls that once relied exclusively on physical naira notes have widely adopted digital point-of-sale (POS) terminals and instant bank transfers.</p><p>Waterfront fish mongers, yam merchants, and imported textiles distributors noted that mobile payment reliability has improved dramatically with expanded telecommunications coverage around the market perimeter.</p><p>Market leaders explained that digital transactions have mitigated the risk of nighttime cash theft and enabled traders to settle wholesale accounts with suppliers in Lagos, Republic of Benin, and Togo directly from their smartphones.</p><p>Trader associations continue to engage local financial service providers to lower transaction fees and offer micro-insurance products tailored to perishable food vendors.</p>",
+        "category_id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "5a38db29-f3da-42e7-81a3-0e7299f754e2",
+        "status": "published",
+        "publish_at": "2026-10-27T10:37:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T10:37:28.836Z",
+        "updated_at": "2026-10-27T10:37:28.836Z"
+      },
+      {
+        "id": "f6487094-bc5b-4a4b-ab0f-25344ebbd357",
+        "slug": "gberefu-coconut-farmers-cooperative-direct-processing-deals",
+        "headline": "Gberefu coconut farmers cooperative seals direct supply pact with Lagos agro-processing hubs",
+        "standfirst": "Forty plantation owners bypass third-party brokers to supply raw coconut and cold-pressed oil directly to FMCG manufacturers.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Gberefu Coconut Growers and Processing Cooperative has concluded landmark direct-supply agreements with two leading industrial food and cosmetics processors based in Ikeja and Agbara."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The cooperative, which represents forty family-run coconut groves spanning the Gberefu peninsula, was formed to eliminate exploitative intermediary markups and guarantee stable farmgate prices throughout the harvesting calendar."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Under the partnership terms, the cooperative will supply twenty thousand matured coconuts weekly alongside certified extra virgin coconut oil processed using modern mechanical expellers installed at their local processing hub."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Cooperative executives stated that proceeds from the contracts will fund seedling replanting schemes, pest management training, and educational scholarships for children of cooperative members."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>The Gberefu Coconut Growers and Processing Cooperative has concluded landmark direct-supply agreements with two leading industrial food and cosmetics processors based in Ikeja and Agbara.</p><p>The cooperative, which represents forty family-run coconut groves spanning the Gberefu peninsula, was formed to eliminate exploitative intermediary markups and guarantee stable farmgate prices throughout the harvesting calendar.</p><p>Under the partnership terms, the cooperative will supply twenty thousand matured coconuts weekly alongside certified extra virgin coconut oil processed using modern mechanical expellers installed at their local processing hub.</p><p>Cooperative executives stated that proceeds from the contracts will fund seedling replanting schemes, pest management training, and educational scholarships for children of cooperative members.</p>",
+        "category_id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": "7d50dc52-a577-4e63-98a6-2ea514e19ff0",
+        "status": "published",
+        "publish_at": "2026-10-27T06:17:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-27T06:17:28.836Z",
+        "updated_at": "2026-10-27T06:17:28.836Z"
+      },
+      {
+        "id": "cf4e129f-8de5-4ffe-b419-f9ad69b14b6c",
+        "slug": "solar-cold-chain-hub-marina-jetty-reduces-fish-losses",
+        "headline": "Solar cold-chain storage hub at Marina jetty reduces post-catch losses for artisanal fishermen",
+        "standfirst": "The communal cold room allows fishermen from Ajido and Topo to store night catches, stabilizing market prices.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Artisanal fishing families operating across the Badagry lagoon basin have welcomed the inauguration of a community-managed solar cold-storage hub located at the Marina jetty."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The facility, powered entirely by an 8kW solar rooftop system with lithium battery storage, provides dependable walk-in refrigeration capable of holding five metric tons of fresh fish."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Previously, fishermen who returned with abundant night catches were frequently forced to sell their catch at distressed prices to prevent spoilage before morning trading opened at Agbalata Market."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "With affordable daily crate storage fees, local fishermen can now preserve their haul in prime condition, evening out supply spikes and ensuring fair market returns for their labor."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Artisanal fishing families operating across the Badagry lagoon basin have welcomed the inauguration of a community-managed solar cold-storage hub located at the Marina jetty.</p><p>The facility, powered entirely by an 8kW solar rooftop system with lithium battery storage, provides dependable walk-in refrigeration capable of holding five metric tons of fresh fish.</p><p>Previously, fishermen who returned with abundant night catches were frequently forced to sell their catch at distressed prices to prevent spoilage before morning trading opened at Agbalata Market.</p><p>With affordable daily crate storage fees, local fishermen can now preserve their haul in prime condition, evening out supply spikes and ensuring fair market returns for their labor.</p>",
+        "category_id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "9d492d74-183a-4776-bc83-3e83a1cab9b8",
+        "status": "published",
+        "publish_at": "2026-10-27T00:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T00:07:28.836Z",
+        "updated_at": "2026-10-27T00:07:28.836Z"
+      },
+      {
+        "id": "c93b49d4-798d-4937-bc16-5d8c87eff88d",
+        "slug": "badagry-hospitality-operators-prepare-summer-tourist-influx",
+        "headline": "Badagry hospitality operators upgrade facilities ahead of annual cultural tourism influx",
+        "standfirst": "Guesthouses, beach resorts, and waterfront dining spots report strong advance bookings for festival and heritage season.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Hotels, beachfront lodges, and heritage guesthouses across Badagry Central and along the scenic coconut belt have initiated extensive facility renovations ahead of the anticipated summer tourism peak."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Operators have invested in upgraded solar energy backups, high-speed Wi-Fi, and guided excursion partnerships connecting guests directly with licensed boat tour guides, historical shrines, and traditional craft markets."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Badagry Hoteliers and Tourism Stakeholders Association noted that demand from Nigerian diaspora travelers and corporate retreat organizers has surged over recent months."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Association representatives are coordinating with local authorities to ensure reliable road signage, clean beaches, and visible security patrols throughout the holiday season."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Hotels, beachfront lodges, and heritage guesthouses across Badagry Central and along the scenic coconut belt have initiated extensive facility renovations ahead of the anticipated summer tourism peak.</p><p>Operators have invested in upgraded solar energy backups, high-speed Wi-Fi, and guided excursion partnerships connecting guests directly with licensed boat tour guides, historical shrines, and traditional craft markets.</p><p>The Badagry Hoteliers and Tourism Stakeholders Association noted that demand from Nigerian diaspora travelers and corporate retreat organizers has surged over recent months.</p><p>Association representatives are coordinating with local authorities to ensure reliable road signage, clean beaches, and visible security patrols throughout the holiday season.</p>",
+        "category_id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "3adfbebb-1187-46ec-a8e6-68fd03b6d0e8",
+        "status": "published",
+        "publish_at": "2026-10-26T11:17:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-26T11:17:28.836Z",
+        "updated_at": "2026-10-26T11:17:28.836Z"
+      },
+      {
+        "id": "b29f6fb8-0cda-47f4-a1f6-56dd68882bfb",
+        "slug": "pos-merchants-financial-inclusion-badagry-border-axis",
+        "headline": "Agency banking network expands financial access across riverine settlements",
+        "standfirst": "Mobile money operators provide cash-in and cash-out points to Topo, Ajido, and Iworo fishing communities.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Financial inclusion has made significant strides across the riverine settlements of Badagry with the rapid growth of accredited agency banking operators."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Residents of Topo, Ajido, and Iworo who previously had to travel several kilometers by boat to reach commercial bank branches in Badagry town can now perform withdrawals, fund transfers, and utility bill payments at local agent kiosks."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Operators report that mobile banking has especially benefited small-scale fish smokers, vegetable farmers, and village artisans who operate outside conventional banking hours."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Community leaders commended the financial service providers, urging further expansion into more distant island communities along the lagoon corridor."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Financial inclusion has made significant strides across the riverine settlements of Badagry with the rapid growth of accredited agency banking operators.</p><p>Residents of Topo, Ajido, and Iworo who previously had to travel several kilometers by boat to reach commercial bank branches in Badagry town can now perform withdrawals, fund transfers, and utility bill payments at local agent kiosks.</p><p>Operators report that mobile banking has especially benefited small-scale fish smokers, vegetable farmers, and village artisans who operate outside conventional banking hours.</p><p>Community leaders commended the financial service providers, urging further expansion into more distant island communities along the lagoon corridor.</p>",
+        "category_id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": null,
+        "status": "published",
+        "publish_at": "2026-10-26T02:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-26T02:07:28.836Z",
+        "updated_at": "2026-10-26T02:07:28.836Z"
+      },
+      {
+        "id": "841b3a68-7f6d-4e83-ab0d-9a428b7a69b0",
+        "slug": "badagry-west-lcda-reviews-grassroots-drainage-road-works",
+        "headline": "Badagry West LCDA leadership reviews grassroots road rehabilitation and flood drainage expansion",
+        "standfirst": "Council chairman and works supervisors inspect culverts in Kankon and Apa ahead of early seasonal rains.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The executive management of Badagry West Local Council Development Area (LCDA) conducted comprehensive on-site inspections of primary drainage culverts and link road grading works across several borderline communities."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The inspection team, led by council engineers and works supervisors, evaluated completed civil works in Kankon, Apa, and surrounding residential clusters where seasonal torrential downpours have historically caused waterlogging and disrupted farm-to-market mobility."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Council officials confirmed that desilting crews will clear primary channels connecting local streams to the lagoon over the coming fortnight. Contractors handling concrete culvert extensions were directed to accelerate timelines to prevent rain interruptions."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Community representatives who met the inspection delegation expressed gratitude for the prompt intervention, while requesting additional grading of connecting feeder roads to sustain school transit during the rainy months."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>The executive management of Badagry West Local Council Development Area (LCDA) conducted comprehensive on-site inspections of primary drainage culverts and link road grading works across several borderline communities.</p><p>The inspection team, led by council engineers and works supervisors, evaluated completed civil works in Kankon, Apa, and surrounding residential clusters where seasonal torrential downpours have historically caused waterlogging and disrupted farm-to-market mobility.</p><p>Council officials confirmed that desilting crews will clear primary channels connecting local streams to the lagoon over the coming fortnight. Contractors handling concrete culvert extensions were directed to accelerate timelines to prevent rain interruptions.</p><p>Community representatives who met the inspection delegation expressed gratitude for the prompt intervention, while requesting additional grading of connecting feeder roads to sustain school transit during the rainy months.</p>",
+        "category_id": "865ade52-ace1-4789-9fa4-eda7e93e3a92",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "3adfbebb-1187-46ec-a8e6-68fd03b6d0e8",
+        "status": "published",
+        "publish_at": "2026-10-27T13:42:28.836Z",
+        "featured": false,
+        "breaking": true,
+        "breaking_until": "2026-10-27T19:42:28.836Z",
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T13:42:28.836Z",
+        "updated_at": "2026-10-27T13:42:28.836Z"
+      },
+      {
+        "id": "4c3295de-197d-4631-9eec-9f88721e130e",
+        "slug": "badagry-media-group-champions-verified-community-journalism",
+        "headline": "Badagry Media Group chairman urges verified reporting and community advocacy",
+        "standfirst": "Media practitioners across the division gather in Ajara to discuss digital ethics, accurate sourcing, and local development coverage.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Practicing journalists, community bloggers, and digital media publishers across the Badagry Division met at the Ajara Media Centre under the auspices of the Badagry Media Group to chart strategic priorities for regional news reporting."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The roundtable focused on enhancing journalistic rigour, eliminating unverified social media rumours, and deepening developmental journalism that shines a spotlight on community needs, healthcare milestones, and cultural preservation."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "In his keynote remarks, Dr. Sewhude Akande emphasized that local media outfits bear a sacred responsibility to serve as the authentic voice of the grassroots, balancing vigilance against social vices with proactive celebration of communal progress."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The assembly resolved to establish a peer-review verification desk for breaking community alerts and conduct regular digital reporting masterclasses for emerging young writers across Badagry."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Practicing journalists, community bloggers, and digital media publishers across the Badagry Division met at the Ajara Media Centre under the auspices of the Badagry Media Group to chart strategic priorities for regional news reporting.</p><p>The roundtable focused on enhancing journalistic rigour, eliminating unverified social media rumours, and deepening developmental journalism that shines a spotlight on community needs, healthcare milestones, and cultural preservation.</p><p>In his keynote remarks, Dr. Sewhude Akande emphasized that local media outfits bear a sacred responsibility to serve as the authentic voice of the grassroots, balancing vigilance against social vices with proactive celebration of communal progress.</p><p>The assembly resolved to establish a peer-review verification desk for breaking community alerts and conduct regular digital reporting masterclasses for emerging young writers across Badagry.</p>",
+        "category_id": "865ade52-ace1-4789-9fa4-eda7e93e3a92",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "612c5fff-83b1-4286-b1e7-72625af7e2c2",
+        "status": "published",
+        "publish_at": "2026-10-27T10:12:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T10:12:28.836Z",
+        "updated_at": "2026-10-27T10:12:28.836Z"
+      },
+      {
+        "id": "8e98b9d5-9593-4633-992e-18ad6c6eeb50",
+        "slug": "council-legislative-arm-confirms-public-hearing-market-levies",
+        "headline": "Badagry Council legislative arm confirms public hearing on market infrastructure and trader welfare",
+        "standfirst": "Council legislators announce open dialogue with market executives to address stall allocations, sanitation, and security levies.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Legislative Council of Badagry Local Government has scheduled an open public hearing on proposed amendments to municipal market regulations and stall sanitation levies."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The announcement followed representations made by trader associations requesting transparent accounting of market sanitation dues and improved municipal maintenance of access roads and waste disposal bays around market grounds."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "House leader Hon. Babatunde Hunpe stated that the legislative chamber is committed to creating an enabling commercial climate where small traders are supported rather than burdened with duplicate levies."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Representatives from all recognized market guilds, transport unions, and civil society observers have been invited to submit memoranda ahead of the televised council debate next Tuesday."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>The Legislative Council of Badagry Local Government has scheduled an open public hearing on proposed amendments to municipal market regulations and stall sanitation levies.</p><p>The announcement followed representations made by trader associations requesting transparent accounting of market sanitation dues and improved municipal maintenance of access roads and waste disposal bays around market grounds.</p><p>House leader Hon. Babatunde Hunpe stated that the legislative chamber is committed to creating an enabling commercial climate where small traders are supported rather than burdened with duplicate levies.</p><p>Representatives from all recognized market guilds, transport unions, and civil society observers have been invited to submit memoranda ahead of the televised council debate next Tuesday.</p>",
+        "category_id": "865ade52-ace1-4789-9fa4-eda7e93e3a92",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": "21a0712a-00df-449c-ae0f-e0ed6776495a",
+        "status": "published",
+        "publish_at": "2026-10-27T07:47:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-27T07:47:28.836Z",
+        "updated_at": "2026-10-27T07:47:28.836Z"
+      },
+      {
+        "id": "875e8e8e-9008-4c5b-9cca-15313c8f667e",
+        "slug": "explainer-federal-state-council-responsibilities-badagry-roads",
+        "headline": "Explainer: federal, state or council — who is responsible for each arterial road leading into Badagry?",
+        "standfirst": "We trace five major corridors across the division and the public works authorities responsible for maintaining them.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Commuters navigating the Badagry division frequently encounter varying road surface conditions, prompting confusion over which tier of government holds maintenance jurisdiction for each route."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Lagos–Badagry Expressway, spanning from Eric Moore through Agbara to Seme Border, is a designated federal highway under the direct supervision of the Federal Ministry of Works."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "In contrast, key connecting thoroughfares such as the Badagry–Topo–Idale Road and the Joseph Dosu Way are managed by the Lagos State Ministry of Works and Infrastructure through the Lagos State Public Works Corporation (LSPWC)."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Internal access streets, residential avenues in Ajara, and rural link roads fall under the statutory purview of Badagry Local Government and the respective LCDAs."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Clear understanding of jurisdictional boundaries empowers community development associations to direct infrastructure petitions to the appropriate engineering agency."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Commuters navigating the Badagry division frequently encounter varying road surface conditions, prompting confusion over which tier of government holds maintenance jurisdiction for each route.</p><p>The Lagos–Badagry Expressway, spanning from Eric Moore through Agbara to Seme Border, is a designated federal highway under the direct supervision of the Federal Ministry of Works.</p><p>In contrast, key connecting thoroughfares such as the Badagry–Topo–Idale Road and the Joseph Dosu Way are managed by the Lagos State Ministry of Works and Infrastructure through the Lagos State Public Works Corporation (LSPWC).</p><p>Internal access streets, residential avenues in Ajara, and rural link roads fall under the statutory purview of Badagry Local Government and the respective LCDAs.</p><p>Clear understanding of jurisdictional boundaries empowers community development associations to direct infrastructure petitions to the appropriate engineering agency.</p>",
+        "category_id": "865ade52-ace1-4789-9fa4-eda7e93e3a92",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": null,
+        "status": "published",
+        "publish_at": "2026-10-26T23:27:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-26T23:27:28.836Z",
+        "updated_at": "2026-10-26T23:27:28.836Z"
+      },
+      {
+        "id": "dd01d4e0-e0d2-4198-bbcc-a396ac3fbbdd",
+        "slug": "youth-development-forum-dialogue-grassroots-representation",
+        "headline": "Badagry Youth Development Forum convenes dialogue on civic participation",
+        "standfirst": "Youth delegates from across three council areas advocate for structured vocational training and digital hubs.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Youth leaders from Badagry Central, Olorunda, and Badagry West gathered for the quarterly Badagry Youth Development Forum to address civic participation and economic empowerment."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The convention spotlighted the imperative of equipping coastal youths with in-demand technical skills in solar installation, maritime mechanics, digital coding, and creative media production."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Delegates drafted a ten-point policy memorandum addressed to the state youth ministry, recommending the establishment of community innovation workspaces equipped with high-speed internet in each council area."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Forum executives called on young people across the division to participate constructively in community governance and register actively for upcoming civic elections."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Youth leaders from Badagry Central, Olorunda, and Badagry West gathered for the quarterly Badagry Youth Development Forum to address civic participation and economic empowerment.</p><p>The convention spotlighted the imperative of equipping coastal youths with in-demand technical skills in solar installation, maritime mechanics, digital coding, and creative media production.</p><p>Delegates drafted a ten-point policy memorandum addressed to the state youth ministry, recommending the establishment of community innovation workspaces equipped with high-speed internet in each council area.</p><p>Forum executives called on young people across the division to participate constructively in community governance and register actively for upcoming civic elections.</p>",
+        "category_id": "865ade52-ace1-4789-9fa4-eda7e93e3a92",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": null,
+        "status": "published",
+        "publish_at": "2026-10-26T07:57:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-26T07:57:28.836Z",
+        "updated_at": "2026-10-26T07:57:28.836Z"
+      },
+      {
+        "id": "6c29ba5d-c0ad-481e-ab32-636412ec2438",
+        "slug": "ogu-sato-drummers-dance-troupes-heritage-festival-ajido",
+        "headline": "Drums at dusk: Sato drummers and Ogu cultural troupes gather in Ajido for heritage festival",
+        "standfirst": "Traditional performers from across Badagry showcase historic rhythms, acrobatics, and oral poetry drawing cultural enthusiasts to the lagoon shore.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "As the late afternoon sun cast golden reflections across the waters of the Badagry lagoon at Ajido, the thunderous, resonant beat of the sacred Sato drum reverberated across the festival grounds, heralding the opening of the Ogu Cultural Heritage Festival."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Troupes representing historic communities—from Ajido, Topo, and Iworo to Pota and Apa—gathered in full traditional ceremonial regalia. Dancers wearing intricate cowrie-embroidered headdresses and woven raffia skirts executed gravity-defying leaps and synchronized stick dances that have been passed down through generations."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The towering Sato drums, carved from solid hardwood tree trunks and adorned with symbolic ancestral motifs, hold deep sacred significance in Ogu cosmology. Master drummers explained that the drums were traditionally sounded during moments of communal triumph, harvest thanksgiving, and historic transitions."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Cultural elders and visiting scholars praised the younger generation of dancers for keeping the intricate footwork and percussive traditions alive, reaffirming Badagry’s enduring position as a cradle of African artistic resilience."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>As the late afternoon sun cast golden reflections across the waters of the Badagry lagoon at Ajido, the thunderous, resonant beat of the sacred Sato drum reverberated across the festival grounds, heralding the opening of the Ogu Cultural Heritage Festival.</p><p>Troupes representing historic communities—from Ajido, Topo, and Iworo to Pota and Apa—gathered in full traditional ceremonial regalia. Dancers wearing intricate cowrie-embroidered headdresses and woven raffia skirts executed gravity-defying leaps and synchronized stick dances that have been passed down through generations.</p><p>The towering Sato drums, carved from solid hardwood tree trunks and adorned with symbolic ancestral motifs, hold deep sacred significance in Ogu cosmology. Master drummers explained that the drums were traditionally sounded during moments of communal triumph, harvest thanksgiving, and historic transitions.</p><p>Cultural elders and visiting scholars praised the younger generation of dancers for keeping the intricate footwork and percussive traditions alive, reaffirming Badagry’s enduring position as a cradle of African artistic resilience.</p>",
+        "category_id": "45c553ad-0411-46b3-b65f-2e64992b048a",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": "ce19c020-4087-4774-b5aa-0c8c38d23d18",
+        "status": "published",
+        "publish_at": "2026-10-27T05:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-27T05:07:28.836Z",
+        "updated_at": "2026-10-27T05:07:28.836Z"
+      },
+      {
+        "id": "386ef013-68a9-4dd3-a8a0-6e91cef008e9",
+        "slug": "acm-project-launches-children-cultural-heritage-workshop-badagry",
+        "headline": "African Children’s Cultural Heritage Project launches arts and folklore academy in Badagry",
+        "standfirst": "Youth initiative trains primary school pupils in traditional Ogu drumming, storytelling, and local language literacy.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Over one hundred school pupils from public and private primary schools in Badagry have enrolled in the newly launched African Children’s Cultural Heritage (ACM) Project holiday academy."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The community initiative, supported by educational stakeholders and cultural advocates, is designed to instill deep appreciation of indigenous history, folk songs, traditional weaving, and Ogu language proficiency among children."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Sessions held at the Badagry Town Hall include daily masterclasses led by veteran storytellers, drumming tutors, and visual artists who guide the youngsters in illustrating folklore tales and mastering basic percussion rhythms."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Project coordinators pointed out that nurturing cultural literacy at an early age provides young people with strong self-identity and creative pride, ensuring that Badagry’s intangible cultural heritage continues to flourish for centuries to come."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Over one hundred school pupils from public and private primary schools in Badagry have enrolled in the newly launched African Children’s Cultural Heritage (ACM) Project holiday academy.</p><p>The community initiative, supported by educational stakeholders and cultural advocates, is designed to instill deep appreciation of indigenous history, folk songs, traditional weaving, and Ogu language proficiency among children.</p><p>Sessions held at the Badagry Town Hall include daily masterclasses led by veteran storytellers, drumming tutors, and visual artists who guide the youngsters in illustrating folklore tales and mastering basic percussion rhythms.</p><p>Project coordinators pointed out that nurturing cultural literacy at an early age provides young people with strong self-identity and creative pride, ensuring that Badagry’s intangible cultural heritage continues to flourish for centuries to come.</p>",
+        "category_id": "45c553ad-0411-46b3-b65f-2e64992b048a",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "73515c41-e013-49df-85f8-cb3e314c3cf4",
+        "status": "published",
+        "publish_at": "2026-10-26T22:27:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-26T22:27:28.836Z",
+        "updated_at": "2026-10-26T22:27:28.836Z"
+      },
+      {
+        "id": "06441a58-4931-4686-bf08-500a5494f473",
+        "slug": "badagry-diaspora-festival-preparations-underway-heritage-carnival",
+        "headline": "Badagry Diaspora Festival preparations underway with international heritage delegations confirmed",
+        "standfirst": "Organizing committee reveals highlights for the upcoming carnival, including water regattas, symposiums, and ancestral remembrance walks.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Preparations for the annual Badagry Diaspora Festival have entered high gear following confirmation of attendance from cultural delegations across the Caribbean, Brazil, and North America."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The weeklong celebration, renowned for its colorful lagoon water regatta, street masquerade pageantry, and international academic symposium on African heritage, is expected to attract thousands of visitors."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The planning committee outlined key itinerary highlights, including the ceremonial lighting of the Freedom Flame, choral concerts at the Badagry Marina, and a solemn remembrance walk retracing the historic slave route to Gberefu Island."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Local artisans, culinary vendors, and transport guilds are coordinating to offer visitors an unforgettable, welcoming experience showcasing Badagry’s renowned warmth and hospitality."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Preparations for the annual Badagry Diaspora Festival have entered high gear following confirmation of attendance from cultural delegations across the Caribbean, Brazil, and North America.</p><p>The weeklong celebration, renowned for its colorful lagoon water regatta, street masquerade pageantry, and international academic symposium on African heritage, is expected to attract thousands of visitors.</p><p>The planning committee outlined key itinerary highlights, including the ceremonial lighting of the Freedom Flame, choral concerts at the Badagry Marina, and a solemn remembrance walk retracing the historic slave route to Gberefu Island.</p><p>Local artisans, culinary vendors, and transport guilds are coordinating to offer visitors an unforgettable, welcoming experience showcasing Badagry’s renowned warmth and hospitality.</p>",
+        "category_id": "45c553ad-0411-46b3-b65f-2e64992b048a",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "5a38db29-f3da-42e7-81a3-0e7299f754e2",
+        "status": "published",
+        "publish_at": "2026-10-26T16:17:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-26T16:17:28.836Z",
+        "updated_at": "2026-10-26T16:17:28.836Z"
+      },
+      {
+        "id": "1b3a11e6-f8b6-412c-af58-4837d91cba8d",
+        "slug": "badagry-choral-society-triumphs-state-music-championship",
+        "headline": "Badagry Choral Society triumphs at Lagos State indigenous music championship",
+        "standfirst": "The 35-member choir took top honors with their breathtaking performance of traditional Ogu choral hymns.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Badagry Choral Society has emerged victorious at the Lagos State Indigenous Choir and Choral Music Championships held at the National Theatre, Iganmu."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Competing against twenty-four choral ensembles from across the state, the 35-member choir captivated the judges with an evocative four-part harmonic arrangement of a 19th-century Ogu thanksgiving hymn, accompanied by acoustic gongs, shakers, and talking drums."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Choir director Emmanuel Whendo praised the singers for their relentless discipline and dedication during weeks of demanding rehearsals at the Anglican Church hall in Badagry."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The ensemble was presented with the championship trophy and a grant to record an album of indigenous coastal choral masterpieces."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>The Badagry Choral Society has emerged victorious at the Lagos State Indigenous Choir and Choral Music Championships held at the National Theatre, Iganmu.</p><p>Competing against twenty-four choral ensembles from across the state, the 35-member choir captivated the judges with an evocative four-part harmonic arrangement of a 19th-century Ogu thanksgiving hymn, accompanied by acoustic gongs, shakers, and talking drums.</p><p>Choir director Emmanuel Whendo praised the singers for their relentless discipline and dedication during weeks of demanding rehearsals at the Anglican Church hall in Badagry.</p><p>The ensemble was presented with the championship trophy and a grant to record an album of indigenous coastal choral masterpieces.</p>",
+        "category_id": "45c553ad-0411-46b3-b65f-2e64992b048a",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": null,
+        "status": "published",
+        "publish_at": "2026-10-26T09:37:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-26T09:37:28.836Z",
+        "updated_at": "2026-10-26T09:37:28.836Z"
+      },
+      {
+        "id": "b424e186-6058-4cc3-8539-071c663a9156",
+        "slug": "sewhude-akande-appointed-director-general-badagry-tourism-centre",
+        "headline": "CityMood publisher Dr. Abolaji Sewhude Akande appointed pioneer Director General of Badagry Tourism Development Centre",
+        "standfirst": "Aremo of Iworo Kingdom and BTDC Board Chairman Prince Olu Kosoko announced the appointment to spearhead the global promotion of Badagry’s coastal and cultural heritage.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "In a milestone development for regional heritage preservation and coastal tourism, Dr. Abolaji Sewhude Akande has been appointed as the pioneer Director General of the Badagry Tourism Development Centre (BTDC) for a three-year tenure."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The announcement was made by the Chairman of the BTDC Board and Aremo of Iworo Kingdom, Prince Olu Kosoko, following extensive consultations with traditional rulers, the Akran of Badagry Kingdom Wheno Aholu Menu-Toyi I, and regional hospitality stakeholders."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Dr. Akande, an honorary doctorate recipient in Arts and Culture and publisher of CityMood Communications, brings over two decades of experience in community media, cultural advocacy, and tourism administration. He previously served as Director of Communications for the Badagry Chamber of Commerce and led numerous grassroots heritage documentation projects across Lagos State."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "In his acceptance remarks, Dr. Akande pledged to collaborate closely with indigenous royal institutions, youth organizations, and private investors to elevate Badagry’s historical landmarks onto the global tourism stage while ensuring tangible economic returns for coastal host communities."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>In a milestone development for regional heritage preservation and coastal tourism, Dr. Abolaji Sewhude Akande has been appointed as the pioneer Director General of the Badagry Tourism Development Centre (BTDC) for a three-year tenure.</p><p>The announcement was made by the Chairman of the BTDC Board and Aremo of Iworo Kingdom, Prince Olu Kosoko, following extensive consultations with traditional rulers, the Akran of Badagry Kingdom Wheno Aholu Menu-Toyi I, and regional hospitality stakeholders.</p><p>Dr. Akande, an honorary doctorate recipient in Arts and Culture and publisher of CityMood Communications, brings over two decades of experience in community media, cultural advocacy, and tourism administration. He previously served as Director of Communications for the Badagry Chamber of Commerce and led numerous grassroots heritage documentation projects across Lagos State.</p><p>In his acceptance remarks, Dr. Akande pledged to collaborate closely with indigenous royal institutions, youth organizations, and private investors to elevate Badagry’s historical landmarks onto the global tourism stage while ensuring tangible economic returns for coastal host communities.</p>",
+        "category_id": "8353e191-33b7-48ea-b764-f9c87405a564",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "73515c41-e013-49df-85f8-cb3e314c3cf4",
+        "status": "published",
+        "publish_at": "2026-10-27T12:47:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T12:47:28.836Z",
+        "updated_at": "2026-10-27T12:47:28.836Z"
+      },
+      {
+        "id": "00559808-4480-4acb-8c2b-555ca41ab22a",
+        "slug": "first-storey-building-nigeria-restoration-milestone-badagry-marina",
+        "headline": "First Storey Building in Nigeria marks preservation milestone with new archival gallery",
+        "standfirst": "Curators at the historic 1845 mission house complete digital cataloguing of early Yoruba translations and missionary artefacts.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The First Storey Building in Nigeria, constructed in 1845 by the Church Missionary Society along the Badagry Marina waterfront, has unveiled a newly refurbished archival room housing preserved historical documents and interactive displays."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Among the preserved treasures on display is the original English and Yoruba Bible translated by Bishop Samuel Ajayi Crowther, alongside 19th-century church records, early printing implements, and rare photographic archives documenting Badagry’s coastal commerce."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Curators noted that the new temperature-controlled display cases and digital audio guides will significantly enhance visitor engagement, particularly for visiting school excursions and international tourists tracing African heritage."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Stakeholders used the milestone to reiterate calls for enhanced federal monument maintenance and cohesive landscape planning connecting the First Storey Building with the Badagry Heritage Museum and the Marina boardwalk."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>The First Storey Building in Nigeria, constructed in 1845 by the Church Missionary Society along the Badagry Marina waterfront, has unveiled a newly refurbished archival room housing preserved historical documents and interactive displays.</p><p>Among the preserved treasures on display is the original English and Yoruba Bible translated by Bishop Samuel Ajayi Crowther, alongside 19th-century church records, early printing implements, and rare photographic archives documenting Badagry’s coastal commerce.</p><p>Curators noted that the new temperature-controlled display cases and digital audio guides will significantly enhance visitor engagement, particularly for visiting school excursions and international tourists tracing African heritage.</p><p>Stakeholders used the milestone to reiterate calls for enhanced federal monument maintenance and cohesive landscape planning connecting the First Storey Building with the Badagry Heritage Museum and the Marina boardwalk.</p>",
+        "category_id": "8353e191-33b7-48ea-b764-f9c87405a564",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": "868a5d20-e37b-40a9-80c5-eda7312e1e67",
+        "status": "published",
+        "publish_at": "2026-10-27T07:17:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T07:17:28.836Z",
+        "updated_at": "2026-10-27T07:17:28.836Z"
+      },
+      {
+        "id": "1314a414-383d-40ef-a821-d90e0623d37a",
+        "slug": "gberefu-island-point-of-no-return-trail-conservation-initiative",
+        "headline": "Gberefu Island: conservationists and boat operators advocate sustainable trail management at Point of No Return",
+        "standfirst": "Community custodians on the barrier island call for elevated wooden boardwalks and ecological preservation along the historic route.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Environmental advocates, historic trail guides, and lagoon ferry captains have united under the Gberefu Heritage Coalition to champion ecological preservation and visitor infrastructure along the historic Point of No Return trail."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Each year, tens of thousands of pilgrims, researchers, and diaspora visitors traverse the sandy path crossing Gberefu Island from the lagoon jetty to the Atlantic shore. However, coastal erosion and heavy foot traffic during peak holiday periods have highlighted the need for structured eco-friendly pathways."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The coalition’s proposal includes installing raised treated-timber boardwalks, planting indigenous coconut palms and mangrove buffers to check shoreline retreat, and establishing modern solar-powered sanitation and information kiosks."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Traditional custodians highlighted that preserving the tranquil, sacred atmosphere of the slave trail is essential to honouring the memory of ancestors while fostering responsible cultural tourism that respects local island residents."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Environmental advocates, historic trail guides, and lagoon ferry captains have united under the Gberefu Heritage Coalition to champion ecological preservation and visitor infrastructure along the historic Point of No Return trail.</p><p>Each year, tens of thousands of pilgrims, researchers, and diaspora visitors traverse the sandy path crossing Gberefu Island from the lagoon jetty to the Atlantic shore. However, coastal erosion and heavy foot traffic during peak holiday periods have highlighted the need for structured eco-friendly pathways.</p><p>The coalition’s proposal includes installing raised treated-timber boardwalks, planting indigenous coconut palms and mangrove buffers to check shoreline retreat, and establishing modern solar-powered sanitation and information kiosks.</p><p>Traditional custodians highlighted that preserving the tranquil, sacred atmosphere of the slave trail is essential to honouring the memory of ancestors while fostering responsible cultural tourism that respects local island residents.</p>",
+        "category_id": "8353e191-33b7-48ea-b764-f9c87405a564",
+        "author_id": "d0000000-0000-4000-8000-00000000000e",
+        "featured_image_id": "7d50dc52-a577-4e63-98a6-2ea514e19ff0",
+        "status": "published",
+        "publish_at": "2026-10-26T20:27:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-00000000000e",
+        "updated_by": "d0000000-0000-4000-8000-00000000000e",
+        "created_at": "2026-10-26T20:27:28.836Z",
+        "updated_at": "2026-10-26T20:27:28.836Z"
+      },
+      {
+        "id": "e1404ffa-d986-45b5-b5fb-504831ac3e41",
+        "slug": "oja-heritage-walking-route-historic-landmarks-badagry",
+        "headline": "Ọjà and the ancient quarters: self-guided walking route links Badagry’s earliest landmarks",
+        "standfirst": "Twelve curated stops, historical signboards, and multilingual guidebooks connect the Marina, Vlekete Slave Market, and Brazilian Baracoon.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Visitors exploring Badagry town can now navigate a carefully mapped self-guided walking trail linking twelve of the ancient town’s most significant cultural and historic quarters."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The walking circuit begins at the Badagry Marina boardwalk and traverses the historic Vlekete Slave Market (established in 1502), the Brazilian Baracoon, the Mobee Family Slave Relics Museum, and the ancient market square of Ọjà."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Each landmark features weather-resistant interpretive plaques in English, French, and Yoruba, detailing the architectural provenance, social history, and spiritual traditions associated with each site."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Local shopkeepers and craft vendors along the walking corridor reported steady patronage from walking tour groups, praising the initiative for dispersing visitor foot traffic across the historic town center."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>Visitors exploring Badagry town can now navigate a carefully mapped self-guided walking trail linking twelve of the ancient town’s most significant cultural and historic quarters.</p><p>The walking circuit begins at the Badagry Marina boardwalk and traverses the historic Vlekete Slave Market (established in 1502), the Brazilian Baracoon, the Mobee Family Slave Relics Museum, and the ancient market square of Ọjà.</p><p>Each landmark features weather-resistant interpretive plaques in English, French, and Yoruba, detailing the architectural provenance, social history, and spiritual traditions associated with each site.</p><p>Local shopkeepers and craft vendors along the walking corridor reported steady patronage from walking tour groups, praising the initiative for dispersing visitor foot traffic across the historic town center.</p>",
+        "category_id": "8353e191-33b7-48ea-b764-f9c87405a564",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": "9d492d74-183a-4776-bc83-3e83a1cab9b8",
+        "status": "published",
+        "publish_at": "2026-10-25T16:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-25T16:07:28.836Z",
+        "updated_at": "2026-10-25T16:07:28.836Z"
+      },
+      {
+        "id": "2e400ef5-4d14-454d-8da0-3a84ad5a4db2",
+        "slug": "citymood-newsroom-editorial-policy-public-updates",
+        "headline": "CityMood newsroom: verified community reporting guidelines and public submissions",
+        "standfirst": "How readers across Badagry Central, Olorunda, and Badagry West can submit community updates, event announcements, and tips to our reporters.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CityMood Communications remains committed to providing verified, independent, and ethical community journalism for the people of Badagry and surrounding divisions."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Our newsroom operates in accordance with strict verification and fairness standards. We welcome story leads, photo reports of community events, and public interest tips from verified residents across Badagry Central, Badagry West, and Olorunda."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Readers can contact our newsroom team via email at citymoodbadagry@gmail.com or visit our physical office at 10, Agric Road, opposite the Badagry Local Government Secretariat, Ajara."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>CityMood Communications remains committed to providing verified, independent, and ethical community journalism for the people of Badagry and surrounding divisions.</p><p>Our newsroom operates in accordance with strict verification and fairness standards. We welcome story leads, photo reports of community events, and public interest tips from verified residents across Badagry Central, Badagry West, and Olorunda.</p><p>Readers can contact our newsroom team via email at citymoodbadagry@gmail.com or visit our physical office at 10, Agric Road, opposite the Badagry Local Government Secretariat, Ajara.</p>",
+        "category_id": null,
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": null,
+        "status": "published",
+        "publish_at": "2026-10-24T05:07:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-24T05:07:28.836Z",
+        "updated_at": "2026-10-24T05:07:28.836Z"
+      },
+      {
+        "id": "ee192c98-04d1-4c7d-8963-676939cf6aa0",
+        "slug": "seed-draft-1",
+        "headline": "Draft: Badagry Marina ferry timetable adjustments proposed for weekend passenger service",
+        "standfirst": "Working draft examining commuter boat frequency and fare structure.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CityMood draft copy under editorial review. Verified by the newsroom before publication."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>CityMood draft copy under editorial review. Verified by the newsroom before publication.</p>",
+        "category_id": "fdf750a5-8087-4da7-991c-76ce3284cd77",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": null,
+        "status": "draft",
+        "publish_at": null,
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T11:47:28.836Z",
+        "updated_at": "2026-10-27T11:47:28.836Z"
+      },
+      {
+        "id": "b27c85a8-1381-4a39-bcf4-3344ed7c51b7",
+        "slug": "seed-draft-2",
+        "headline": "Draft: Council committee meeting notes on Topo jetty rehabilitation",
+        "standfirst": "",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CityMood draft copy under editorial review. Verified by the newsroom before publication."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>CityMood draft copy under editorial review. Verified by the newsroom before publication.</p>",
+        "category_id": null,
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": null,
+        "status": "draft",
+        "publish_at": null,
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T08:47:28.836Z",
+        "updated_at": "2026-10-27T08:47:28.836Z"
+      },
+      {
+        "id": "f2351e71-3910-4377-87ed-07d0bde980e0",
+        "slug": "seed-scheduled-3",
+        "headline": "Scheduled: Heritage walking tour reopens for tourist delegations this weekend",
+        "standfirst": "Scheduled reporting on visitor reception along the Marina corridor.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CityMood draft copy under editorial review. Verified by the newsroom before publication."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>CityMood draft copy under editorial review. Verified by the newsroom before publication.</p>",
+        "category_id": "8353e191-33b7-48ea-b764-f9c87405a564",
+        "author_id": "d0000000-0000-4000-8000-000000000001",
+        "featured_image_id": null,
+        "status": "scheduled",
+        "publish_at": "2026-10-28T10:47:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000001",
+        "updated_by": "d0000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-27T05:47:28.836Z",
+        "updated_at": "2026-10-27T05:47:28.836Z"
+      },
+      {
+        "id": "ce7f58cd-957d-48b7-bf45-ab865fe2e879",
+        "slug": "seed-unpublished-4",
+        "headline": "Unpublished: Agbalata market weekly price updates archived",
+        "standfirst": "Archived seasonal commodity price review taken down after new figures.",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CityMood draft copy under editorial review. Verified by the newsroom before publication."
+                }
+              ]
+            }
+          ]
+        },
+        "body_html": "<p>CityMood draft copy under editorial review. Verified by the newsroom before publication.</p>",
+        "category_id": "28ed4338-7993-46d8-9868-97014ed51f74",
+        "author_id": "d0000000-0000-4000-8000-000000000002",
+        "featured_image_id": null,
+        "status": "unpublished",
+        "publish_at": "2026-10-24T14:47:28.836Z",
+        "featured": false,
+        "breaking": false,
+        "breaking_until": null,
+        "seo_title": "",
+        "seo_description": "",
+        "created_by": "d0000000-0000-4000-8000-000000000002",
+        "updated_by": "d0000000-0000-4000-8000-000000000002",
+        "created_at": "2026-10-27T02:47:28.836Z",
+        "updated_at": "2026-10-27T02:47:28.836Z"
+      }
+    ],
+    "article_tags": [
+      {
+        "article_id": "52a4ece0-fad9-4fed-94c3-368ea1d5c1cc",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "5dca974e-7e90-40af-9bbf-00731ed04cfc",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "8239714a-fa22-4eab-aac8-96147ac422f3",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "9fa67828-a5fb-4526-bf72-079ec7ced449",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "269dd30d-365f-41d5-899b-48401279a104",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "1b7cc21e-3d13-4f9f-8817-f70632efd6c9",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "4d1169fb-932f-4193-818b-44ef3be1bc78",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "4d1169fb-932f-4193-818b-44ef3be1bc78",
+        "tag_id": "93d43fb7-769a-41c6-90d4-ae2ff1db0b2f"
+      },
+      {
+        "article_id": "57006731-6bf8-496b-903e-bd7fab9bb48c",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "57006731-6bf8-496b-903e-bd7fab9bb48c",
+        "tag_id": "ec91161c-fc9e-4610-8a3d-7d80fac2a780"
+      },
+      {
+        "article_id": "f0f968de-477f-4068-b13e-794d7d165a1f",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "f0f968de-477f-4068-b13e-794d7d165a1f",
+        "tag_id": "562ac516-b9b5-4459-8fea-c48e05e3e6ac"
+      },
+      {
+        "article_id": "b71c54dc-0531-4a64-ad55-eaee1c801c2a",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "b71c54dc-0531-4a64-ad55-eaee1c801c2a",
+        "tag_id": "52218042-16d2-448b-aa8e-61d0f701b0f2"
+      },
+      {
+        "article_id": "52bca4ac-f496-400b-ad9b-7c8b3b71fef0",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "92332dee-9d66-426b-aa1a-e3d72c46b519",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "cadf5716-deba-46ab-b5f0-2196a780ee1e",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "7efebdb8-4b02-4412-9b99-0974aba561ca",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "f6487094-bc5b-4a4b-ab0f-25344ebbd357",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "cf4e129f-8de5-4ffe-b419-f9ad69b14b6c",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "c93b49d4-798d-4937-bc16-5d8c87eff88d",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "b29f6fb8-0cda-47f4-a1f6-56dd68882bfb",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "841b3a68-7f6d-4e83-ab0d-9a428b7a69b0",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "4c3295de-197d-4631-9eec-9f88721e130e",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "8e98b9d5-9593-4633-992e-18ad6c6eeb50",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "875e8e8e-9008-4c5b-9cca-15313c8f667e",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "dd01d4e0-e0d2-4198-bbcc-a396ac3fbbdd",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "6c29ba5d-c0ad-481e-ab32-636412ec2438",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "386ef013-68a9-4dd3-a8a0-6e91cef008e9",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "06441a58-4931-4686-bf08-500a5494f473",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "1b3a11e6-f8b6-412c-af58-4837d91cba8d",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "b424e186-6058-4cc3-8539-071c663a9156",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "00559808-4480-4acb-8c2b-555ca41ab22a",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "1314a414-383d-40ef-a821-d90e0623d37a",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "e1404ffa-d986-45b5-b5fb-504831ac3e41",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      },
+      {
+        "article_id": "2e400ef5-4d14-454d-8da0-3a84ad5a4db2",
+        "tag_id": "a7059f71-7484-4a05-b54b-e4f6a34fa768"
+      }
+    ],
+    "front_page_pins": [],
+    "most_read_picks": [
+      {
+        "position": 1,
+        "article_id": "52a4ece0-fad9-4fed-94c3-368ea1d5c1cc"
+      },
+      {
+        "position": 2,
+        "article_id": "b424e186-6058-4cc3-8539-071c663a9156"
+      },
+      {
+        "position": 3,
+        "article_id": "8239714a-fa22-4eab-aac8-96147ac422f3"
+      },
+      {
+        "position": 4,
+        "article_id": "cadf5716-deba-46ab-b5f0-2196a780ee1e"
+      }
+    ],
+    "ad_campaigns": [],
+    "site_settings": [
+      {
+        "id": true,
+        "newsroom_address": "10, Agric Road, Opposite Badagry Local Government Secretariat, Ajara, Badagry Central, Lagos State",
+        "newsroom_phone": "+234 904 558 7616",
+        "newsroom_email": "citymoodbadagry@gmail.com",
+        "corrections_email": "corrections@citymood.ng",
+        "facebook_url": "https://www.facebook.com/citymoodbadagry",
+        "instagram_url": "https://www.instagram.com/citymoodbadagry/",
+        "tiktok_url": "https://www.tiktok.com/@citymoodbadagry"
+      }
+    ]
+  }
+}
