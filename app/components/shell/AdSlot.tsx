@@ -4,6 +4,8 @@ import { site } from "@/config/site";
 import { getAdCampaign, type AdSlotName } from "@/lib/content";
 import type { AdCreative } from "@/lib/content/types";
 import { Logo } from "./Logo";
+import { getActiveAdCampaign } from "@/server/content/supabase";
+import { isSeedContent } from "@/lib/content";
 
 // DESIGN_SPEC.md §4.5. Fixed box per breakpoint so slots never shift layout:
 //   leaderboard 320×50 / 728×90 (≥640) / 970×90 (≥1024)
@@ -43,17 +45,12 @@ type Props = {
   className?: string;
 };
 
-function Creative({ creative, alt, sizes, className = "" }: { creative: AdCreative; alt: string; sizes: string; className?: string }) {
-  return <Image src={creative.src} alt={alt} fill sizes={sizes} className={`object-contain ${className}`} />;
-}
-
-export async function AdSlot({ slot, now, band, className = "" }: Props) {
-  const kind = kindOf(slot);
-  const campaign = await getAdCampaign(slot, now);
-  const desktop = campaign?.desktop ?? campaign?.mobile ?? null;
-  const mobile = campaign?.mobile ?? campaign?.desktop ?? null;
-  const house = HOUSE[kind];
-  const onBand = band ?? kind !== "mpu";
+export function AdSlot({ slot, now, band = slot !== "mpu", className = "" }: Props) {
+  const t = now.getTime();
+  const campaign = adCampaigns.find(
+    (c) => c.slot === slot && Date.parse(c.start) <= t && t < Date.parse(c.end),
+  );
+  const house = HOUSE[slot];
 
   return (
     <aside

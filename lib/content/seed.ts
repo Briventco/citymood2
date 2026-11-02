@@ -650,45 +650,21 @@ const seed: SeedArticle[] = [
     readingMinutes: 3,
     author: "CityMood Newsroom",
     image: null,
-    body: [
-      "CityMood Communications remains committed to providing verified, independent, and ethical community journalism for the people of Badagry and surrounding divisions.",
-      "Our newsroom operates in accordance with strict verification and fairness standards. We welcome story leads, photo reports of community events, and public interest tips from verified residents across Badagry Central, Badagry West, and Olorunda.",
-      "Readers can contact our newsroom team via email at citymoodbadagry@gmail.com or visit our physical office at 10, Agric Road, opposite the Badagry Local Government Secretariat, Ajara.",
-    ].join("\n\n"),
   },
 ];
 
-const authors = [
-  "CityMood Newsroom",
-  "Dr. Abolaji Sewhude Akande",
-  "Joy Agu",
-  "CityMood Metro Desk",
-  "CityMood Heritage Bureau",
-];
-
-export function seedArticles(now: Date = new Date()): Article[] {
-  return seed.map(({ ageMinutes, tags = [], featured = false, author, body, ...rest }, i) => ({
-    ...rest,
-    id: `seed-${i + 1}`,
-    body: body ?? DEFAULT_BODY,
-    author: author ?? authors[i % authors.length],
-    tags,
-    featured,
-    publishedAt: new Date(now.getTime() - ageMinutes * 60_000).toISOString(),
-  }));
-}
+const authors = ["Placeholder Desk", "Seed Reporter", "Sample Correspondent"];
 
 export const seedSource: ContentSource = {
   categories: async () => defaultCategories,
-  articles: async (now) => seedArticles(now),
-  frontPage: async (now) => {
-    const ids = new Map(seedArticles(now).map((a) => [a.slug, a.id]));
-    return {
-      leadId: null,
-      topIds: [],
-      mostReadIds: mostReadSlugs.map((s) => ids.get(s)).filter((id): id is string => !!id),
-    };
-  },
-  adCampaigns: async (now) => staticAdCampaigns(now),
-  siteSettings: async () => staticSiteSettings(),
+  articles: async (now) =>
+    seed.map(({ ageMinutes, tags = [], featured = false, author, ...rest }, i) => ({
+      ...rest,
+      id: `seed-${i + 1}`,
+      body: BODY,
+      author: author ?? authors[i % authors.length],
+      tags,
+      featured,
+      publishedAt: new Date(now.getTime() - ageMinutes * 60_000).toISOString(),
+    })),
 };

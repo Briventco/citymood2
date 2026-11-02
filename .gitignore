@@ -42,7 +42,3 @@ next-env.d.ts
 
 # visual-check.mjs output
 /docs/design/screenshots/
-
-# newsroom dev store (fake seed data and uploads; see lib/admin/backend.ts)
-/data/
-/public/uploads/
