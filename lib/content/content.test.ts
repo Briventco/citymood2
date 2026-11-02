@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { makeArticle } from "@/lib/testing";
-import { publishedNewestFirst, searchArticles, selectBreaking } from "./index";
+import { publishedNewestFirst, selectBreaking } from "./index";
 
 const now = new Date("2026-10-12T12:00:00.000Z");
 const hoursAgo = (h: number) => new Date(now.getTime() - h * 3_600_000).toISOString();
@@ -29,5 +29,14 @@ describe("selectBreaking", () => {
 
   it("returns nothing when no article is breaking, so the ticker is hidden", () => {
     expect(selectBreaking([makeArticle()], now)).toEqual([]);
+  });
+});
+
+describe("selectBreaking with newsroom windows", () => {
+  it("uses breakingUntil when the newsroom sets it", () => {
+    const live = makeArticle({ breakingUntil: hoursAgo(-1), publishedAt: hoursAgo(10) });
+    const ended = makeArticle({ breakingUntil: hoursAgo(0.5), publishedAt: hoursAgo(1) });
+    const off = makeArticle({ breakingUntil: null, tags: ["breaking"], publishedAt: hoursAgo(1) });
+    expect(selectBreaking([live, ended, off], now)).toEqual([live]);
   });
 });
