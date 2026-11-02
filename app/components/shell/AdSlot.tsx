@@ -3,6 +3,8 @@ import Link from "next/link";
 import { adCampaigns, type AdSlotName } from "@/config/ads";
 import { site } from "@/config/site";
 import { Logo } from "./Logo";
+import { getActiveAdCampaign } from "@/server/content/supabase";
+import { isSeedContent } from "@/lib/content";
 
 // DESIGN_SPEC.md §4.5. Fixed box per breakpoint so slots never shift layout:
 //   leaderboard 320×50 / 728×90 (≥640) / 970×90 (≥1024)
@@ -37,11 +39,11 @@ type Props = {
   className?: string;
 };
 
-export function AdSlot({ slot, now, band = slot !== "mpu", className = "" }: Props) {
+export async function AdSlot({ slot, now, band = slot !== "mpu", className = "" }: Props) {
   const t = now.getTime();
-  const campaign = adCampaigns.find(
-    (c) => c.slot === slot && Date.parse(c.start) <= t && t < Date.parse(c.end),
-  );
+  const configured = adCampaigns.find((c) => c.slot === slot && Date.parse(c.start) <= t && t < Date.parse(c.end));
+  const databaseCampaign = isSeedContent ? null : await getActiveAdCampaign(slot, now);
+  const campaign = databaseCampaign ?? configured;
   const house = HOUSE[slot];
 
   return (
