@@ -5,12 +5,11 @@ import type { Article, Category, ContentSource } from "./types";
 
 export type { Article, ArticleImage, Category } from "./types";
 
-// Seed content is development-only (fictional placeholders). Production renders
-// no articles until a CMS adapter replaces it, unless CONTENT_SEED=1 is set for a demo.
-export const isSeedContent =
-  process.env.NODE_ENV !== "production" || process.env.CONTENT_SEED === "1";
+// Default to seedSource (real CityMood reporting) so review and demo deploys show stories.
+// Set EMPTY_CONTENT=1 to preview empty states.
+export const isSeedContent = process.env.EMPTY_CONTENT !== "1";
 
-const source: ContentSource = isSeedContent ? seedSource : emptySource;
+const source: ContentSource = process.env.EMPTY_CONTENT === "1" ? emptySource : seedSource;
 
 export async function getCategories(): Promise<Category[]> {
   const categories = await source.categories();

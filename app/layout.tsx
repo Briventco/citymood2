@@ -47,12 +47,6 @@ export default async function RootLayout({
         <a href="#main" className="cm-skip-link">
           Skip to main content
         </a>
-        {isSeedContent && (
-          <p className="border-b border-cm-rule bg-cm-paper px-4 py-2 text-center text-[13px] text-cm-meta">
-            Development seed content · every story, name and photo is a fictional placeholder, not CityMood
-            reporting.
-          </p>
-        )}
         <SiteHeader categories={categories} now={now} />
         <SectionNav categories={categories} />
         <BreakingTicker now={now} />
