@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { preload } from "react-dom";
 import { BreakingTicker } from "./components/shell/BreakingTicker";
 import { SectionNav } from "./components/shell/SectionNav";
@@ -40,6 +41,8 @@ export default async function RootLayout({
   for (const href of preloadedFonts) preload(href, { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   const now = new Date();
   const categories = await getCategories();
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  const isAdminRoute = pathname.startsWith("/admin");
 
   return (
     <html lang="en">
@@ -47,11 +50,11 @@ export default async function RootLayout({
         <a href="#main" className="cm-skip-link">
           Skip to main content
         </a>
-        <SiteHeader categories={categories} now={now} />
-        <SectionNav categories={categories} />
-        <BreakingTicker now={now} />
+        {!isAdminRoute && <SiteHeader categories={categories} now={now} />}
+        {!isAdminRoute && <SectionNav categories={categories} />}
+        {!isAdminRoute && <BreakingTicker now={now} />}
         <main id="main">{children}</main>
-        <SiteFooter now={now} />
+        {!isAdminRoute && <SiteFooter now={now} />}
       </body>
     </html>
   );

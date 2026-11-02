@@ -42,3 +42,7 @@ next-env.d.ts
 
 # visual-check.mjs output
 /docs/design/screenshots/
+
+# Local planning and handoff notes
+/docs/BACKEND_PLAN.md
+/PROGRESS.md

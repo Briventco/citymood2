@@ -1,6 +1,5 @@
-// Direct-sold ad campaigns, one entry per booking.
-// There is no CMS yet, so changing a creative needs a redeploy (OPEN_QUESTIONS #9).
-// When no campaign is live for a slot, AdSlot shows the "Advertise with CityMood" house ad.
+// Development-only fallback campaigns. Production campaigns are loaded from
+// Supabase ad_campaigns; when no campaign is live, AdSlot shows the house ad.
 
 export type AdSlotName = "leaderboard" | "mpu" | "billboard";
 
