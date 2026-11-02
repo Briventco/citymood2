@@ -1,16 +1,19 @@
 import { site } from "@/config/site";
 import { emptySource } from "./empty";
 import { seedSource } from "./seed";
+import { supabaseSource } from "@/server/content/supabase";
+import { getMostReadArticles as getSupabaseMostRead } from "@/server/content/supabase";
+import { mostReadSlugs } from "@/config/mostRead";
 import type { Article, Category, ContentSource } from "./types";
+import type { ContentRepository, PublishedArticleQuery } from "@/server/content/ports";
 
 export type { Article, ArticleImage, Category } from "./types";
 
-// Seed content is development-only (fictional placeholders). Production renders
-// no articles until a CMS adapter replaces it, unless CONTENT_SEED=1 is set for a demo.
-export const isSeedContent =
-  process.env.NODE_ENV !== "production" || process.env.CONTENT_SEED === "1";
+// Supabase is the default content source in every environment. Set CONTENT_SEED=1
+// only when intentionally previewing the fictional design fixture data.
+export const isSeedContent = process.env.CONTENT_SEED === "1" || process.env.NODE_ENV === "test";
 
-const source: ContentSource = isSeedContent ? seedSource : emptySource;
+const source: ContentSource = isSeedContent ? seedSource : supabaseSource ?? emptySource;
 
 export async function getCategories(): Promise<Category[]> {
   const categories = await source.categories();
@@ -20,6 +23,40 @@ export async function getCategories(): Promise<Category[]> {
 /** Published articles, newest first. */
 export async function getArticles(now: Date = new Date()): Promise<Article[]> {
   return publishedNewestFirst(await source.articles(now), now);
+}
+
+export async function searchArticles(query: PublishedArticleQuery = {}, now: Date = new Date()): Promise<Article[]> {
+  if ("publishedArticles" in source) {
+    const result = await (source as ContentRepository).publishedArticles({ ...query, limit: query.limit ?? 50 });
+    return result.items;
+  }
+
+  const term = query.search?.trim().toLocaleLowerCase();
+  const category = query.categorySlug;
+  return (await getArticles(now)).filter((article) => {
+    const matchesTerm = !term || [article.title, article.standfirst, article.body, ...article.tags]
+      .join(" ")
+      .toLocaleLowerCase()
+      .includes(term);
+    return matchesTerm && (!category || article.category === category);
+  }).slice(0, query.limit ?? 50);
+}
+
+export async function getPublishedArticle(idOrSlug: string): Promise<Article | null> {
+  if ("publishedArticle" in source) return (source as ContentRepository).publishedArticle(idOrSlug);
+  return (await getArticles()).find((article) => article.id === idOrSlug || article.slug === idOrSlug) ?? null;
+}
+
+export async function getMostRead(now: Date = new Date()): Promise<Article[]> {
+  if (!isSeedContent) {
+    const ranked = await getSupabaseMostRead(4);
+    if (ranked.length > 0) return ranked;
+  }
+  const articles = await getArticles(now);
+  return mostReadSlugs.flatMap((slug) => {
+    const article = articles.find((item) => item.slug === slug);
+    return article ? [article] : [];
+  });
 }
 
 export async function getBreaking(now: Date = new Date()): Promise<Article[]> {

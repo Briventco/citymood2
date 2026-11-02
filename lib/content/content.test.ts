@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { makeArticle } from "@/lib/testing";
-import { publishedNewestFirst, selectBreaking } from "./index";
+import { publishedNewestFirst, searchArticles, selectBreaking } from "./index";
 
 const now = new Date("2026-10-12T12:00:00.000Z");
 const hoursAgo = (h: number) => new Date(now.getTime() - h * 3_600_000).toISOString();
@@ -29,5 +29,13 @@ describe("selectBreaking", () => {
 
   it("returns nothing when no article is breaking, so the ticker is hidden", () => {
     expect(selectBreaking([makeArticle()], now)).toEqual([]);
+  });
+});
+
+describe("searchArticles", () => {
+  it("matches seed stories across searchable text", async () => {
+    const results = await searchArticles({ search: "power", limit: 10 }, now);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((article) => `${article.title} ${article.standfirst} ${article.body}`.toLowerCase().includes("power"))).toBe(true);
   });
 });
