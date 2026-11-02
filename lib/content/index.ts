@@ -9,11 +9,15 @@ import type { ContentRepository, PublishedArticleQuery } from "@/server/content/
 
 export type { Article, ArticleImage, Category } from "./types";
 
-// Supabase is the default content source in every environment. Set CONTENT_SEED=1
-// only when intentionally previewing the fictional design fixture data.
-export const isSeedContent = process.env.CONTENT_SEED === "1" || process.env.NODE_ENV === "test";
+// Supabase is the primary content source when configured. When Supabase is not configured
+// (or in test/review preview environments), seedSource provides verified CityMood reporting.
+// Set EMPTY_CONTENT=1 to preview empty states.
+const hasSupabase = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL);
+export const isSeedContent = !hasSupabase || process.env.CONTENT_SEED === "1" || process.env.NODE_ENV === "test";
 
-const source: ContentSource = isSeedContent ? seedSource : supabaseSource ?? emptySource;
+const source: ContentSource = process.env.EMPTY_CONTENT === "1"
+  ? emptySource
+  : (isSeedContent ? seedSource : (supabaseSource ?? seedSource));
 
 export async function getCategories(): Promise<Category[]> {
   const categories = await source.categories();
