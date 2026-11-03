@@ -3,12 +3,12 @@ import { site } from "@/config/site";
 import { categoryBySlug, getHomepage, type Article, type Category } from "@/lib/content";
 import type { CategoryBlock } from "@/lib/homepage";
 import { categoryHref } from "@/lib/urls";
-import { LatestRail } from "../components/LatestRail";
-import { MostRead } from "../components/MostRead";
-import { PeopleBand } from "../components/PeopleBand";
-import { SectionHeader } from "../components/SectionHeader";
-import { StoryCard } from "../components/StoryCard";
-import { AdSlot } from "../components/shell/AdSlot";
+import { LatestRail } from "./components/LatestRail";
+import { MostRead } from "./components/MostRead";
+import { PeopleBand } from "./components/PeopleBand";
+import { SectionHeader } from "./components/SectionHeader";
+import { StoryCard } from "./components/StoryCard";
+import { AdSlot } from "./components/shell/AdSlot";
 
 // Homepage composition: DESIGN_SPEC.md §5.
 // The DOM follows the desktop order (1024px+). Below 1024px, `order-*` classes

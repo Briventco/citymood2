@@ -9,5 +9,5 @@ export default defineConfig({
       "server-only": fileURLToPath(new URL("./node_modules/next/dist/compiled/server-only/empty.js", import.meta.url)),
     },
   },
-  test: { include: ["lib/**/*.test.ts"], environment: "node" },
+  test: { include: ["lib/**/*.test.ts", "server/**/*.test.ts"], environment: "node" },
 });
