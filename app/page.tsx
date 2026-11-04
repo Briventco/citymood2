@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
-import { categoryBySlug, getArticles, getCategories, getMostRead, type Article, type Category } from "@/lib/content";
-import { buildHomepage, type CategoryBlock } from "@/lib/homepage";
+import { categoryBySlug, getHomepage, type Article, type Category } from "@/lib/content";
+import type { CategoryBlock } from "@/lib/homepage";
 import { categoryHref } from "@/lib/urls";
 import { LatestRail } from "./components/LatestRail";
 import { MostRead } from "./components/MostRead";
@@ -19,8 +19,8 @@ const container = "mx-auto w-full max-w-cm px-(--cm-gutter)";
 
 async function loadHomepage() {
   const now = new Date();
-  const [articles, categories, mostRead] = await Promise.all([getArticles(now), getCategories(), getMostRead(now)]);
-  return { now, categories, home: buildHomepage(articles, categories, mostRead.map((article) => article.slug)) };
+  const { categories, home } = await getHomepage(now);
+  return { now, categories, home };
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -149,7 +149,7 @@ export default async function HomePage() {
 
         {/* Mobile and tablet: first MPU after Latest. */}
         <div className={`${container} order-2 pb-8 lg:hidden`}>
-          <AdSlot slot="mpu" now={now} band={false} />
+          <AdSlot slot="mpu_1" now={now} band={false} />
         </div>
 
         {/* 3. Top stories. */}
@@ -189,7 +189,9 @@ export default async function HomePage() {
                   <StoryCard key={a.id} article={a} variant="list" />
                 ))}
               </div>
-              <AdSlot slot="mpu" now={now} band={false} className="sm:col-span-2 lg:col-span-1" />
+              {/* The second MPU below 1024px; the first (and only) MPU on desktop (OPEN_QUESTIONS.md). */}
+              <AdSlot slot="mpu_2" now={now} band={false} className="sm:col-span-2 lg:hidden" />
+              <AdSlot slot="mpu_1" now={now} band={false} className="hidden lg:col-span-1 lg:block" />
             </div>
           </section>
         )}
