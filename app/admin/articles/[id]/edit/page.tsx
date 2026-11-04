@@ -9,11 +9,19 @@ import { createClient } from "@/server/supabase/server";
 
 type EditArticlePageProps = {
   params: Promise<{ id: string }>;
+  searchParams?: Promise<{ error?: string; uploaded?: string; restored?: string }>;
 };
 
-export default async function EditArticlePage({ params }: EditArticlePageProps) {
+const editFeedback: Record<string, string> = {
+  upload_failed: "The image could not be uploaded. Check the server log for the safe storage or database error and try again.",
+  invalid_media: "Choose a supported image file no larger than 5 MB and provide alt text.",
+  restore_failed: "The revision could not be restored.",
+};
+
+export default async function EditArticlePage({ params, searchParams }: EditArticlePageProps) {
   const actor = await requireStaff();
   const { id } = await params;
+  const query = await searchParams;
   const supabase = await createClient();
   const [{ data: article, error }, { data: categories }, { data: tags }, { data: articleTags }, { data: revisions }] = await Promise.all([
     supabase
@@ -47,6 +55,9 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
         <p className="text-cm-kicker font-extrabold uppercase tracking-cm-caps">Editorial workspace</p>
         <h1 className="font-serif text-cm-feature font-bold">Edit article</h1>
       </div>
+      {query?.error && <p role="alert" className="mt-5 border-l-4 border-cm-black bg-cm-paper px-4 py-3">{editFeedback[query.error] ?? "The article request could not be completed."}</p>}
+      {query?.uploaded && <p role="status" className="mt-5 border-l-4 border-cm-lime bg-cm-paper px-4 py-3">Image uploaded successfully.</p>}
+      {query?.restored && <p role="status" className="mt-5 border-l-4 border-cm-lime bg-cm-paper px-4 py-3">Revision restored successfully.</p>}
       <form action={updateArticle} className="mt-8 grid gap-5">
         <input type="hidden" name="article_id" value={article.id} />
         <label className="grid gap-2 font-bold" htmlFor="title">

@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
     // The Tailwind stylesheet is ~7KB gzipped. Inlining it removes the only
     // render-blocking request, which helps LCP for first visits on mobile data.
     inlineCss: true,
+    // Leave multipart/form-data overhead above the 5 MB image validation limit.
+    serverActions: {
+      bodySizeLimit: "6mb",
+    },
   },
   images: {
     formats: ["image/avif", "image/webp"],

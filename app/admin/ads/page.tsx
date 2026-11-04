@@ -5,18 +5,39 @@ import { hasPermission } from "@/server/auth/permissions";
 import { requireStaff } from "@/server/auth/session";
 import { createClient } from "@/server/supabase/server";
 
-export default async function AdsPage() {
+type AdsPageProps = {
+  searchParams?: Promise<{ error?: string; uploaded?: string; created?: string; updated?: string }>;
+};
+
+const feedback: Record<string, string> = {
+  invalid_media: "Choose a supported image file no larger than 5 MB and provide alt text.",
+  upload_failed: "The creative could not be uploaded. Check the server log for the safe storage or database error.",
+  invalid_input: "Check the campaign fields and try again.",
+  overlap: "An active campaign already occupies that slot during the selected dates.",
+  save_failed: "The campaign could not be saved. Check the server log for the safe database error.",
+  forbidden: "Your account does not have permission to manage advertising.",
+};
+
+export default async function AdsPage({ searchParams }: AdsPageProps) {
   const actor = await requireStaff();
   if (!hasPermission(actor, "ad:manage")) return <p role="alert">You do not have permission to manage advertising.</p>;
+  const query = await searchParams;
   const supabase = await createClient();
-  const [{ data: campaigns }, { data: media }] = await Promise.all([
+  const [campaignResult, mediaResult] = await Promise.all([
     supabase.from("ad_campaigns").select("id,name,slot,alt_text,destination_url,starts_at,ends_at,active,media:article_media(storage_path,width,height)").order("starts_at", { ascending: false }),
     supabase.from("article_media").select("id,alt_text,width,height,created_at").order("created_at", { ascending: false }).limit(100),
   ]);
+  const campaigns = campaignResult.data;
+  const media = mediaResult.data;
+  const loadError = campaignResult.error ?? mediaResult.error;
+  const message = query?.error ? feedback[query.error] ?? "The advertising request could not be completed." : null;
   return (
     <section>
       <Link href="/admin" className="text-sm font-bold underline">← Back to newsroom</Link>
       <div className="mt-5 border-t-[6px] border-cm-black pt-3"><p className="text-cm-kicker font-extrabold uppercase tracking-cm-caps">Commercial</p><h1 className="font-serif text-cm-feature font-bold">Advertising campaigns</h1></div>
+      {message && <p role="alert" className="mt-5 border-l-4 border-cm-black bg-cm-paper px-4 py-3">{message}</p>}
+      {loadError && <p role="alert" className="mt-5 border-l-4 border-cm-black bg-cm-paper px-4 py-3">Advertising data could not be loaded. Refresh and check the server log if this continues.</p>}
+      {query?.uploaded && <p role="status" className="mt-5 border-l-4 border-cm-lime bg-cm-paper px-4 py-3">Creative uploaded. You can select it when creating a campaign.</p>}
       <form action={createCampaign} className="mt-8 grid gap-4 border-y border-cm-rule py-5 lg:grid-cols-2">
         <label className="grid gap-2 font-bold">Campaign name<input name="name" required className="h-11 border border-cm-black px-3" /></label>
         <label className="grid gap-2 font-bold">Slot<select name="slot" className="h-11 border border-cm-black bg-cm-white px-3"><option value="leaderboard">Leaderboard</option><option value="mpu">MPU</option><option value="billboard">Billboard</option></select></label>
