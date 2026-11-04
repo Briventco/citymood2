@@ -45,11 +45,50 @@ export type Article = {
   place?: string;
   /** Reserved for view counting; unused while Most read is curated. */
   viewCount?: number;
+  /**
+   * End of the breaking-ticker window (ISO), set by the newsroom. When present it
+   * replaces the "breaking" tag rule; null means not breaking.
+   */
+  breakingUntil?: string | null;
 };
 
-/** Where articles come from. The seed adapter implements this today; a CMS adapter later. */
+/** Editor choices for the homepage (ADMIN_SPEC §5). Missing or non-live ids are skipped. */
+export type FrontPagePicks = {
+  leadId: string | null;
+  /** Slots top_1 to top_4; null fills automatically. */
+  topIds: (string | null)[];
+  mostReadIds: string[];
+};
+
+export type AdSlotName = "leaderboard" | "mpu_1" | "mpu_2" | "billboard";
+
+export type AdCreative = { src: string; width: number; height: number };
+
+/** A direct-sold campaign running now. */
+export type AdCampaign = {
+  slot: AdSlotName;
+  advertiser: string;
+  href: string;
+  alt: string;
+  /** Shown from 640px (or everywhere when there is no mobile creative). */
+  desktop: AdCreative | null;
+  /** Shown below 640px. */
+  mobile: AdCreative | null;
+};
+
+/** Footer and Contact details. */
+export type SiteSettings = {
+  contact: { address: string; phone: string; newsroomEmail: string; correctionsEmail: string };
+  social: { network: string; label: string; url: string }[];
+};
+
+/** Where content comes from: the newsroom store, the seed (demos and tests), or nothing. */
 export type ContentSource = {
   categories(): Promise<Category[]>;
   /** Every article, any order. The repository filters and sorts. */
   articles(now: Date): Promise<Article[]>;
+  frontPage(now: Date): Promise<FrontPagePicks>;
+  /** Campaigns running at `now`. */
+  adCampaigns(now: Date): Promise<AdCampaign[]>;
+  siteSettings(): Promise<SiteSettings>;
 };

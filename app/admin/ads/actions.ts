@@ -67,9 +67,16 @@ export async function uploadAdCreative(formData: FormData): Promise<void> {
   const bucket = process.env.SUPABASE_STORAGE_BUCKET ?? "article-media";
   const supabase = await createClient();
   const upload = await supabase.storage.from(bucket).upload(storagePath, bytes, { contentType: file.type, cacheControl: "31536000", upsert: false });
-  if (upload.error) fail("upload_failed");
+  if (upload.error) {
+    console.error("Ad creative storage upload failed", { message: upload.error.message, bucket });
+    fail("upload_failed");
+  }
   const metadata = await supabase.from("article_media").insert({ storage_path: storagePath, mime_type: file.type, byte_size: file.size, width: dimensions.width, height: dimensions.height, alt_text: altText, created_by: actor.id }).select("id").single();
-  if (metadata.error || !metadata.data) { await supabase.storage.from(bucket).remove([storagePath]); fail("upload_failed"); }
+  if (metadata.error || !metadata.data) {
+    console.error("Ad creative metadata insert failed", { code: metadata.error?.code, message: metadata.error?.message });
+    await supabase.storage.from(bucket).remove([storagePath]);
+    fail("upload_failed");
+  }
   revalidatePath("/admin/ads");
   redirect("/admin/ads?uploaded=1");
 }

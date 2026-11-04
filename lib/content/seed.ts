@@ -1,4 +1,6 @@
+import { mostReadSlugs } from "@/config/mostRead";
 import { defaultCategories } from "./categories";
+import { staticAdCampaigns, staticSiteSettings } from "./static";
 import type { Article, ArticleImage, ContentSource } from "./types";
 
 // CityMood Newsroom content. Real community news, reporting and features
@@ -679,4 +681,14 @@ export function seedArticles(now: Date = new Date()): Article[] {
 export const seedSource: ContentSource = {
   categories: async () => defaultCategories,
   articles: async (now) => seedArticles(now),
+  frontPage: async (now) => {
+    const ids = new Map(seedArticles(now).map((a) => [a.slug, a.id]));
+    return {
+      leadId: null,
+      topIds: [],
+      mostReadIds: mostReadSlugs.map((s) => ids.get(s)).filter((id): id is string => !!id),
+    };
+  },
+  adCampaigns: async (now) => staticAdCampaigns(now),
+  siteSettings: async () => staticSiteSettings(),
 };
