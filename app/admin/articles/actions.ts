@@ -30,6 +30,57 @@ const allowedMedia = {
 } as const;
 const maxMediaBytes = 5 * 1024 * 1024;
 
+type ArticleClient = Awaited<ReturnType<typeof createClient>>;
+
+async function saveArticleMedia(
+  supabase: ArticleClient,
+  actorId: string,
+  articleId: string,
+  file: File,
+  altText: string,
+  caption: string,
+  credit: string,
+): Promise<boolean> {
+  const extension = allowedMedia[file.type as keyof typeof allowedMedia];
+  if (!extension || file.size === 0 || file.size > maxMediaBytes || !altText || altText.length > 500) return false;
+
+  const bytes = Buffer.from(await file.arrayBuffer());
+  let dimensions: { width?: number; height?: number };
+  try {
+    dimensions = imageSize(bytes);
+  } catch {
+    return false;
+  }
+  if (!dimensions.width || !dimensions.height) return false;
+
+  const bucket = process.env.SUPABASE_STORAGE_BUCKET ?? "article-media";
+  const storagePath = `${articleId}/${randomUUID()}.${extension}`;
+  const { error: uploadError } = await supabase.storage.from(bucket).upload(storagePath, bytes, {
+    contentType: file.type,
+    cacheControl: "31536000",
+    upsert: false,
+  });
+  if (uploadError) return false;
+
+  const { error: metadataError } = await supabase.from("article_media").insert({
+    article_id: articleId,
+    storage_path: storagePath,
+    mime_type: file.type,
+    byte_size: file.size,
+    width: dimensions.width,
+    height: dimensions.height,
+    alt_text: altText,
+    caption: caption || null,
+    credit: credit || null,
+    created_by: actorId,
+  });
+  if (metadataError) {
+    await supabase.storage.from(bucket).remove([storagePath]);
+    return false;
+  }
+  return true;
+}
+
 export async function createDraft(formData: FormData): Promise<void> {
   const actor = await requireStaff();
   if (!hasPermission(actor, "article:create")) redirect("/admin?error=forbidden");
@@ -39,6 +90,11 @@ export async function createDraft(formData: FormData): Promise<void> {
   const standfirst = value(formData, "standfirst");
   const body = value(formData, "body");
   const categoryId = value(formData, "category_id");
+  const file = formData.get("file");
+  const imageFile = file instanceof File && file.size > 0 ? file : null;
+  const altText = value(formData, "alt_text");
+  const caption = value(formData, "caption");
+  const credit = value(formData, "credit");
 
   if (!title || title.length > 300 || !validSlug(slug) || !body) {
     redirect("/admin/articles/new?error=invalid_input");
@@ -60,6 +116,10 @@ export async function createDraft(formData: FormData): Promise<void> {
     .single();
 
   if (error || !data) redirect("/admin/articles/new?error=save_failed");
+  if (imageFile && !(await saveArticleMedia(supabase, actor.id, data.id, imageFile, altText, caption, credit))) {
+    revalidatePath("/admin");
+    redirect(`/admin/articles/${data.id}/edit?error=upload_failed`);
+  }
   revalidatePath("/admin");
   redirect("/admin?created=1");
 }
@@ -144,6 +204,23 @@ export async function archiveArticle(formData: FormData): Promise<void> {
   revalidatePath("/");
   revalidatePath("/admin");
   redirect("/admin?archived=1");
+}
+
+export async function restoreArchivedArticle(formData: FormData): Promise<void> {
+  const actor = await requireStaff();
+  if (!hasPermission(actor, "article:unpublish")) redirect("/admin?error=forbidden");
+  const articleId = value(formData, "article_id");
+  if (!validId(articleId)) redirect("/admin?error=invalid_input");
+  const { supabase, article } = await articleForWorkflow(articleId);
+  if (article.status !== "archived") redirect("/admin?error=not_archived");
+  const { error } = await supabase
+    .from("articles")
+    .update({ status: "draft", scheduled_for: null, published_at: null, unpublished_at: null })
+    .eq("id", article.id);
+  if (error) redirect("/admin?error=workflow_failed");
+  revalidatePath("/");
+  revalidatePath("/admin");
+  redirect("/admin?restored=1");
 }
 
 export async function updateArticleFlags(formData: FormData): Promise<void> {
@@ -248,40 +325,7 @@ export async function uploadArticleMedia(formData: FormData): Promise<void> {
     redirect("/admin?error=forbidden");
   }
 
-  const bytes = Buffer.from(await file.arrayBuffer());
-  let dimensions: { width?: number; height?: number };
-  try {
-    dimensions = imageSize(bytes);
-  } catch {
-    redirect(`/admin/articles/${articleId}/edit?error=invalid_media`);
-  }
-  if (!dimensions.width || !dimensions.height) {
-    redirect(`/admin/articles/${articleId}/edit?error=invalid_media`);
-  }
-
-  const storagePath = `${articleId}/${randomUUID()}.${extension}`;
-  const bucket = process.env.SUPABASE_STORAGE_BUCKET ?? "article-media";
-  const { error: uploadError } = await supabase.storage.from(bucket).upload(storagePath, bytes, {
-    contentType: file.type,
-    cacheControl: "31536000",
-    upsert: false,
-  });
-  if (uploadError) redirect(`/admin/articles/${articleId}/edit?error=upload_failed`);
-
-  const { error: metadataError } = await supabase.from("article_media").insert({
-    article_id: articleId,
-    storage_path: storagePath,
-    mime_type: file.type,
-    byte_size: file.size,
-    width: dimensions.width,
-    height: dimensions.height,
-    alt_text: altText,
-    caption: caption || null,
-    credit: credit || null,
-    created_by: actor.id,
-  });
-  if (metadataError) {
-    await supabase.storage.from(bucket).remove([storagePath]);
+  if (!(await saveArticleMedia(supabase, actor.id, articleId, file, altText, caption, credit))) {
     redirect(`/admin/articles/${articleId}/edit?error=upload_failed`);
   }
 

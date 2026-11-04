@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { archiveArticle, publishArticle, submitArticle, unpublishArticle } from "@/app/admin/articles/actions";
+import { archiveArticle, publishArticle, restoreArchivedArticle, submitArticle, unpublishArticle } from "@/app/admin/articles/actions";
 import { hasPermission } from "@/server/auth/permissions";
 import { requireStaff } from "@/server/auth/session";
 import { createClient } from "@/server/supabase/server";
@@ -8,14 +8,16 @@ import { createClient } from "@/server/supabase/server";
 export default async function AdminPage() {
   const actor = await requireStaff();
   const supabase = await createClient();
-  const [recentResult, draftCount, reviewCount, scheduledCount, publishedCount] = await Promise.all([
+  const [recentResult, archivedResult, draftCount, reviewCount, scheduledCount, publishedCount] = await Promise.all([
     supabase.from("articles").select("id,title,slug,status,updated_at,category:categories(name)").order("updated_at", { ascending: false }).limit(6),
+    supabase.from("articles").select("id,title,updated_at").eq("status", "archived").order("updated_at", { ascending: false }).limit(20),
     supabase.from("articles").select("id", { count: "exact", head: true }).eq("status", "draft"),
     supabase.from("articles").select("id", { count: "exact", head: true }).eq("status", "in_review"),
     supabase.from("articles").select("id", { count: "exact", head: true }).eq("status", "scheduled"),
     supabase.from("articles").select("id", { count: "exact", head: true }).eq("status", "published"),
   ]);
   const articles = recentResult.data;
+  const archivedArticles = archivedResult.data;
   const error = recentResult.error;
   const stats = [
     { label: "Drafts", value: draftCount.count ?? 0 },
@@ -66,7 +68,7 @@ export default async function AdminPage() {
                   <span className="text-sm font-bold text-cm-meta">
                     {new Date(article.updated_at).toLocaleDateString()}
                   </span>
-                  {hasPermission(actor, "article:publish") && article.status !== "published" && (
+                  {hasPermission(actor, "article:publish") && article.status !== "published" && article.status !== "archived" && (
                     <form action={publishArticle}>
                       <input type="hidden" name="article_id" value={article.id} />
                       <button type="submit" className="min-h-11 border-2 border-cm-black px-3 text-sm font-bold">
@@ -92,6 +94,12 @@ export default async function AdminPage() {
                       <button type="submit" className="min-h-11 border-2 border-cm-black px-3 text-sm font-bold">Archive</button>
                     </form>
                   )}
+                  {hasPermission(actor, "article:unpublish") && article.status === "archived" && (
+                    <form action={restoreArchivedArticle}>
+                      <input type="hidden" name="article_id" value={article.id} />
+                      <button type="submit" className="min-h-11 border-2 border-cm-black px-3 text-sm font-bold">Unarchive</button>
+                    </form>
+                  )}
                 </div>
               </li>
             ))}
@@ -100,6 +108,20 @@ export default async function AdminPage() {
           <p className="border-t border-cm-rule py-4 text-cm-ink">No newsroom articles yet.</p>
         )}
       </div>
+
+      {archivedArticles && archivedArticles.length > 0 && (
+        <div className="mt-10 border-t border-cm-rule">
+          <div className="flex flex-wrap items-center justify-between gap-3 py-3"><h2 className="text-cm-section font-extrabold uppercase">Archived articles</h2><span className="text-sm text-cm-meta">Restore as drafts</span></div>
+          <ul className="border-t border-cm-rule">
+            {archivedArticles.map((article) => (
+              <li key={article.id} className="flex flex-wrap items-center justify-between gap-3 border-b border-cm-rule py-4">
+                <div><h3 className="font-serif text-xl font-bold">{article.title}</h3><p className="text-sm text-cm-meta">Archived {new Date(article.updated_at).toLocaleDateString()}</p></div>
+                {hasPermission(actor, "article:unpublish") && <form action={restoreArchivedArticle}><input type="hidden" name="article_id" value={article.id} /><button type="submit" className="min-h-11 border-2 border-cm-black px-3 text-sm font-bold">Unarchive</button></form>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }
