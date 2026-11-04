@@ -1,4 +1,6 @@
 import type { Article, ArticleImage, Category } from "@/lib/content";
+import type { AdCampaign, FrontPagePicks, SiteSettings } from "@/lib/content/types";
+import { staticAdCampaigns, staticSiteSettings } from "@/lib/content/static";
 import type { ContentRepository, PublishedArticlePage, PublishedArticleQuery } from "./ports";
 import type { AdSlotName } from "@/config/ads";
 import { createClient } from "@/server/supabase/server";
@@ -143,6 +145,18 @@ export const supabaseSource: ContentRepository = {
     const rows = await queryArticles(query);
     const items = rows.map(mapArticle);
     return { items, nextCursor: null };
+  },
+
+  async frontPage(): Promise<FrontPagePicks> {
+    return { leadId: null, topIds: [], mostReadIds: [] };
+  },
+
+  async adCampaigns(now: Date): Promise<AdCampaign[]> {
+    return staticAdCampaigns(now);
+  },
+
+  async siteSettings(): Promise<SiteSettings> {
+    return staticSiteSettings();
   },
 };
 

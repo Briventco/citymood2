@@ -211,7 +211,7 @@ export default async function DesignFoundationsPage() {
             </div>
             <div className="space-y-6">
               <MostRead articles={articles.slice(0, 4)} />
-              <AdSlot slot="mpu" now={now} />
+              <AdSlot slot="mpu_1" now={now} />
             </div>
           </div>
         </div>

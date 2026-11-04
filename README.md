@@ -20,6 +20,21 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Newsroom admin (development)
+
+Open [http://localhost:3000/admin/sign-in](http://localhost:3000/admin/sign-in) and use the
+“Demo mode: sign in as Reporter / Editor / Admin” buttons (development builds only).
+
+- Data lives in `data/admin-dev.json`, seeded with fake stories and staff on first use. Delete the
+  file to start again. Uploaded photos go to `public/uploads/`. Both are gitignored.
+- The public homepage reads the same store, so publishing, Breaking, Featured, front page pins,
+  Most read, ad campaigns and site settings show on `/` straight away.
+- The data layer is `lib/admin/` (`repo.ts` is the interface; `backend.ts` picks the implementation).
+  Role rules are enforced there, mirroring `docs/design/admin/schema.sql`.
+- Checks: `npm test` (includes the role tests mirroring `docs/design/admin/rls-tests.sql`),
+  `node docs/design/scripts/admin-smoke.mjs` (end to end, needs the dev server) and
+  `node docs/design/scripts/admin-screenshots.mjs http://localhost:3000 editor` (screenshots at 1440 and 390).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
