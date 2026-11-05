@@ -127,7 +127,8 @@ export async function getAdCampaign(slot: AdSlotName, now: Date = new Date()): P
   if (!isSeedContent) {
     try {
       const campaigns = await supabaseSource.adCampaigns(now);
-      const match = campaigns.find((c) => c.slot === slot);
+      const match = campaigns.find((c) => c.slot === slot)
+        ?? (slot === "mpu_2" ? campaigns.find((c) => c.slot === "mpu_1") : undefined);
       if (match) return match;
     } catch {
       // Fall through

@@ -1,6 +1,6 @@
 import type { Article, ArticleImage, Category } from "@/lib/content";
 import type { AdCampaign, FrontPagePicks, SiteSettings } from "@/lib/content/types";
-import { staticAdCampaigns, staticSiteSettings } from "@/lib/content/static";
+import { staticSiteSettings } from "@/lib/content/static";
 import type { ContentRepository, PublishedArticlePage, PublishedArticleQuery } from "./ports";
 import type { AdSlotName } from "@/config/ads";
 import { createClient } from "@/server/supabase/server";
@@ -152,7 +152,35 @@ export const supabaseSource: ContentRepository = {
   },
 
   async adCampaigns(now: Date): Promise<AdCampaign[]> {
-    return staticAdCampaigns(now);
+    const supabase = await createClient();
+    const result = await supabase
+      .from("ad_campaigns")
+      .select("name,slot,alt_text,destination_url,starts_at,ends_at,active,media:article_media(storage_path,width,height)")
+      .eq("active", true)
+      .lte("starts_at", now.toISOString())
+      .gt("ends_at", now.toISOString())
+      .order("starts_at", { ascending: false });
+    if (result.error) throw result.error;
+
+    return (result.data ?? []).flatMap((campaign) => {
+      const media = (Array.isArray(campaign.media) ? campaign.media[0] : campaign.media) as
+        | { storage_path: string; width: number; height: number }
+        | null;
+      if (!media) return [];
+      const creative = {
+        src: publicMediaUrl(media.storage_path),
+        width: media.width,
+        height: media.height,
+      };
+      return [{
+        slot: campaign.slot === "mpu" ? "mpu_1" : campaign.slot as AdCampaign["slot"],
+        advertiser: campaign.name,
+        href: campaign.destination_url,
+        alt: campaign.alt_text,
+        desktop: creative,
+        mobile: creative,
+      }];
+    });
   },
 
   async siteSettings(): Promise<SiteSettings> {
