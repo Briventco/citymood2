@@ -14,6 +14,8 @@ const mediaTypes = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "web
 const slots = ["leaderboard", "mpu", "billboard"] as const;
 function value(formData: FormData, name: string): string { const item = formData.get(name); return typeof item === "string" ? item.trim() : ""; }
 function fail(reason: string): never { redirect(`/admin/ads?error=${reason}`); }
+function editFail(id: string, reason: string): never { redirect(`/admin/ads/${id}/edit?error=${reason}`); }
+function validId(id: string): boolean { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id); }
 
 export async function createCampaign(formData: FormData): Promise<void> {
   const actor = await requireStaff();
@@ -48,6 +50,35 @@ export async function toggleCampaign(formData: FormData): Promise<void> {
   if (error) fail("save_failed");
   revalidatePath("/");
   revalidatePath("/admin/ads");
+  redirect("/admin/ads?updated=1");
+}
+
+export async function updateCampaign(formData: FormData): Promise<void> {
+  const actor = await requireStaff();
+  const campaignId = value(formData, "campaign_id");
+  if (!hasPermission(actor, "ad:manage")) editFail(campaignId, "forbidden");
+  if (!validId(campaignId)) fail("invalid_input");
+
+  const name = value(formData, "name");
+  const slot = value(formData, "slot");
+  const mediaId = value(formData, "media_id");
+  const altText = value(formData, "alt_text");
+  const destinationUrl = value(formData, "destination_url");
+  const startsAt = new Date(value(formData, "starts_at"));
+  const endsAt = new Date(value(formData, "ends_at"));
+  const active = formData.get("active") === "on";
+  if (!name || !slots.includes(slot as (typeof slots)[number]) || !mediaId || !altText || altText.length > 500 || !/^https:\/\//i.test(destinationUrl) || Number.isNaN(startsAt.getTime()) || Number.isNaN(endsAt.getTime()) || endsAt <= startsAt) editFail(campaignId, "invalid_input");
+
+  const supabase = await createClient();
+  if (active) {
+    const overlap = await supabase.from("ad_campaigns").select("id").eq("slot", slot).eq("active", true).neq("id", campaignId).lt("starts_at", endsAt.toISOString()).gt("ends_at", startsAt.toISOString()).limit(1);
+    if (overlap.error || overlap.data?.length) editFail(campaignId, "overlap");
+  }
+  const { error } = await supabase.from("ad_campaigns").update({ name, slot, media_id: mediaId, alt_text: altText, destination_url: destinationUrl, starts_at: startsAt.toISOString(), ends_at: endsAt.toISOString(), active }).eq("id", campaignId);
+  if (error) editFail(campaignId, "save_failed");
+  revalidatePath("/");
+  revalidatePath("/admin/ads");
+  revalidatePath(`/admin/ads/${campaignId}/edit`);
   redirect("/admin/ads?updated=1");
 }
 
