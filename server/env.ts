@@ -10,6 +10,12 @@ export type ServerEnvironment = {
   supabaseSecretKey: string | null;
   supabaseStorageBucket: string | null;
   revalidationSecret: string | null;
+  metaAppId: string | null;
+  metaAppSecret: string | null;
+  metaRedirectUri: string | null;
+  metaTokenEncryptionKey: string | null;
+  metaGraphVersion: string;
+  metaWebhookVerifyToken: string | null;
 };
 
 /**
@@ -24,6 +30,12 @@ export function readServerEnvironment(environment: Environment = process.env): S
     supabaseSecretKey: environment.SUPABASE_SECRET_KEY ?? environment.SUPABASE_SERVICE_ROLE_KEY ?? null,
     supabaseStorageBucket: environment.SUPABASE_STORAGE_BUCKET ?? null,
     revalidationSecret: environment.REVALIDATION_SECRET ?? null,
+    metaAppId: environment.META_APP_ID ?? null,
+    metaAppSecret: environment.META_APP_SECRET ?? null,
+    metaRedirectUri: environment.META_REDIRECT_URI ?? null,
+    metaTokenEncryptionKey: environment.META_TOKEN_ENCRYPTION_KEY ?? null,
+    metaGraphVersion: environment.META_GRAPH_VERSION ?? "v26.0",
+    metaWebhookVerifyToken: environment.META_WEBHOOK_VERIFY_TOKEN ?? null,
   };
 }
 
