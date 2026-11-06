@@ -17,6 +17,7 @@ export const permissions = [
   "tag:manage",
   "media:upload",
   "ad:manage",
+  "social:publish",
   "analytics:view",
   "user:manage",
   "system:manage",
