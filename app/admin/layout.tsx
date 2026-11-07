@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { requireStaff } from "@/server/auth/session";
-import { hasPermission } from "@/server/auth/permissions";
 import { signOut } from "@/server/auth/actions";
 
 export default async function AdminLayout({ children }: { children: ReactNode }) {
@@ -45,9 +44,6 @@ export default async function AdminLayout({ children }: { children: ReactNode })
             <Link className="flex min-h-12 items-center border-b border-cm-rule font-bold underline" href="/admin/ads">
               Advertising
             </Link>
-            {hasPermission(actor, "social:publish") && <Link className="flex min-h-12 items-center border-b border-cm-rule font-bold underline" href="/api/meta/connect">
-              Connect Meta
-            </Link>}
             <Link className="flex min-h-12 items-center border-b border-cm-rule font-bold underline" href="/admin/audit">
               Audit log
             </Link>

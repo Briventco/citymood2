@@ -41,7 +41,10 @@ export async function getCurrentActor(): Promise<CurrentActor | null> {
 
 export async function requireStaff(): Promise<CurrentActor> {
   const actor = await getCurrentActor();
-  if (!actor || actor.status !== "active" || actor.roles.length === 0) {
+  if (!actor) {
+    redirect("/login");
+  }
+  if (actor.status !== "active" || actor.roles.length === 0) {
     redirect("/login?error=account_pending");
   }
   return actor;
